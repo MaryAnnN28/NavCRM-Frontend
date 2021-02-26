@@ -1,0 +1,11 @@
+/* table {
+   border-color: black;
+   border-style: solid;
+} */
+
+tr {
+   border-style: solid;
+   border-bottom: steelblue;
+   border-color: black;
+}
+

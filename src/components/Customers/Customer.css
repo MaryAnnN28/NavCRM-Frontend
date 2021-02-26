@@ -1,0 +1,9 @@
+table {
+   border-color: black;
+   border-style: solid;
+}
+
+tr {
+   border-style: solid;
+   border-color: black;
+}
