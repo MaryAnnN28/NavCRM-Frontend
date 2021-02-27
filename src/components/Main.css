@@ -1,3 +1,20 @@
-div {
-   margin-left: 30px;
+div.search-container-main {
+   margin-left: 300px;
+   display: flexbox;
 }
+
+div.customer-container-main {
+   margin-left: 250px;
+   display: flexbox;
+}
+
+div.task-container-main {
+   margin-left: 250px;
+   display: flexbox;
+}
+
+/* div.users-container-main {
+   margin-left: 10px;
+   margin-top: 50px;
+   display: flexbox;
+} */

@@ -16,11 +16,7 @@ const TaskComponent = (props) => {
                   <th width="160px"><h4>Customer</h4></th>
                   <th width="180px"><h4>Company</h4></th>
                </tr>
-               {props.tasks.map(task =>
-                  <Task
-                     key={task.id}
-                     task={task}
-                  />)}
+               {props.tasks.map(task => <Task key={task.id} task={task} />)}
 
             </tbody>
          </table>

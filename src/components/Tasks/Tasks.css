@@ -6,6 +6,12 @@
 tr {
    border-style: solid;
    border-bottom: steelblue;
-   border-color: black;
+   border-color: steelblue;
+}
+
+th {
+   background-color: slategrey;
+   color: white;
+   /* height: 10px; */
 }
 
