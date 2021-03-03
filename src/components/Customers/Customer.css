@@ -1,9 +1,38 @@
-table {
-   border-color: black;
+div.customers-page-main {
+   display: flex;
+   justify-content: center;
+ }
+
+ .customers-heading {
+    display: flex;
+    justify-content: center;
+ }
+ 
+.customer-list-table {
+   display: flex;
+   justify-content: center;
+   border-color: rgb(218, 218, 218);
    border-style: solid;
+   border-width: 1px;
 }
 
-tr {
-   border-style: solid;
-   border-color: black;
+.new-customer-btn {
+   display: flex;
+   justify-content: center;
+   position: absolute;
+   right: 14%; 
+   margin: 10px;
+   top: 130px;
 }
+
+td {
+   font-size: 12pt;
+   padding-left: 10px;
+}
+
+tr.customer-data-row {
+   height: 12px;
+   
+}
+
+ 

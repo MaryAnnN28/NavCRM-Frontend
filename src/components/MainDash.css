@@ -1,0 +1,17 @@
+.dashboard-header {
+  text-align: center;
+}
+
+.dashboard-grid {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  right: 2%;
+  margin-top: 50px;
+}
+
+
+.text {
+  font: large;
+  columns: #fff;
+}

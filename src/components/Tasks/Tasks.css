@@ -1,12 +1,34 @@
-/* table {
-   border-color: black;
+div.tasks-page-main {
+   display: flex;
+   justify-content: center;
+ } 
+
+ .task-list-table {
+   display: flex;
+   justify-content: center;
+   border-color: rgb(218, 218, 218);
    border-style: solid;
-} */
+   border-width: 1px;
+ }
+
+ .new-task-btn {
+   display: flex;
+   justify-content: center;
+   position: absolute;
+   right: 14%; 
+   margin: 10px;
+   top: 130px;
+ }
 
 tr {
    border-style: solid;
    border-bottom: steelblue;
    border-color: steelblue;
+}
+
+td {
+   font-size: 10pt;
+   
 }
 
 th {

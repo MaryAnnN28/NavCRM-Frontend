@@ -1,5 +1,29 @@
+.user-details-page {
+   display: flex;
+   justify-content: center;
+   margin: 0 auto;
+   text-align: center;
+}
+
 .user-details-card {
-   margin-left: 10px;
-   margin-top: 20px;
    display: flexbox;
+   justify-content: center;
+   text-align: left;
+   border-radius: 4px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   width: 26rem;
+   padding: 2.5rem;
+}
+
+.user-photo-div {
+   justify-content: center;
+   text-align: center;
+   display: flex;
+
+}
+
+.edit-user-btn {
+   justify-content: center;
+   text-align: center;
+   display: flex;
 }

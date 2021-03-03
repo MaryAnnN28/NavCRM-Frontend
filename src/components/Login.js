@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@chakra-ui/react';
 
 import { GoogleLogin } from 'react-google-login';
 // refresh token
@@ -11,7 +12,7 @@ function Login() {
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
     alert(
-      `Logged in successfully welcome ${res.profileObj.name} 😍. \n `
+      `Logged in successfully, welcome ${res.profileObj.name} 😍. \n `
     );
     refreshTokenSetup(res);
   };
@@ -31,8 +32,11 @@ function Login() {
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={'single_host_origin'}
-        style={{ marginTop: '100px' }}
+        style={{ marginTop: '70px' }}
         isSignedIn={true}
+        render={renderProps => (
+          <Button onClick={renderProps.onClick} disabled={renderProps.disabled} variant="solid" colorScheme="gray" size="sm">Log In</Button>
+        )}
       />
     </div>
   );

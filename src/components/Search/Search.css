@@ -1,3 +1,17 @@
+div.search-container-main {
+  display: flex;
+  justify-content: center;
+}
+
 .search-input {
-  width: 240px;
+  width: 320px;
+  height: 40px;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-style: none;
+  border-bottom-style: solid;
+  border-color: #214a79be;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
 }
