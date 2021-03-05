@@ -12,7 +12,17 @@ class EditTaskForm extends React.Component {
     due_date: this.props.due_date, 
     time_due: this.props.time_due,  
     notes: this.props.notes, 
-    chosenCustomer: this.props.chosenCustomer
+    chosenCustomer: this.props.customer_id, 
+    currentUser: this.props.user_id
+  }
+
+
+  componentDidMount() {
+    return this.props.handlePageChange('edit')
+  }
+
+  componentWillUnmount() {
+    return this.props.handlePageChange('home')
   }
 
   handleInputChange = (event) => {
@@ -21,10 +31,19 @@ class EditTaskForm extends React.Component {
     })
   }
 
+  handleCustomerSelect = (chosenCustomer) => {
+    this.setState({ chosenCustomer })
+  }
+
+  handleUserSelect = (currentUser) => {
+    this.setState({ currentUser })
+  }
+
   renderTasks() {
     this.props.history.push('/tasks');
   }
 
+  // ******** Handles the Edit Submit Function ******** //
   handleEditTask = (event) => {
     event.preventDefault()
     let updatedTask = this.state
@@ -37,6 +56,7 @@ class EditTaskForm extends React.Component {
     fetch(TASKS_URL + this.props.id, reqPack)
       .then(resp => resp.json())
       .then(updatedTask => {
+        // console.log(updatedTask)
         this.props.updateTask(updatedTask)
         this.renderTasks()
         event.target.reset()
@@ -45,27 +65,31 @@ class EditTaskForm extends React.Component {
 
   render() {
 
-    const { title, task_type, description, due_date, time_due, notes, chosenCustomer } = this.state
+    const { title, task_type, description, due_date, time_due, notes, chosenCustomer, currentUser} = this.state
 
     return (
       <div>
         <center>
         <div className="task-form-container"><br />
-            <Heading size="lg">Add New Task</Heading><br />
+            <Heading size="lg">Update Task</Heading><br />
             
-          <form className="task-form" onSubmit={this.handleEditTask}>
+            <form className="task-form" onSubmit={(event) => {this.handleEditTask(event)}}>
+            
 
-              <FormControl id="title">
+            <FormControl id="title">
                 <Input
                   name="title"
+                  type="text"
                   placeholder="Title"
                   size="md"
                   width="xs" 
                   variant="flushed"
+                  textColor="blackAlpha.900"
                   value={title}
                   onChange={this.handleInputChange}
                 />
               
+                <br /><br />
                 <Select
                   name="task_type"
                   placeholder="Type"
@@ -75,57 +99,101 @@ class EditTaskForm extends React.Component {
                   value={task_type} 
                   onChange={this.handleInputChange}
                 >
-                  <option>To-Do</option>
-                  <option>Email</option>
-                  <option>Call</option>
-                  <option>Proposal</option>
-                  <option>Appointment</option>
+                  <option value="To-do">To-Do</option>
+                  <option value="Email">Email</option>
+                  <option value="Call">Call</option>
+                  <option value="Proposal">Proposal</option>
+                  <option value="Appointment">Appointment</option>
                 </Select>
 
-                
-        <Select
-          name="chosenCustomer"
-          placeholder="Customer"
-          size="md"
-          width="xs"
-          variant="flushed"
-          // selected={chosenCustomer.includes(customer)}
-          onChange={() => this.handleCustomerSelect(chosenCustomer)}>
-            {this.props.customers.map(customer => 
-              <option value={customer.id}>
-                {customer.first_name} {customer.last_name}
-                </option>
-              )}
-        </Select>       
-          
+
+                <br /><br />
+
                 <Input
                   name="description"
                   placeholder="Description"
+                  type="text"
                   size="md"
                   width="xs" 
                   variant="flushed"
                   value={description}
                   onChange={this.handleInputChange}
                 />
-                <br /> 
+      
+                <br /><br />
+
+                <Select
+                  name="chosenCustomer"
+                  placeholder="Customer"
+                  size="md"
+                  width="xs"
+                  variant="flushed"
+                  value={chosenCustomer}
+                  onChange={(e) => this.handleCustomerSelect(e.target.value)}>
+                  {/* onChange={this.handleInputChange}> */}
+                    {this.props.customers.map(customer => 
+                      <option value={customer.id}>
+                      {customer.first_name} {customer.last_name}
+                        </option>
+                      )}
+              
+                </Select>
+
+                <br /><br /> 
+
+                <Select
+                  name="currentUser"
+                  placeholder="User"
+                  size="md"
+                  width="xs"
+                  variant="flushed"
+                  value={currentUser}
+                  // onChange={this.handleInputChange}>
+                  onChange={(e) => this.handleUserSelect(e.target.value)}>
+                    {this.props.users.map(user => 
+                      <option value={user.id}>
+                        {user.first_name} 
+                        </option>
+                      )}
+                </Select>          
+    
+                <br /> <br />
 
                 <Input
                   name="due_date"
                   placeholder="MM/DD/YYY"
+                  type="date"
                   size="md"
                   width="xs" 
                   variant="flushed"
                   value={due_date}
                   onChange={this.handleInputChange}
                 />
-                <br />
+
+                {/* <br /><br />
+
+                <Input
+                  name="due_date"
+                  placeholder="MM/DD/YYY"
+                  type="time"
+                  size="md"
+                  width="xs" 
+                  variant="flushed"
+                  textColor="gray.400"
+                  value={time_due}
+                  onChange={this.handleInputChange}
+                /> */}
+
+                <br /><br />
 
                 <Select
                   name="time_due"
+                  type="time"
                   placeholder="Time Due"
                   size="md"
                   width="xs" 
                   variant="flushed"
+                  colorScheme="blackAlpha"
                   value={time_due} 
                   onChange={this.handleInputChange}
                 >
@@ -165,6 +233,7 @@ class EditTaskForm extends React.Component {
 
                 <Textarea
                   name="notes"
+                  rows="4"
                   placeholder="Notes"
                   size="sm"
                   width="xs"
@@ -175,7 +244,7 @@ class EditTaskForm extends React.Component {
               </FormControl>
 
               <Button colorScheme="blackAlpha" size="sm" variant="solid" type="submit">
-                Create Task
+                Update Task
               </Button>
         </form>
         </div>

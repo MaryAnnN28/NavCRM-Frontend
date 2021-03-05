@@ -24,18 +24,6 @@ export const SidebarData = [
     className: 'nav-text'
   }, 
   {
-    title: 'Companies', 
-    path: '/companies', 
-    icon: <BiIcons.BiBuildings />, 
-    className: 'nav-text'
-  }, 
-  {
-    title: 'Leads', 
-    path: '/leads', 
-    icon: <BiIcons.BiFolderOpen />, 
-    className: 'nav-text'
-  }, 
-  {
     title: 'Add Customer', 
     path: '/newcustomerform', 
     icon: <AiIcons.AiOutlineForm />, 
@@ -51,6 +39,61 @@ export const SidebarData = [
     title: 'User Profile', 
     path: '/userprofile', 
     icon: <AiIcons.AiOutlineUser />, 
+    className: 'nav-text'
+  }, 
+ 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  {
+    title: '', 
+  }, 
+  // {
+  //   title: 'Companies', 
+  //   path: '/companies', 
+  //   icon: <BiIcons.BiBuildings />, 
+  //   className: 'nav-text'
+  // }, 
+  // {
+  //   title: 'Leads', 
+  //   path: '/leads', 
+  //   icon: <BiIcons.BiFolderOpen />, 
+  //   className: 'nav-text'
+  // }, 
+  {
+    title: 'LOG OUT', 
+    path: '/welcome', 
+    icon: <BiIcons.BiLogOut />, 
     className: 'nav-text'
   }, 
 ]

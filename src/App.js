@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css'; 
 
+import LoginScreen from './components/LoginScreen';
 import Navbar from './components/Navbar/Navbar';
 import SearchContainer from './components/Search/SearchContainer';
 import MainDashboardDisplay from './components/MainDashboardDisplay'; 
@@ -13,7 +14,7 @@ import NewTaskForm from './components/Tasks/NewTaskForm';
 import EditTaskForm from './components/Tasks/EditTaskForm';
 
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom'; 
 import { ChakraProvider } from "@chakra-ui/react";
 
 
@@ -52,7 +53,10 @@ class App extends React.Component {
       users: userData
     }))
   }
+
+  // **************************************** //
   // ************ USER FUNCTIONS ************ // 
+  // **************************************** //
 
   currentUser = (user) => {
     this.setState({
@@ -61,7 +65,9 @@ class App extends React.Component {
   }
 
 
-  // ************ CUSTOMERS FUNCTIONS ************ // 
+ // **************************************** //
+ // ********** CUSTOMER FUNCTIONS ********** //
+ // **************************************** //   
 
   handleNewCustomer = (event) => {
     event.preventDefault()
@@ -76,7 +82,7 @@ class App extends React.Component {
       notes: event.target.notes.value
     }
     event.target.reset()
-
+    
     let reqPack = {
       headers: { "Content-Type": "application/json" }, 
       method: "POST", 
@@ -84,7 +90,7 @@ class App extends React.Component {
     }
     fetch(CUSTOMERS_URL, reqPack)
     .then(resp => resp.json())
-      .then(newCustomerData => {
+    .then(newCustomerData => {
       console.log(newCustomerData)
       this.setState({
         customers: [...this.state.customers, newCustomerData]
@@ -110,36 +116,55 @@ class App extends React.Component {
     })
   }
 
-
+// **************************************** //
 // ************ TASK FUNCTIONS ************ //
+// **************************************** //  
+  
 
-  addTask = (newTaskData) => {
-    // this.setState({
-    //   tasks: [...this.state.tasks, newTaskData]
-    // })
-    console.log(this.state.tasks)
-  }
+  handleNewTask = (event) => {
+    event.preventDefault()
+    let newTask = {
+      title: event.target.title.value,
+      task_type: event.target.task_type.value,
+      description: event.target.description.value,
+      due_date: event.target.due_date.value,
+      time_due: event.target.time_due.value,
+      notes: event.target.notes.value,
+      customer_id: event.target.chosenCustomer.value,
+      user_id: event.target.currentUser.value
+    }
+    event.target.reset()
 
-  // addCustomerTasks = (updatedTask) => {
-  //   // this.setState({
-  //   //   tasks: this.state.tasks.map(task => task.id === updatedTask.id ? updatedTask : task)
-  //   // })
-  //   console.log(updatedTask); 
-  //   console.log(this.state.tasks); 
-    
-  // }
-
+    let reqPack = {
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify(newTask)
+    }
+    fetch(TASKS_URL, reqPack)
+      .then(resp => resp.json())
+      .then(newTaskData => {
+        console.log(newTaskData)
+        this.setState({
+          tasks: [...this.state.tasks, newTaskData]
+        })
+      })
+    }
+  
   chooseTask = (task) => {
     this.setState({
       chosenTask: task
     })
   }
 
+ 
   updateTask = (updatedTask) => {
     this.setState({
       tasks: this.state.tasks.map(task => task.id === updatedTask.id ? updatedTask : task)
     })
   }
+
+
+
 
   deleteTask = (deletedTask) => {
     this.setState({
@@ -147,6 +172,11 @@ class App extends React.Component {
     })
   }
 
+  handlePageChange = (arg) => {
+    this.setState({
+      page: arg
+    })
+  }
 
 
 
@@ -156,82 +186,96 @@ class App extends React.Component {
         <ChakraProvider>
           
       <div>
-          <Navbar /> 
-          <Switch>
-            <Route path='/' />
-          </Switch>
+        <Navbar /> 
+        <Switch>
+          <Route path='/' />
+        </Switch>
  
          
-            <Route exact path="/" render={() =>
-              <div><center><br /><br /><h1>Log In or Sign Up Screen</h1></center></div>} />
-            
+        <Route path="/welcome" render={routerProps =>
+          <LoginScreen {...routerProps} /> } />
+        
           
-        <div className="search-container-main">
-            <SearchContainer customers={this.state.customers} />
-            </div><br />
-            
-            <Route path='/home' render={routerProps => 
-              <MainDashboardDisplay {...routerProps} users={this.state.users} /> } /> 
-          
-
-          <Route path='/userprofile' render={routerProps =>
-            <UserComponent {...routerProps} users={this.state.users} />} />
+        <SearchContainer customers={this.state.customers} /> 
         
             
-            <Route path='/customers' render={routerProps =>
-              <CustomersPage
-                {...routerProps}
-                customers={this.state.customers} 
-                chooseCustomer={this.chooseCustomer}
-                deleteCustomer={this.deleteCustomer}
-              />} />
-    
+        <Route path='/home' render={routerProps => 
+          <MainDashboardDisplay
+            {...routerProps}
+            users={this.state.users} 
+            customers={this.state.customers}
+            tasks={this.state.tasks}
+          />} /> 
+          
 
-          <Route path="/newcustomerform" render={routerProps => 
-            <NewCustomerForm
-              {...routerProps}
-                handleNewCustomer={this.handleNewCustomer} 
-              />} />
+        <Route path='/userprofile' render={routerProps =>
+          <UserComponent {...routerProps} users={this.state.users} />} />
+      
+          
+        <Route path='/customers' render={routerProps =>
+          <CustomersPage
+            {...routerProps}
+            customers={this.state.customers} 
+            chooseCustomer={this.chooseCustomer}
+            deleteCustomer={this.deleteCustomer}
+          />} />
+  
+
+        <Route path="/newcustomerform" render={(routerProps) => 
+          <NewCustomerForm
+              handleNewCustomer={this.handleNewCustomer} 
+            {...routerProps}
+            />} />
             
 
-            <Route path='/editcustomerform' render={(routerProps) =>
-              <EditCustomerForm
-                {...routerProps}
-                {...this.state.chosenCustomer}
-                updateCustomer={this.updateCustomer}
-              />} />
-            
+        <Route path='/editcustomerform' render={(routerProps) =>
+          <EditCustomerForm
+            {...this.state.chosenCustomer}
+            updateCustomer={this.updateCustomer}
+            {...routerProps}
+          />} />
+        
+
+      
+        <Route path='/tasks' render={(routerProps) =>
+          <TasksPage
+            tasks={this.state.tasks} 
+            customers={this.state.customers}
+            chosenTask={this.state.chosenTask}
+            chooseTask={this.chooseTask}
+            chosenCustomer={this.chosenCustomer}
+            currentUser={this.currentUser}
+            deleteTask={this.deleteTask}
+            {...routerProps}
+            // chosenCustomer={this.state.chosenCustomer}
+            // currentUser={this.state.currentUser}
+          />} />
 
           
-            <Route path='/tasks' render={routerProps =>
-              <TasksPage
-                {...routerProps}
-                  tasks={this.state.tasks} 
-                  chooseTask={this.chooseTask}
-                deleteTask={this.deleteTask}
-                chosenCustomer={this.state.chosenCustomer}
-                currentUser={this.state.currentUser}
-              />} />
-
-          
-          <Route path="/newtaskform" render={routerProps => 
-              <NewTaskForm
-                {...routerProps}
-                addCustomerTasks={this.addCustomerTasks}
-                addTask={this.addTask}
-                tasks={this.state.tasks}
-                customers={this.state.customers}
-                chosenCustomer={this.state.chosenCustomer}
-                currentUser={this.state.currentUser}
-              />} />
-            
-            
-          <Route path='/edittaskform' render={(routerProps) =>
-            <EditTaskForm
+        <Route path="/newtaskform" render={(routerProps) => 
+            <NewTaskForm
+              tasks={this.state.tasks}
+              handleNewTask={this.handleNewTask}
+              customers={this.state.customers}
+              users={this.state.users}
               {...routerProps}
-              {...this.state.chosenTask}
+              // addTask={this.addTask}
+              // chosenCustomer={this.state.chosenCustomer}
+              // currentUser={this.state.currentUser}
+            />} />
+            
+            
+        <Route path='/edittaskform' render={(routerProps) =>
+          <EditTaskForm
+            {...this.state.chosenTask}
               updateTask={this.updateTask}
-              />} />
+              customers={this.state.customers}
+              chosenCustomer={this.state.chosenCustomer}
+              users={this.state.users}
+              currentUser={this.state.currentUser}
+              handlePageChange={this.handlePageChange}
+            {...routerProps}
+            />} />
             
       
           

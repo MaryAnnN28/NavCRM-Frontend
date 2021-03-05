@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import './Customer.css';
 import { IconButton } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon, ViewIcon } from '@chakra-ui/icons';
+import * as BsIcons from 'react-icons/bs';
 
 
 
@@ -26,10 +27,13 @@ const CustomerList = ({ customer, chooseCustomer, deleteCustomer }) => {
             deleteCustomer(customer)
       })
    }
+
+ 
    
    return (  
       <tr className="customer-data-row" 
          height="20px">
+            <td align="center" width="50px"><BsIcons.BsStar/></td>
             <td>{customer.first_name}</td>
             <td>{customer.last_name}</td>
             <td>{customer.company}</td>

@@ -5,7 +5,7 @@
 .dashboard-grid {
   display: flex;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   right: 2%;
   margin-top: 50px;
 }
@@ -14,4 +14,9 @@
 .text {
   font: large;
   columns: #fff;
+}
+
+.grid-1, .grid-2 {
+  padding: 30px;
+  justify-content: center;
 }

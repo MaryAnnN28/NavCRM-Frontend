@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
+import './Tasks.css';
 import { Input, FormControl, Select, Textarea, Heading, Button } from '@chakra-ui/react';
 
 
-const TASKS_URL = "http://localhost:3000/tasks";
-
 class NewTaskForm extends Component {
-  state = {
+  constructor(props) {
+    super(props)
+    this.state = {
       title: "", 
       task_type: null, 
       description: "", 
       due_date: "", 
       time_due: "", 
       notes: "", 
-      customers: [],
-    chosenCustomer: {}, 
-    currentUser: {}
-    // currentUser (pass in here)
+      chosenCustomer: {}, 
+      currentUser: {}
     }
+  }
   
 
   handleInputChange = (event) => {
@@ -29,65 +29,9 @@ class NewTaskForm extends Component {
     this.setState({ chosenCustomer })
   }
 
-  handleNewTask = (event) => {
-    event.preventDefault() 
-    let newTask = {
-      title: this.state.title, 
-      task_type: this.state.task_type, 
-      description: this.state.description, 
-      due_date: this.state.due_date, 
-      time_due: this.state.time_due, 
-      notes: this.state.notes, 
-      customer_id: this.state.chosenCustomer.id,
-      user_id: this.state.currentUser.id
-    }
-    let reqPack = {
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      body: JSON.stringify(newTask)
-      // 
-    }
-    
-    fetch(TASKS_URL, reqPack)
-    .then(resp => resp.json())
-    .then((newTaskData) => {
-      console.log(newTaskData)
-      this.props.addTask(newTaskData)
-      event.target.reset()
-      debugger
-    })
+  handleUserSelect = (currentUser) => {
+    this.setState({ currentUser })
   }
-
-
-
-  // createJoiners = (newTask) => {
-  //   let updatedTask = newTask
-  //   let customerTasks = []
-  //   updatedTask.tasks = customerTasks
-  //   this.setState(customer => {
-  //     const newCustomerTasks = {
-  //       task_id: newTask.id, 
-  //       customer_id: customer.id,
-  //       user_id: customer.currentUser.id
-  //       // NEEds customer id and user id 
-  //     }
-
-  //     const reqPack = {
-  //       headers: { "Content-Type": "application/json" }, 
-  //       method: "POST", 
-  //       body: JSON.stringify(newCustomerTasks)
-  //     }
-
-  //     fetch(TASKS_URL, reqPack)
-  //       .then(resp => resp.json())
-  //       .then(customerTask => {
-  //         console.log(customerTasks)
-  //         customerTasks.push(customerTask)
-  //         this.props.addCustomerTasks(updatedTask)
-  //     })
-  //   })
-  //     this.renderTasks()
-  // }
 
   renderTasks = () => {
     this.props.history.push('/tasks');
@@ -95,30 +39,30 @@ class NewTaskForm extends Component {
   
     
   render () {
+    const { title, task_type, description, due_date, time_due, notes, chosenCustomer, currentUser } = this.state
     
-    
-    const { title, task_type, description, due_date, time_due, notes, chosenCustomer } = this.state
-    
-    console.log(chosenCustomer);
     return (
       <div>
         <center>
         <div className="task-form-container"><br />
             <Heading size="lg">Add New Task</Heading><br />
             
-          <form className="task-form" id="new-task-form" onSubmit={(e) => {this.handleNewTask(e)}}>
+          <form className="task-form" id="new-task-form" onSubmit={(event) => this.props.handleNewTask(event)}>
 
               <FormControl id="title">
                 <Input
                   name="title"
+                  // type="text"
                   placeholder="Title"
                   size="md"
                   width="xs" 
                   variant="flushed"
+                  textColor="blackAlpha.900"
                   value={title}
                   onChange={this.handleInputChange}
                 />
               
+                <br /><br />
                 <Select
                   name="task_type"
                   placeholder="Type"
@@ -128,25 +72,58 @@ class NewTaskForm extends Component {
                   value={task_type} 
                   onChange={this.handleInputChange}
                 >
-                  <option value="to-do">To-Do</option>
-                  <option value="email">Email</option>
-                  <option value="call">Call</option>
-                  <option value="proposal">Proposal</option>
-                  <option value="appointment">Appointment</option>
+                  <option value="To-do">To-Do</option>
+                  <option value="Email">Email</option>
+                  <option value="Call">Call</option>
+                  <option value="Proposal">Proposal</option>
+                  <option value="Appointment">Appointment</option>
                 </Select>
+
+
+                <br /><br />
+
+                <Input
+                  name="description"
+                  placeholder="Description"
+                  type="text"
+                  size="md"
+                  width="xs" 
+                  textColor="blackAlpha.900"
+                  variant="flushed"
+                  value={description}
+                  onChange={this.handleInputChange}
+                />
       
+                <br /><br />
+
                 <Select
                   name="chosenCustomer"
                   placeholder="Customer"
                   size="md"
                   width="xs"
                   variant="flushed"
-                  value={this.state.chosenCustomer}
-                  // selected={chosenCustomer.includes(customer)}
+                  value={chosenCustomer}
                   onChange={(e) => this.handleCustomerSelect(e.target.value)}>
                     {this.props.customers.map(customer => 
-                      <option value={customer}>
-                        {customer.first_name} {customer.last_name}
+                      <option value={customer.id}>
+                      {customer.first_name} {customer.last_name}
+                        </option>
+                      )}
+                </Select>
+
+                <br /><br /> 
+
+                <Select
+                  name="currentUser"
+                  placeholder="User"
+                  size="md"
+                  width="xs"
+                  variant="flushed"
+                  value={currentUser}
+                  onChange={(e) => this.handleUserSelect(e.target.value)}>
+                    {this.props.users.map(user => 
+                      <option value={user.id}>
+                        {user.first_name} 
                         </option>
                       )}
                 </Select>
@@ -166,36 +143,45 @@ class NewTaskForm extends Component {
              
                 </Select> */}
                  
-          
+                
 
-                <Input
-                  name="description"
-                  placeholder="Description"
-                  size="md"
-                  width="xs" 
-                  variant="flushed"
-                  value={description}
-                  onChange={this.handleInputChange}
-                />
-                <br /> 
+                <br /> <br />
 
                 <Input
                   name="due_date"
                   placeholder="MM/DD/YYY"
+                  type="date"
                   size="md"
                   width="xs" 
                   variant="flushed"
                   value={due_date}
                   onChange={this.handleInputChange}
                 />
-                <br />
+
+                {/* <br /><br />
+
+                <Input
+                  name="due_date"
+                  placeholder="MM/DD/YYY"
+                  type="time"
+                  size="md"
+                  width="xs" 
+                  variant="flushed"
+                  textColor="gray.400"
+                  value={time_due}
+                  onChange={this.handleInputChange}
+                /> */}
+
+                <br /><br />
 
                 <Select
                   name="time_due"
+                  type="time"
                   placeholder="Time Due"
                   size="md"
                   width="xs" 
                   variant="flushed"
+                  colorScheme="blackAlpha"
                   value={time_due} 
                   onChange={this.handleInputChange}
                 >
@@ -235,9 +221,11 @@ class NewTaskForm extends Component {
 
                 <Textarea
                   name="notes"
+                  rows="4"
                   placeholder="Notes"
                   size="sm"
                   width="xs"
+                  colorScheme="blackAlpha"
                   value={notes}
                   onChange={this.handleInputChange}
                 />

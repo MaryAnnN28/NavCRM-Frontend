@@ -34,7 +34,7 @@ class NewCustomerForm extends React.Component {
     return (
       <div>
         <center>
-        <div className="task-form-container"><br />
+        <div className="customer-form-container"><br />
             <Heading size="lg">Add New Customer</Heading><br />
             <form className="customer-form" onSubmit={(event) => this.props.handleNewCustomer(event) }>
             
@@ -43,6 +43,7 @@ class NewCustomerForm extends React.Component {
                 name="first_name"
                 id="inputFirstName"
                 width="xs"
+                variant="flushed"
                 placeholder="First Name"
                 value={first_name}
                 onChange={this.handleInputChange} />
@@ -53,6 +54,7 @@ class NewCustomerForm extends React.Component {
                 name="last_name"
                 id="inputLastName"
                 width="xs"
+                variant="flushed"
                 placeholder="Last Name"
                 value={last_name}
                 onChange={this.handleInputChange} />
@@ -63,6 +65,7 @@ class NewCustomerForm extends React.Component {
                 name="company"
                 id="inputCompany"
                 width="xs"
+                variant="flushed"
                 placeholder="Company"
                 value={company}
                 onChange={this.handleInputChange} />
@@ -73,6 +76,7 @@ class NewCustomerForm extends React.Component {
                 name="job_title"
                 id="inputJobTitle"
                 width="xs"
+                variant="flushed"
                 placeholder="Job Title"
                 value={job_title}
                 onChange={this.handleInputChange} />
@@ -83,6 +87,7 @@ class NewCustomerForm extends React.Component {
                 name="industry"
                 id="inputIndustry"
                 width="xs"
+                variant="flushed"
                 placeholder="Industry"
                 value={industry}
                 onChange={this.handleInputChange} />
@@ -92,6 +97,7 @@ class NewCustomerForm extends React.Component {
                 name="email"
                 id="inputEmail"
                 width="xs"
+                variant="flushed"
                 placeholder="Email"
                 value={email}
                 onChange={this.handleInputChange} />
@@ -101,6 +107,7 @@ class NewCustomerForm extends React.Component {
                 name="phone"
                 id="inputPhone"
                 width="xs"
+                variant="flushed"
                 placeholder="Phone"
                 value={phone}
                 onChange={this.handleInputChange} />

@@ -3,12 +3,12 @@ import { useHistory } from 'react-router-dom';
 import { IconButton } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon, ViewIcon } from '@chakra-ui/icons';
 import './Tasks.css'
-import { NewTaskOptions } from './NewTaskOptions';
+
 
 
 const TASKS_URL = "http://localhost:3000/tasks/";
 
-const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, currentUser }) => {
+const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, chosenTask }) => {
 
   const history = useHistory(); 
   
@@ -27,26 +27,46 @@ const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, currentUser }
 
   
   return (
-    <div>
 
-      <NewTaskOptions task={task}/>
-  
+    // Single source of truth needed for tasks (old and new)!!! // 
+
+    // **** THIS PARTIALLY WORKS - DO NOT GET RID OF!!!!!! ***** //
+    // * RENDERS TASK.CUSTOMER BUT AFTER YOU UPDATE THE TASK ** //
+    // **** IT COMES BACK WITH NO CUSTOMER OR COMPANY ***** //
+    // <tr className="task-data-row" height="25px">
+    //   <td align="center" width="40px"> <input type="checkbox" class="hidden"/></td>
+    //   <td> {task.title}</td>
+    //   <td>{task.task_type}</td>
+    //   <td>{task.due_date}</td>
+    //   <td>{task.time_due}</td>
+    //   { task.customer ? <td>{task.customer.first_name} {task.customer.last_name}</td> : null }
+    //   { task.customer ? <td>{task.customer.company}</td> : null}
+
+
     <tr className="task-data-row" height="25px">
-      <td>{task.title}</td>
+      <td align="center" width="40px"> <input type="checkbox" class="hidden"/></td>
+      <td> {task.title}</td>
       <td>{task.task_type}</td>
       <td>{task.due_date}</td>
       <td>{task.time_due}</td>
-      {/* <td>{task.customer.first_name} {task.customer.last_name}</td> */}
-      {/* <td>{chosenCustomer.task.first_name} {chosenCustomer.task.last_name}</td> */}
-      {/* <td>{task.customer.company}</td> */}
+      { task.customer ? <td>{task.customer.first_name} {task.customer.last_name}</td> : null }
+     {/* { task.customer === chosenTask.customer ? <td>{chosenTask.customer.company}</td> : null} */}
+      { task.customer ? <td>{task.customer.company}</td> : null}
+    
+      
+
+
+
+      
+
       <td align="center">
           <IconButton
             variant="unstyled"
             colorScheme="blackAlpha"
             aria-label="View Task"
             icon={<ViewIcon />}
-            // onClick={handleEditClick}
-            mr="1" mt="3" mb="1" /> 
+            // onClick={handleViewTask}
+            mr="1" mt="2" mb="1" /> 
         
           <IconButton
             variant="unstyled"
@@ -54,7 +74,7 @@ const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, currentUser }
             aria-label="Edit Task"
             icon={<EditIcon />}
             onClick={handleEditClick}
-            mr="1" mt="3" mb="1"/> 
+            mr="1" mt="2" mb="1"/> 
       
           <IconButton
             variant="unstyled"
@@ -64,12 +84,11 @@ const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, currentUser }
             onClick={handleDelete} 
             //<--- Directly deletes without alert
             // onClick={() => setIsOpen(true)}
-            mt="3" mb="1"
+            mt="2" mb="1"
           />
       </td>
     </tr>
 
-    </div>
   
   )
 }

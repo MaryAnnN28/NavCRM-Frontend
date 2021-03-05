@@ -22,7 +22,6 @@ class EditCustomerForm extends React.Component {
     })
   }
 
-
   renderCustomers() {
     this.props.history.push('/customers');
   }

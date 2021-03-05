@@ -1,0 +1,43 @@
+
+.login-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  height: 100vh; 
+  overflow: hidden;
+  background-size: cover !important;
+  background: linear-gradient(to top, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.3) 90%), url('https://i.imgur.com/Z9TGSJL.jpg') center scroll;
+}
+
+.logo-container {
+  display: inline;
+  position: absolute;
+  top: 8rem;
+}
+
+.logo-login-page {
+  width: 120%;
+}
+
+
+.login-card {
+  width: 650px;
+  height: 450px;
+  display: inline-block;
+  background: #023059;  
+  opacity: 55%;
+  border-radius: 10%;
+  position: absolute;
+  top: 18rem;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  top: 50%;
+  right: 50%;
+}

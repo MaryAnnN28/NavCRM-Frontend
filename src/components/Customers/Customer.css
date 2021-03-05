@@ -1,38 +1,51 @@
-div.customers-page-main {
+/* div.customers-page-main {
    display: flex;
-   justify-content: center;
- }
+   /* position: absolute; */
 
- .customers-heading {
-    display: flex;
-    justify-content: center;
- }
+
  
 .customer-list-table {
-   display: flex;
+   /* display: flexbox; */
    justify-content: center;
    border-color: rgb(218, 218, 218);
    border-style: solid;
    border-width: 1px;
+   margin-left: 250px;
+   position: relative;
+   /* margin-right: 80px; */
+   top: 70px;
 }
 
 .new-customer-btn {
    display: flex;
-   justify-content: center;
-   position: absolute;
-   right: 14%; 
-   margin: 10px;
-   top: 130px;
+   position: relative;
+   margin-right: 10px;
+   top: 50px;
+   left: 85%;
 }
 
 td {
-   font-size: 12pt;
+   font-size: 11pt;
    padding-left: 10px;
+   padding-right: 3px;
 }
 
-tr.customer-data-row {
-   height: 12px;
-   
+
+tr {
+   border-style: solid;
+   border-bottom: rgb(65, 102, 133);
+   border-color: steelblue;
 }
 
- 
+
+th {
+   background-color: slategrey;
+   color: white;
+}
+
+
+/* ********* NEW CUSTOMER FORM ********** */
+
+.customer-form-container {
+   margin-bottom: 10%;
+}
