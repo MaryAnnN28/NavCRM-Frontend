@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import SearchContainer from './components/Search/SearchContainer';
 import MainDashboardDisplay from './components/MainDashboardDisplay'; 
 import CustomersPage from './components/Customers/CustomersPage';
+// import TaskComponent from './components/Tasks/TaskComponent';
 import TasksPage from './components/Tasks/TasksPage';
 import UserComponent from './components/Users/UserComponent';
 import NewCustomerForm from './components/Customers/NewCustomerForm';
@@ -14,7 +15,7 @@ import NewTaskForm from './components/Tasks/NewTaskForm';
 import EditTaskForm from './components/Tasks/EditTaskForm';
 
 
-import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom'; 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 import { ChakraProvider } from "@chakra-ui/react";
 
 
@@ -98,9 +99,16 @@ class App extends React.Component {
     })
   }
 
+
   chooseCustomer = (customer) => {
     this.setState({
       chosenCustomer: customer
+    })
+  }
+
+  viewCustomer = (customer) => {
+    this.setState({
+      viewedCustomer: customer
     })
   }
 
@@ -164,13 +172,19 @@ class App extends React.Component {
   }
 
 
-
-
   deleteTask = (deletedTask) => {
     this.setState({
       tasks: this.state.tasks.filter(task => task !== deletedTask)
     })
   }
+
+  // taskComponentUnmounted = () => {
+  //   this.setState({
+  //     chosenCustomer: {}
+  //   })
+  // }
+
+
 
   handlePageChange = (arg) => {
     this.setState({
@@ -214,10 +228,11 @@ class App extends React.Component {
           
         <Route path='/customers' render={routerProps =>
           <CustomersPage
-            {...routerProps}
             customers={this.state.customers} 
             chooseCustomer={this.chooseCustomer}
+            viewCustomer={this.viewCustomer}
             deleteCustomer={this.deleteCustomer}
+            {...routerProps}
           />} />
   
 
@@ -235,21 +250,36 @@ class App extends React.Component {
             {...routerProps}
           />} />
         
-
+        
+            {/* <Route path='/tasks' render={(routerProps) =>
+              <TaskComponent
+                tasks={this.state.tasks}
+                customers={this.state.customers}
+                users={this.state.users}
+                taskComponentUnmounted={this.taskComponentUnmounted}
+                handleNewTask={this.handleNewTask}
+                chosenTask={this.state.chosenTask}
+                chooseTask={this.chooseTask}
+                chosenCustomer={this.chosenCustomer}
+                currentUser={this.currentUser}
+                deleteTask={this.deleteTask}
+                {...routerProps}
+              />} /> */}
       
-        <Route path='/tasks' render={(routerProps) =>
+      <Route path='/tasks' render={(routerProps) =>
           <TasksPage
             tasks={this.state.tasks} 
             customers={this.state.customers}
+            users={this.state.users}
+            handleNewTask={this.handleNewTask}
             chosenTask={this.state.chosenTask}
             chooseTask={this.chooseTask}
             chosenCustomer={this.chosenCustomer}
             currentUser={this.currentUser}
             deleteTask={this.deleteTask}
             {...routerProps}
-            // chosenCustomer={this.state.chosenCustomer}
-            // currentUser={this.state.currentUser}
-          />} />
+    
+          /> } /> 
 
           
         <Route path="/newtaskform" render={(routerProps) => 
@@ -259,9 +289,6 @@ class App extends React.Component {
               customers={this.state.customers}
               users={this.state.users}
               {...routerProps}
-              // addTask={this.addTask}
-              // chosenCustomer={this.state.chosenCustomer}
-              // currentUser={this.state.currentUser}
             />} />
             
             

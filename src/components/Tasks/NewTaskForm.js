@@ -3,6 +3,7 @@ import './Tasks.css';
 import { Input, FormControl, Select, Textarea, Heading, Button } from '@chakra-ui/react';
 
 
+
 class NewTaskForm extends Component {
   constructor(props) {
     super(props)
@@ -42,7 +43,7 @@ class NewTaskForm extends Component {
     const { title, task_type, description, due_date, time_due, notes, chosenCustomer, currentUser } = this.state
     
     return (
-      <div>
+      <>
         <center>
         <div className="task-form-container"><br />
             <Heading size="lg">Add New Task</Heading><br />
@@ -128,21 +129,7 @@ class NewTaskForm extends Component {
                       )}
                 </Select>
 
-                {/* <Select
-                  name="chosenCustomer"
-                  placeholder="Customer"
-                  size="md"
-                  width="xs"
-                  variant="flushed"
-                  value={chosenCustomer}
-                  // selected={chosenCustomer.includes(customer)}
-                  onChange={() => this.handleCustomerSelect(chosenCustomer)}>
-                    <option value={chosenCustomer.first_name}>
-                      {chosenCustomer.first_name} 
-                    </option>
-             
-                </Select> */}
-                 
+                          
                 
 
                 <br /> <br />
@@ -174,7 +161,19 @@ class NewTaskForm extends Component {
 
                 <br /><br />
 
-                <Select
+                <Input
+                  name="time_due"
+                  placeholder="Time Due"
+                  type="time"
+                  size="md"
+                  width="xs" 
+                  textColor="blackAlpha.900"
+                  variant="flushed"
+                  value={time_due}
+                  onChange={this.handleInputChange}
+                />
+
+                {/* <Select
                   name="time_due"
                   type="time"
                   placeholder="Time Due"
@@ -214,7 +213,7 @@ class NewTaskForm extends Component {
                   <option>8:00 pm</option>
                   <option>8:30 pm</option>
                   <option>9:00 pm</option>                 
-                </Select>
+                </Select> */}
                 
                 
                 <br /><br /> 
@@ -238,7 +237,7 @@ class NewTaskForm extends Component {
         </form>
         </div>
         </center>
-    </div>
+    </>
     )
   }
   

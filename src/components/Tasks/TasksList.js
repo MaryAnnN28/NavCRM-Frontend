@@ -1,14 +1,28 @@
 import React from 'react'; 
 import { useHistory } from 'react-router-dom';
-import { IconButton } from '@chakra-ui/react'
+import { Box, IconButton } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon, ViewIcon } from '@chakra-ui/icons';
 import './Tasks.css'
 
+// import NewTaskForm from './NewTaskForm';
+// import {
+//   Drawer,
+//   DrawerBody,
+//   DrawerFooter,
+//   DrawerHeader,
+//   DrawerOverlay,
+//   DrawerContent,
+//   DrawerCloseButton,
+//   Button, 
+//   useDisclosure
+// } from "@chakra-ui/react"
 
 
 const TASKS_URL = "http://localhost:3000/tasks/";
 
-const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, chosenTask }) => {
+const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTask, chosenCustomer, currentUser, deleteTask// chosenCustomer,
+  // chosenTask
+}) => {
 
   const history = useHistory(); 
   
@@ -27,23 +41,8 @@ const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, chosenTask })
 
   
   return (
-
-    // Single source of truth needed for tasks (old and new)!!! // 
-
-    // **** THIS PARTIALLY WORKS - DO NOT GET RID OF!!!!!! ***** //
-    // * RENDERS TASK.CUSTOMER BUT AFTER YOU UPDATE THE TASK ** //
-    // **** IT COMES BACK WITH NO CUSTOMER OR COMPANY ***** //
-    // <tr className="task-data-row" height="25px">
-    //   <td align="center" width="40px"> <input type="checkbox" class="hidden"/></td>
-    //   <td> {task.title}</td>
-    //   <td>{task.task_type}</td>
-    //   <td>{task.due_date}</td>
-    //   <td>{task.time_due}</td>
-    //   { task.customer ? <td>{task.customer.first_name} {task.customer.last_name}</td> : null }
-    //   { task.customer ? <td>{task.customer.company}</td> : null}
-
-
-    <tr className="task-data-row" height="25px">
+    
+        <tr className="task-list-table" height="25px">
       <td align="center" width="40px"> <input type="checkbox" class="hidden"/></td>
       <td> {task.title}</td>
       <td>{task.task_type}</td>
@@ -52,12 +51,7 @@ const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, chosenTask })
       { task.customer ? <td>{task.customer.first_name} {task.customer.last_name}</td> : null }
      {/* { task.customer === chosenTask.customer ? <td>{chosenTask.customer.company}</td> : null} */}
       { task.customer ? <td>{task.customer.company}</td> : null}
-    
-      
 
-
-
-      
 
       <td align="center">
           <IconButton

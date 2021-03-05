@@ -29,7 +29,7 @@
    left: 85%;
  }
 
-tr {
+tr, th {
    border-style: solid;
    border-bottom: rgb(51, 84, 110);
    border-color: steelblue;
