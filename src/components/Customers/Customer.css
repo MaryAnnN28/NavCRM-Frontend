@@ -1,10 +1,12 @@
-/* div.customers-page-main {
-   display: flex;
-   /* position: absolute; */
+div.customer-page-main {
+   /* display: flex; */
+   margin-right: 5%;
+   margin-top: 5%;
+}
 
 
- 
-.customer-list-table {
+
+table.customer-list-table {
    /* display: flexbox; */
    justify-content: center;
    border-color: rgb(218, 218, 218);
@@ -14,6 +16,7 @@
    position: relative;
    /* margin-right: 80px; */
    top: 70px;
+   padding: 2px;
 }
 
 .new-customer-btn {
@@ -24,24 +27,74 @@
    left: 85%;
 }
 
-td {
-   font-size: 11pt;
+tbody tr:nth-child(odd) {
+   background: #eee;
+ }
+
+td.customer-list-table {
+   font-size: 12pt;
    padding-left: 10px;
    padding-right: 3px;
 }
 
+tr.customer-header-row {
+   height: 16px;
+}
 
-tr {
+tr.customer-list-table {
    border-style: solid;
    border-bottom: rgb(65, 102, 133);
-   border-color: steelblue;
 }
 
+/* tr.customer-list-table:hover {
+   background-color: rgba(204, 211, 221, 0.982);
+} */
 
-th {
-   background-color: slategrey;
+
+th.customer-header {
+   background-color: rgb(137, 154, 172);
    color: white;
+   border-right: solid;
 }
+
+th.customer-star {
+   background-color: rgb(137, 154, 172);
+   color: rgb(247, 240, 168);
+}
+
+td.customer-row-star {
+   border-style: solid;
+   border-right-style: solid;
+   border-right-color: rgb(65, 102, 133);
+   border-inline-end: rgb(65, 102, 133);
+}
+
+
+
+/* This blurs all other rows when hovering over selected row */
+
+tr:last-of-type td {
+   box-shadow: inset 0 -1px 0 #fff; 
+ }
+ 
+ tr:last-of-type td:first-child {
+   box-shadow: inset 1px -1px 0 #fff;
+ } 
+ 
+ tr:last-of-type td:last-child {
+   box-shadow: inset -1px -1px 0 #fff;
+ } 
+ 
+ tbody:hover td {
+   color: transparent;
+   text-shadow: 0 0 2px #aaa;
+ }
+ 
+ tbody:hover tr:hover td {
+   color: #444;
+   text-shadow: 0 2px 0 #fff;
+ }
+
 
 
 /* ********* NEW CUSTOMER FORM ********** */

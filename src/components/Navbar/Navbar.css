@@ -26,7 +26,7 @@
 }
 
 .navbar {
-   background-color: #060b26;; 
+   /* background-color: #060b26; */
    height: 80px;
    display: flex; 
    justify-content: start;
@@ -50,12 +50,11 @@
    top: 0;
    left: -100%; 
    transition: 950ms;
-   opacity: 90%;
    background: rgb(133, 149, 163);
    /* background: linear-gradient(180deg, rgba(130,140,158,1) 1%, rgba(12,86,126,1) 39%, rgba(8,25,33,1) 98%), url('https://cdn.wallpapersafari.com/71/44/zNYtTw.jpg'); */
    overflow: hidden;
    background-size: cover !important;
-   background: linear-gradient(to top, rgba(130,140,158,1) 1%, rgba(12,86,126,1) 39%, rgba(8,25,33,1) 98%), url('https://cdn.wallpapersafari.com/71/44/zNYtTw.jpg') center scroll;
+   background: linear-gradient(to top, rgba(130,140,158,1) 1%, rgba(12,86,126,1) 43%, rgba(8,25,33,1) 95%), url('https://cdn.wallpapersafari.com/71/44/zNYtTw.jpg') center scroll;
 }
 
 .nav-menu.active {
@@ -86,7 +85,7 @@
 
 .nav-text a:hover {
    background-color: #294668de;
-   opacity: 80%;
+   /* opacity: 80%; */
 
 }
 

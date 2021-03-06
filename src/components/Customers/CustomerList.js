@@ -41,28 +41,28 @@ function CustomerList ({ customer, chooseCustomer, viewCustomer, deleteCustomer 
    return (  
       <tr className="customer-list-table" 
          height="20px">
-            <td align="center" width="40px"><BsIcons.BsStar/></td>
-            <td>{customer.first_name}</td>
+            <td className="customer-row-star" align="center" width="=60px"><BsIcons.BsStar/></td>
+            <td width="100px">{customer.first_name}</td>
             <td>{customer.last_name}</td>
-            <td>{customer.company}</td>
+            <td><strong>{customer.company}</strong></td>
             <td>{customer.job_title}</td>
             <td>{customer.email}</td>
             <td>{customer.phone}</td>
-         <td align="center">
+         <td className="customer-row-actions" align="center">
             <IconButton
                variant="unstyled"
                colorScheme="blackAlpha"
                aria-label="View Customer"
                icon={<ViewIcon />}
                onClick={() => setShow(true)}
-               mr="1" mt="3" mb="1"/> 
+               mr="1" mt="1" mb="1"/> 
             <IconButton
                variant="unstyled"
                colorScheme="blackAlpha"
                aria-label="Edit Customer"
                icon={<EditIcon />}
                onClick={handleEditClick}
-               mr="1" mt="3" mb="1"/> 
+               mr="1" mt="1" mb="1"/> 
          
             <IconButton
                variant="unstyled"
@@ -72,7 +72,7 @@ function CustomerList ({ customer, chooseCustomer, viewCustomer, deleteCustomer 
                onClick={handleDelete} 
                //<--- Directly deletes without alert
                // onClick={() => setIsOpen(true)}
-               mt="3" mb="1"
+               mt="1" mb="1"
             />
          </td>
   
