@@ -1,10 +1,13 @@
 div.customer-page-main {
-   /* display: flex; */
+   display: flex;
    margin-right: 5%;
    margin-top: 5%;
 }
 
-
+tr.top-header {
+   border-style: none;
+   background: none;
+}
 
 table.customer-list-table {
    justify-content: center;
@@ -15,16 +18,14 @@ table.customer-list-table {
    position: relative;
    top: 70px;
    padding: 2px;
-   /* border-collapse: separate; */
-   border-spacing: 3px;
+   border-collapse: separate;
+   border-spacing: 1px;
 }
 
 .new-customer-btn {
    display: flex;
    position: relative;
-   margin-right: 10px;
-   top: 50px;
-   left: 85%;
+   right: 0%;
 }
 
 

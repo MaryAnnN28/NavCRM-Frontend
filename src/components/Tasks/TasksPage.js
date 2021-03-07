@@ -20,36 +20,58 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Button, 
+  Select, 
+  Input,
+  InputGroup, 
+  InputRightAddon,
   useDisclosure
 } from "@chakra-ui/react"
+import { SearchIcon } from '@chakra-ui/icons';
 
 
 const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenTask, chosenCustomer, currentUser, deleteTask}) => {
 
-  // const history = useHistory();
+  const history = useHistory();
   const [ show ] = useState(false);
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
-  // const handleNewClick = () => {
-  //   history.push('/newtaskform')
-  // };
+  const handleNewClick = () => {
+    history.push('/newtaskform')
+  };
 
   return (
     <div className="tasks-page-main">
-      <div className="new-task-btn">
-               
+      {/* <div className="new-task-btn">
         <Button ref={btnRef} colorScheme="blackAlpha"
           onClick={onOpen}
           // onClick={() => setShow(true)}
-        >
-          + Create Task
+        > + Create Task
       </Button>
-      </div>
+      </div> */}
      
       <div className="task-list-table-div">
-      <table className="task-list-table">
+        <table className="task-list-table">
+        <tr className="top-header">
+          <td className="filter-row" colSpan="3">
+            <Select name="filter" placeholder="Filter By"></Select>
+            </td>
+            
+          <td className="filter-row" colSpan="4">
+              <InputGroup>
+                <Input name="search" placeholder="Search"></Input>
+                <InputRightAddon children={<SearchIcon/>}/>
+              </InputGroup>
+            </td>
+            
+
+          <td className="filter-row" colSpan="2" align="right">
+            <Button colorScheme="blackAlpha" variant="solid" size="sm"  type="button" onClick={handleNewClick}>
+                <h4>+</h4>&nbsp; New Task
+            </Button>
+          </td>
+        </tr>
         <tbody>
           <tr className="task-header-row">  
             <th className="task-header" width="50px" align="center"><BsIcons.BsCheckBox/></th>

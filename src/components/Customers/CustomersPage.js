@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import CustomerList from './CustomerList';
-import CustomerModal from './CustomerModal';
-import MainDashboardDisplay from '../MainDashboardDisplay';
+
 import './Customer.css';
-import { Button, Box, Select } from '@chakra-ui/react';
+import { Button, Box, Select, Input, InputGroup, InputRightAddon, RadioGroup, Radio, Stack } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 import * as AiIcons from 'react-icons/ai';
 
 
@@ -16,7 +16,7 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
   
   const history = useHistory(); 
 
-  const [showModal, setShowModal] = useState(false);
+  const [value, setValue] = useState("alphabetical");
 
   const handleNewClick = () => {
     history.push('/newcustomerform')
@@ -28,24 +28,44 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
   return (
     <div className='customers-page-main'>
       <Box>
-
-     
-     
-    <div className="new-customer-btn">
-      <Button colorScheme="blackAlpha" variant="solid" size="sm" type="button" onClick={handleNewClick}>
-        <h4>+</h4>&nbsp; New Customer
-      </Button>
-    </div>
-
-    
     <table className="customer-list-table" aria-rowindex='5'>
-      <tbody>
 
-            <tr className="top-header">
-              <td className="filter-row" colSpan="2">
-                <Select name="filter" placeholder="Filter By"></Select>
-              </td>
-        </tr>
+        <tr className="top-header">
+            <td className="sort-field" colSpan="3">
+              <RadioGroup onChange={setValue} value={value}>
+                <Stack spacing={4} direction="row">
+                  <Radio colorScheme="blackAlpha" value="alphabetical">
+                    Alphabetical
+                  </Radio>
+                  <Radio colorScheme="blackAlpha" value="newest">
+                    Newest
+                  </Radio>
+                  <Radio colorScheme="blackAlpha" value="oldest">
+                  Oldest
+                  </Radio>
+                </Stack>
+
+              </RadioGroup>
+            </td>
+            
+
+            <td className="filter-row" colSpan="4">
+              <InputGroup>
+                <Input name="search" placeholder="Search"></Input>
+                <InputRightAddon children={<SearchIcon/>}/>
+              </InputGroup>
+            </td>
+            
+
+          <td className="filter-row" colSpan="2" align="right">
+            <Button colorScheme="blackAlpha" variant="solid" size="sm" type="button" onClick={handleNewClick}>
+                <h4>+</h4>&nbsp; New Customer
+            </Button>
+          </td>
+          </tr>
+          
+          
+      <tbody>
         <tr className="customer-header-row">
           <th className="customer-star" align="center" width="40px"><h4><AiIcons.AiFillStar/></h4></th>
           <th className="customer-header" width="100px" padding-left="2px"><h4>First</h4></th>
@@ -63,24 +83,15 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
             viewCustomer={viewCustomer}
             chooseCustomer={chooseCustomer}
             deleteCustomer={deleteCustomer}
-            showModal={showModal}
-            setShowModal={setShowModal}
+            // showModal={showModal}
+            // setShowModal={setShowModal}
           />
           )}
       </tbody>
         </table>
     </Box>
 
-      <div>
-        {customers.map(customer =>
-          <CustomerModal
-            key={customer.id}
-            customer={customer}
-            showModal={showModal}
-            handleClose={() => setShowModal(false)}
-
-          />)}
-      </div> 
+  
      
  
   </div>

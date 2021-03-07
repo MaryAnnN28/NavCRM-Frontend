@@ -6,13 +6,18 @@ import LoginScreen from './components/LoginScreen';
 import Navbar from './components/Navbar/Navbar';
 import SearchContainer from './components/Search/SearchContainer';
 import MainDashboardDisplay from './components/MainDashboardDisplay'; 
+
 import CustomersPage from './components/Customers/CustomersPage';
-import TasksPage from './components/Tasks/TasksPage';
-import UserComponent from './components/Users/UserComponent';
-import NewTaskForm from './components/Tasks/NewTaskForm';
-import EditTaskForm from './components/Tasks/EditTaskForm';
 import NewCustomerForm from './components/Customers/NewCustomerForm';
 import EditCustomerForm from './components/Customers/EditCustomerForm';
+import CustomerModal from './components/Customers/CustomerModal';
+
+
+
+import TasksPage from './components/Tasks/TasksPage';
+import NewTaskForm from './components/Tasks/NewTaskForm';
+import EditTaskForm from './components/Tasks/EditTaskForm';
+import UserComponent from './components/Users/UserComponent';
 
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
@@ -32,7 +37,9 @@ class App extends React.Component {
     users: [], 
     chosenCustomer: {}, 
     chosenTask: {},
-    currentUser: {}
+    currentUser: {}, 
+    search: "", 
+    filteredCustomer: {}
   }
 
   componentDidMount() {
@@ -121,6 +128,13 @@ class App extends React.Component {
   deleteCustomer = (deletedCustomer) => {
     this.setState({
       customers: this.state.customers.filter(customer => customer !== deletedCustomer)
+    })
+  }
+
+  searchCustomers = (input) => {
+    let filterCustomers = this.state.customers.filter(customer => customer.first_name.toLowerCase().includes(input.toLowerCase()))
+    this.setState({
+      filteredCustomer: filterCustomers
     })
   }
 
@@ -232,6 +246,8 @@ class App extends React.Component {
             chooseCustomer={this.chooseCustomer}
             viewCustomer={this.viewCustomer}
             deleteCustomer={this.deleteCustomer}
+            search={this.state.search}
+            searchCustomers={this.searchCustomers}
             {...routerProps}
           />} />
   
@@ -251,20 +267,6 @@ class App extends React.Component {
           />} />
         
         
-            {/* <Route path='/tasks' render={(routerProps) =>
-              <TaskComponent
-                tasks={this.state.tasks}
-                customers={this.state.customers}
-                users={this.state.users}
-                taskComponentUnmounted={this.taskComponentUnmounted}
-                handleNewTask={this.handleNewTask}
-                chosenTask={this.state.chosenTask}
-                chooseTask={this.chooseTask}
-                chosenCustomer={this.chosenCustomer}
-                currentUser={this.currentUser}
-                deleteTask={this.deleteTask}
-                {...routerProps}
-              />} /> */}
       
       <Route path='/tasks' render={(routerProps) =>
           <TasksPage

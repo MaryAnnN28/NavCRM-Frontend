@@ -134,8 +134,11 @@ class EditCustomerForm extends React.Component {
             </FormControl>
           <br/>
           <br/>
-            <Button colorScheme="blackAlpha" size="sm" variant="solid" type="submit">
-                Update Customer
+              <Button colorScheme="blackAlpha" size="sm" variant="solid" onClick={this.renderCustomers}>
+                Cancel
+              </Button>
+              <Button colorScheme="blackAlpha" size="sm" ml={3} variant="solid" type="submit">
+                Save
               </Button>
             </form>
             </div>

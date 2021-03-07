@@ -1,30 +1,32 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
+import CustomerModal from './CustomerModal';
 import { useHistory } from 'react-router-dom';
+
 import './Customer.css';
 import { IconButton } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon, ViewIcon } from '@chakra-ui/icons';
 import * as BsIcons from 'react-icons/bs';
-import styled from 'styled-components';
+
 
 
 
 const CUSTOMERS_URL = "http://localhost:3000/customers/"; 
 
-function CustomerList ({ customer, chooseCustomer, viewCustomer, deleteCustomer })  {    
+function CustomerList ({ customer, chooseCustomer, deleteCustomer })  {    
 
   const history = useHistory();
 
-  const [showModal, setShowModal] = useState(false);
+  const [show, setShow] = useState(false);
    
   const handleEditClick = () => {
     chooseCustomer(customer)
     history.push('/editcustomerform')
   };
 
-  const handleViewClick = () => {
-    viewCustomer(customer)
-    history.push('/customers')
-  };
+//   const handleViewClick = () => {
+//     viewCustomer(customer)
+//     history.push('/customers')
+//   };
 
   const handleDelete = () => {
     fetch(CUSTOMERS_URL + customer.id, { method: "DELETE" })
@@ -51,7 +53,7 @@ function CustomerList ({ customer, chooseCustomer, viewCustomer, deleteCustomer 
                colorScheme="blackAlpha"
                aria-label="View Customer"
                icon={<ViewIcon />}
-               onClick={() => setShowModal(true)}
+               onClick={() => setShow(true)}
                mr="1" mt="1" mb="1"/> 
             <IconButton
                variant="unstyled"
@@ -74,6 +76,16 @@ function CustomerList ({ customer, chooseCustomer, viewCustomer, deleteCustomer 
          </td>
   
          </tr>
+         <Fragment>
+            <CustomerModal 
+               customer={customer}
+               show={show}
+               chooseCustomer={chooseCustomer}
+               deleteCustomer={deleteCustomer}
+               handleClose={() => setShow(false)}
+            />
+
+         </Fragment>
       </>
 
       
