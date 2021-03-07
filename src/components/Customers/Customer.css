@@ -7,16 +7,16 @@ div.customer-page-main {
 
 
 table.customer-list-table {
-   /* display: flexbox; */
    justify-content: center;
    border-color: rgb(218, 218, 218);
    border-style: solid;
    border-width: 1px;
    margin-left: 250px;
    position: relative;
-   /* margin-right: 80px; */
    top: 70px;
    padding: 2px;
+   /* border-collapse: separate; */
+   border-spacing: 3px;
 }
 
 .new-customer-btn {
@@ -27,18 +27,25 @@ table.customer-list-table {
    left: 85%;
 }
 
+
+/* This makes every other row another color on table */
 tbody tr:nth-child(odd) {
-   background: #eee;
+   background: rgb(242, 242, 242);
  }
 
-td.customer-list-table {
+ 
+ /* Changes row color on hover */
+ tr.customer-list-table:hover {
+    background-color: rgba(230, 233, 238, 0.982);
+ }
+
+td {
    font-size: 12pt;
-   padding-left: 10px;
-   padding-right: 3px;
+   padding: 5px;
 }
 
 tr.customer-header-row {
-   height: 16px;
+   height: 40px;
 }
 
 tr.customer-list-table {
@@ -46,15 +53,11 @@ tr.customer-list-table {
    border-bottom: rgb(65, 102, 133);
 }
 
-/* tr.customer-list-table:hover {
-   background-color: rgba(204, 211, 221, 0.982);
-} */
 
 
 th.customer-header {
    background-color: rgb(137, 154, 172);
    color: white;
-   border-right: solid;
 }
 
 th.customer-star {
@@ -69,10 +72,12 @@ td.customer-row-star {
    border-inline-end: rgb(65, 102, 133);
 }
 
-
+td.customer-data-row {
+   padding-left: 15px;
+}
 
 /* This blurs all other rows when hovering over selected row */
-
+/* 
 tr:last-of-type td {
    box-shadow: inset 0 -1px 0 #fff; 
  }
@@ -93,7 +98,7 @@ tr:last-of-type td {
  tbody:hover tr:hover td {
    color: #444;
    text-shadow: 0 2px 0 #fff;
- }
+ } */
 
 
 
@@ -102,3 +107,7 @@ tr:last-of-type td {
 .customer-form-container {
    margin-bottom: 10%;
 }
+
+
+
+

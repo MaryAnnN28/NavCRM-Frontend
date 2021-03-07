@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.css'; 
 
+
 import LoginScreen from './components/LoginScreen';
 import Navbar from './components/Navbar/Navbar';
 import SearchContainer from './components/Search/SearchContainer';
 import MainDashboardDisplay from './components/MainDashboardDisplay'; 
 import CustomersPage from './components/Customers/CustomersPage';
-// import TaskComponent from './components/Tasks/TaskComponent';
 import TasksPage from './components/Tasks/TasksPage';
 import UserComponent from './components/Users/UserComponent';
-import NewCustomerForm from './components/Customers/NewCustomerForm';
-import EditCustomerForm from './components/Customers/EditCustomerForm';
 import NewTaskForm from './components/Tasks/NewTaskForm';
 import EditTaskForm from './components/Tasks/EditTaskForm';
+import NewCustomerForm from './components/Customers/NewCustomerForm';
+import EditCustomerForm from './components/Customers/EditCustomerForm';
 
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 

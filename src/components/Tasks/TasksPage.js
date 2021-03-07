@@ -40,7 +40,7 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
     <div className="tasks-page-main">
       <div className="new-task-btn">
                
-        <Button ref={btnRef} colorScheme="teal"
+        <Button ref={btnRef} colorScheme="blackAlpha"
           onClick={onOpen}
           // onClick={() => setShow(true)}
         >
@@ -51,15 +51,15 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
       <div className="task-list-table-div">
       <table className="task-list-table">
         <tbody>
-          <tr className="task-rows">  
-            <th width="40px" align="center"><BsIcons.BsCheckBox/></th>
-            <th width="170px">Title</th>
-            <th width="90px"><h4>Task</h4></th>
-            <th width="80px"><h4>Due Date</h4></th>
-            <th width="70px"><h4>Time Due</h4></th>
-            <th width="120px"><h4>Customer</h4></th>
-            <th width="130px"><h4>Company</h4></th>
-            <th width="150px"><h4>Actions</h4></th>
+          <tr className="task-header-row">  
+            <th className="task-header" width="50px" align="center"><BsIcons.BsCheckBox/></th>
+            <th className="task-header" width="120px"><h4>Task</h4></th>
+            <th className="task-header" width="200px">Title</th>
+            <th className="task-header" width="140px"><h4>Customer</h4></th>
+            <th className="task-header" width="150px"><h4>Company</h4></th>
+            <th className="task-header" width="100px"><h4>Due Date</h4></th>
+            <th className="task-header" width="100px"><h4>Time Due</h4></th>
+            <th className="task-header" width="140px"><h4>Actions</h4></th>
             </tr>
             {tasks.map(task => 
               <TasksList

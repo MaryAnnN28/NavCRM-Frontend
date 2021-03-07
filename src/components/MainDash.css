@@ -16,7 +16,20 @@
   columns: #fff;
 }
 
-.grid-1, .grid-2 {
+.grid-1 {
   padding: 30px;
   justify-content: center;
+  background-color: #eef2f5;
+}
+
+.grid-2 {
+  padding: 30px;
+  justify-content: center;
+  background-color: #dee4e8;
+}
+
+.grid-3 {
+  padding: 30px;
+  justify-content: center;
+  background-color: #eaeced;
 }

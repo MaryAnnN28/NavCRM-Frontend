@@ -42,25 +42,31 @@ const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTa
   
   return (
     
-        <tr className="task-list-table" height="25px">
-      <td align="center" width="40px"> <input type="checkbox" class="hidden"/></td>
-      <td> {task.title}</td>
-      <td>{task.task_type}</td>
-      <td>{task.due_date}</td>
-      <td>{task.time_due}</td>
-      { task.customer ? <td>{task.customer.first_name} {task.customer.last_name}</td> : null }
+      <tr className="task-list-table">
+      <td className="task-data-row" align="center" width="40px">
+        <input type="checkbox" class="hidden" /></td>
+      
+      <td className="task-data-row-bold" align="center">{task.task_type}</td>
+
+      <td className="task-data-row"> {task.title}</td>
+
+      { task.customer ? <td className="task-data-row-bold">{task.customer.first_name} {task.customer.last_name}</td> : null }
+      { task.customer ? <td className="task-data-row">{task.customer.company}</td> : null}
+      <td className="task-data-row" align="center">{task.due_date}</td>
+
+      <td className="task-data-row" align="center">{task.time_due}</td>
+
      {/* { task.customer === chosenTask.customer ? <td>{chosenTask.customer.company}</td> : null} */}
-      { task.customer ? <td>{task.customer.company}</td> : null}
 
 
-      <td align="center">
+      <td className="task-data-row" align="center">
           <IconButton
             variant="unstyled"
             colorScheme="blackAlpha"
             aria-label="View Task"
             icon={<ViewIcon />}
             // onClick={handleViewTask}
-            mr="1" mt="2" mb="1" /> 
+            mr="1" mt="1" mb="1" /> 
         
           <IconButton
             variant="unstyled"
@@ -68,7 +74,7 @@ const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTa
             aria-label="Edit Task"
             icon={<EditIcon />}
             onClick={handleEditClick}
-            mr="1" mt="2" mb="1"/> 
+            mr="1" mt="1" mb="1"/> 
       
           <IconButton
             variant="unstyled"
@@ -78,7 +84,7 @@ const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTa
             onClick={handleDelete} 
             //<--- Directly deletes without alert
             // onClick={() => setIsOpen(true)}
-            mt="2" mb="1"
+            mt="1" mb="1"
           />
       </td>
     </tr>

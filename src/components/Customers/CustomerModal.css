@@ -1,0 +1,190 @@
+/* styling of background around modal */
+/* .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.39);
+} */
+
+.modal-main {
+  position: fixed;
+  /* display: flex; */
+  /* background: rgb(74, 106, 129); */
+  background: rgba(232, 235, 237, 0.153);
+  width: 50%;
+  height: 550px;
+  max-height: 100%;
+  text-align: center;
+  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* overflow: auto; */
+  box-shadow: 0 2px 6px 0 rgba(138, 138, 138, 0.2), 0 5px 10px 0 rgba(209, 209, 210, 0.39);
+}
+
+.modal-background {
+  display: flex;
+  width: 90%;
+  height: 90%;
+  border-radius: 6px;
+  text-align: center;
+  background:rgb(252, 254, 255);
+  padding: 2px;
+  margin: 15zpx auto;
+}
+
+h2.customer-modal-header {
+  font-size: 32px;
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  color: rgb(51, 84, 110);
+}
+
+ul.modal-text {
+  font-size: 16px;
+  margin: 5px;
+  padding-left: 0px;
+  /* align-self: center; */
+  /* justify-content: center; */
+}
+
+.modal-content {
+  text-align: left;
+}
+
+.modal-row {
+  display: flex;
+  columns: 2 300px;
+}
+
+.column {
+  flex: 50%;
+  padding: 0px;
+  height: 200px;
+  display: flex;
+}
+
+.modal-text > li > .key {
+  width: 100px;
+  color: rgb(51, 84, 110);
+  /* text-align: right; */
+  padding-right: 5px;
+}
+
+.modal-text > li {
+  list-style-type: none;
+  display: flex;
+  margin: 5px 5px;
+  padding: 3px;
+}
+
+div.modal-close-btn {
+  right: 0%;
+  position: absolute;
+  padding: 7px;
+  color:rgb(252, 254, 255)
+}
+
+
+
+/* Tabs on modal */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: #f1f1f1;
+  margin: 100px auto 0; 
+  word-break: break-all;
+  border: 1px solid rgba(0, 0, 0, 0.274);
+
+}
+.bloc-tabs {
+  display: flex;
+}
+
+.tabs {
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+  background: rgba(128, 128, 128, 0.075);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+}
+
+.tabs:not(:last-child){
+  border-right: 1px solid rgba(0, 0, 0, 0.274);
+}
+
+.active-tabs {
+  background: white;
+  border-bottom: 1px solid transparent;
+}
+
+.active-tabs::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: 50%; 
+  transform: translate(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  background: rgb(88, 147, 241);
+}
+
+button {
+  border: none;
+}
+
+.content-tabs {
+  flex-grow: 1; 
+}
+
+.content {
+  background: white;
+  padding: 20px; 
+  width: 100%;
+  height: 100%; 
+  display: none;
+}
+
+.content h2 {
+  padding: 0px 0 5px 0px; 
+}
+
+.content hr {
+  width: 100px;
+  height: 2px;
+  background: #222;
+  margin-bottom: 5px;
+}
+
+.content p {
+  width: 100%; 
+  height: 100%;
+}
+
+.active-content {
+  display: block;
+}
+
+
+/* .display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+} */

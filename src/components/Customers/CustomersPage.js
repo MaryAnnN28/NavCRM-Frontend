@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import CustomerList from './CustomerList';
-import CustomerCard from './CustomerCard';
+import CustomerModal from './CustomerModal';
+import MainDashboardDisplay from '../MainDashboardDisplay';
 import './Customer.css';
-import { Button, Box } from '@chakra-ui/react';
+import { Button, Box, Select } from '@chakra-ui/react';
 import * as AiIcons from 'react-icons/ai';
 
 
@@ -15,7 +16,7 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
   
   const history = useHistory(); 
 
-  const [show, setShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleNewClick = () => {
     history.push('/newcustomerform')
@@ -40,8 +41,13 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
     <table className="customer-list-table" aria-rowindex='5'>
       <tbody>
 
-        <tr className="customer-header-row" height="30px">
-          <th className="customer-star" align="center" width="60px"><h4><AiIcons.AiFillStar/></h4></th>
+            <tr className="top-header">
+              <td className="filter-row" colSpan="2">
+                <Select name="filter" placeholder="Filter By"></Select>
+              </td>
+        </tr>
+        <tr className="customer-header-row">
+          <th className="customer-star" align="center" width="40px"><h4><AiIcons.AiFillStar/></h4></th>
           <th className="customer-header" width="100px" padding-left="2px"><h4>First</h4></th>
           <th className="customer-header" width="100px"><h4>Last</h4></th>
           <th className="customer-header" width="180px"><h4>Company</h4></th>
@@ -57,8 +63,8 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
             viewCustomer={viewCustomer}
             chooseCustomer={chooseCustomer}
             deleteCustomer={deleteCustomer}
-            show={show}
-            setShow={setShow}
+            showModal={showModal}
+            setShowModal={setShowModal}
           />
           )}
       </tbody>
@@ -67,14 +73,15 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
 
       <div>
         {customers.map(customer =>
-          <CustomerCard
+          <CustomerModal
             key={customer.id}
             customer={customer}
-            show={show}
-            handleClose={() => setShow(false)}
+            showModal={showModal}
+            handleClose={() => setShowModal(false)}
 
           />)}
       </div> 
+     
  
   </div>
 
