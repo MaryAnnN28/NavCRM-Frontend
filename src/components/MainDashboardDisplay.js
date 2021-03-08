@@ -21,9 +21,9 @@ function MainDashboardDisplay({ users, customers, tasks }) {
 
       <div className="dashboard-grid">
         <Grid
-          h="700px"
+          h="500px"
           w="5xl"
-          templateRows="repeat(5, 2fr)"
+          templateRows="repeat(3, 2fr)"
           templateColumns="repeat(5, 1fr)"
           gap={4}
         >
@@ -33,7 +33,7 @@ function MainDashboardDisplay({ users, customers, tasks }) {
           <GridItem rowSpan={2} colSpan={3} bg="gray.100" />
           <GridItem rowSpan={2} colSpan={2} bg="#294668de" /> */}
 
-          <GridItem rowSpan={3} colSpan={2} className="grid-1">
+          <GridItem rowSpan={2} colSpan={2} className="grid-1">
             <Heading size="md" textAlign="center">CUSTOMERS</Heading> <br />
             <h3>
               You have <strong>{customers.length}</strong> customers.
@@ -42,7 +42,7 @@ function MainDashboardDisplay({ users, customers, tasks }) {
           </GridItem>
         
 
-          <GridItem rowSpan={3} colSpan={3} className="grid-2">
+          <GridItem rowSpan={2} colSpan={3} className="grid-2">
           
             <Heading size="md" textAlign="center">TASKS</Heading> <br />
               <h3>You have <strong>{tasks.length}</strong> tasks.</h3> <br />

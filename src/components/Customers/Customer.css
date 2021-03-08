@@ -29,6 +29,11 @@ table.customer-list-table {
 }
 
 
+.top-header {
+   font-size: 10pt;
+}
+
+
 /* This makes every other row another color on table */
 tbody tr:nth-child(odd) {
    background: rgb(242, 242, 242);

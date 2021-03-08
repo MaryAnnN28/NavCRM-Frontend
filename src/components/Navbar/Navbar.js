@@ -6,6 +6,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons';
+import { Image } from '@chakra-ui/react'
 
 import Login from '../Login';
 import Logout from '../Logout';
@@ -26,7 +27,6 @@ function Navbar() {
 
           <div className="headerLogoWrapper">
             <div className="logo">
-              {/* <img src='https://i.imgur.com/2op5fwC.png?1' alt="NavCRM logo" /> */}
               <img src='https://i.imgur.com/XHeHSWu.png' alt="NavCRM logo" />
             </div>
           </div>
@@ -46,6 +46,7 @@ function Navbar() {
           </li>
           {SidebarData.map((item, index) => {
             return (
+              
               <li key={index} className={item.className}>
                 <Link to={item.path}>
                   {item.icon}

@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css'; 
 
-
 import LoginScreen from './components/LoginScreen';
 import Navbar from './components/Navbar/Navbar';
 import SearchContainer from './components/Search/SearchContainer';
@@ -13,16 +12,13 @@ import EditCustomerForm from './components/Customers/EditCustomerForm';
 import CustomerModal from './components/Customers/CustomerModal';
 
 
-
 import TasksPage from './components/Tasks/TasksPage';
 import NewTaskForm from './components/Tasks/NewTaskForm';
 import EditTaskForm from './components/Tasks/EditTaskForm';
 import UserComponent from './components/Users/UserComponent';
 
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 import { ChakraProvider } from "@chakra-ui/react";
-
 
 
 const USERS_URL = "http://localhost:3000/users/";
@@ -39,7 +35,8 @@ class App extends React.Component {
     chosenTask: {},
     currentUser: {}, 
     search: "", 
-    filteredCustomer: {}
+    sort: "None", 
+    filter: "All"
   }
 
   componentDidMount() {
@@ -71,7 +68,6 @@ class App extends React.Component {
       currentUserObj: user
     })
   }
-
 
  // **************************************** //
  // ********** CUSTOMER FUNCTIONS ********** //
@@ -131,12 +127,12 @@ class App extends React.Component {
     })
   }
 
-  searchCustomers = (input) => {
-    let filterCustomers = this.state.customers.filter(customer => customer.first_name.toLowerCase().includes(input.toLowerCase()))
-    this.setState({
-      filteredCustomer: filterCustomers
-    })
-  }
+  // searchCustomers = (input) => {
+  //   let filterCustomers = this.state.customers.filter(customer => customer.first_name.toLowerCase().includes(input.toLowerCase()))
+  //   this.setState({
+  //     filteredCustomer: filterCustomers
+  //   })
+  // }
 
 // **************************************** //
 // ************ TASK FUNCTIONS ************ //
@@ -192,11 +188,49 @@ class App extends React.Component {
     })
   }
 
-  // taskComponentUnmounted = () => {
-  //   this.setState({
-  //     chosenCustomer: {}
-  //   })
-  // }
+/* ************************************************* */
+/* ********** FILTER/SORT/SEARCH FUNCTIONS ********* */
+/* ************************************************* */
+  
+  handleSort = (sort) => {
+    this.setState({sort})
+  }
+
+  handleFilter = (filter) => {
+    this.setState({filter})
+  }
+
+  handleSearch = (search) => {
+    this.setState({search})
+  }
+  
+  displayCustomers = () => {
+    let displayCustomers = this.state.customers.filter(customer =>
+      customer.first_name.toLowerCase().includes(this.state.search)
+    )
+
+    if (this.state.filter !== "All") {
+      displayCustomers = displayCustomers.filter(customer => customer.first_name === this.state.industry)
+    }
+
+    switch (this.state.sort) {
+      case "Alphabetical_Last":
+        return displayCustomers.sort((a, b) => a.last_name > b.last_name ? 1 : -1)
+      case "Alphabetical_First":
+        return displayCustomers.sort((a, b) => a.first_name > b.first_name ? -1 : 1)
+      case "Company":
+        return displayCustomers.sort((a, b) => a.company > b.company ? -1 : 1)
+      case "Newest":
+        return displayCustomers.sort((a, b) => a.created_at > b.created_at ? -1 : 1)
+      case "Oldest":
+        return displayCustomers.sort((a, b) => a.created_at > b.created_at ? 1 : -1)
+      case "None":
+        return displayCustomers
+    }
+    return displayCustomers
+  }
+  
+  
 
 
 
@@ -223,8 +257,8 @@ class App extends React.Component {
         <Route path="/welcome" render={routerProps =>
           <LoginScreen {...routerProps} /> } />
         
-          
-        <SearchContainer customers={this.state.customers} /> 
+{/*           
+        <SearchContainer customers={this.state.customers} />  */}
         
             
         <Route path='/home' render={routerProps => 
@@ -242,12 +276,18 @@ class App extends React.Component {
           
         <Route path='/customers' render={routerProps =>
           <CustomersPage
-            customers={this.state.customers} 
+            // customers={this.state.customers} 
             chooseCustomer={this.chooseCustomer}
             viewCustomer={this.viewCustomer}
             deleteCustomer={this.deleteCustomer}
             search={this.state.search}
-            searchCustomers={this.searchCustomers}
+            sort={this.state.sort}
+            // searchCustomers={this.searchCustomers}
+            customers={this.displayCustomers()}
+            updateCustomer={this.updateCustomer}
+            handleFilter={this.handleFilter}
+            handleSearch={this.handleSearch}
+            handleSort={this.handleSort}
             {...routerProps}
           />} />
   

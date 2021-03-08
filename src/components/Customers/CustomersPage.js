@@ -12,7 +12,7 @@ import * as AiIcons from 'react-icons/ai';
 // import { BrowserRouter as Route} from "react-router-dom";
 
 
-const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer }) => {
+const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer, search, sort, handleSearch, handleSort, handleFilter }) => {
   
   const history = useHistory(); 
 
@@ -28,20 +28,49 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
   return (
     <div className='customers-page-main'>
       <Box>
-    <table className="customer-list-table" aria-rowindex='5'>
+    <table className="customer-list-table" aria-rowindex='5' paginationSize="10">
 
         <tr className="top-header">
-            <td className="sort-field" colSpan="3">
-              <RadioGroup onChange={setValue} value={value}>
+            <td className="sort-field" colSpan="5">
+              <RadioGroup
+                // onChange={setValue} value={value}
+              >
                 <Stack spacing={4} direction="row">
-                  <Radio colorScheme="blackAlpha" value="alphabetical">
-                    Alphabetical
+                  <Radio
+                    colorScheme="blackAlpha"
+                    type="radio"
+                    value="Alphabetical_First"
+                    checked={sort === "Alphabetical_First"}
+                    onChange={handleSort}> 
+                    <p class="top-header">First Name</p>
                   </Radio>
-                  <Radio colorScheme="blackAlpha" value="newest">
-                    Newest
+                  <Radio 
+                    colorScheme="blackAlpha"
+                    value="Alphabetical_Last"
+                    checked={sort === "Alphabetical_Last"}
+                    onChange={(event) => handleSort(event.target.value)}> 
+                     <p class="top-header">Last Name</p>
                   </Radio>
-                  <Radio colorScheme="blackAlpha" value="oldest">
-                  Oldest
+                  <Radio
+                    colorScheme="blackAlpha"
+                    value="Company"
+                    checked={sort === "Company"}
+                    onChange={(event) => handleSort(event.target.value)}> 
+                     <p class="top-header">Company</p>
+                  </Radio>
+                  <Radio 
+                    colorScheme="blackAlpha"
+                    value="Newest"
+                    checked={sort === "Newest"}
+                    onChange={(event) => handleSort(event.target.value)}> 
+                     <p class="top-header">Newest</p>
+                  </Radio>
+                  <Radio 
+                    colorScheme="blackAlpha"
+                    value="Oldest"
+                    checked={sort === "Oldest"}
+                    onChange={(event) => handleSort(event.target.value)}> 
+                    <p class="top-header">Oldest</p>
                   </Radio>
                 </Stack>
 
@@ -49,9 +78,9 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
             </td>
             
 
-            <td className="filter-row" colSpan="4">
+            <td className="filter-row" colSpan="2">
               <InputGroup>
-                <Input name="search" placeholder="Search"></Input>
+                <Input name="search" placeholder="Search" onChange={(event) => handleSearch(event.target.value)} />
                 <InputRightAddon children={<SearchIcon/>}/>
               </InputGroup>
             </td>

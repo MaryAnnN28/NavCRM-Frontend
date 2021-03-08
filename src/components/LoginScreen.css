@@ -25,19 +25,20 @@
 
 
 .login-card {
-  width: 650px;
-  height: 450px;
-  display: inline-block;
+  width: 500px;
+  height: 400px;
+  display: flex;
   background: #023059;  
   opacity: 55%;
   border-radius: 3%;
   position: absolute;
-  top: 18rem;
+  top: 17rem;
 }
 
-.login-form {
-  display: flex;
+div.login-form {
+  display: inline-block;
   justify-content: center;
-  top: 50%;
+  position: absolute;
+  top: 40%;
   right: 50%;
 }
