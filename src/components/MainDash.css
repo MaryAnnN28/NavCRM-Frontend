@@ -6,7 +6,7 @@
   flex-direction: column;
   text-align: center;
   width: 100%;
-  height: 90vh; 
+  height: 100vh; 
   overflow: hidden;
   z-index: -1;
   background-size: cover !important;
@@ -14,17 +14,21 @@
   background: rgb(233, 233, 233); 
 }
 
-/* .dashboard-header {
+.dashboard-header {
   text-align: center;
-  /* z-index: 1; 
+  display: inline;
+  position: absolute;
+  left: 20%;
+  top: 10%;
 } 
-  */
+ 
 
 .dashboard-grid {
   display: inline;
   justify-content: center;
   position: absolute;
   right: 2%;
+  top: 16%;
   z-index: 1;
 }
 

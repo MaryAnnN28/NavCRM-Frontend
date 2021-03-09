@@ -1,22 +1,27 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button } from '@chakra-ui/react';
 
 import { GoogleLogin } from 'react-google-login';
 // refresh token
 import { refreshTokenSetup } from '../utilities/refreshToken';
 
-const clientId =
-  '397188808547-2hfcr6bieudiptt1p46a15ak264puqgj.apps.googleusercontent.com';
+
+
 
 function Login() {
+
+  const history = useHistory();
+  
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
     alert(
       `Logged in successfully, welcome ${res.profileObj.name} 😍. \n `
     );
     refreshTokenSetup(res);
+    history.push('/')
   };
-
+  
   const onFailure = (res) => {
     console.log('Login failed: res:', res);
     alert(
@@ -27,7 +32,7 @@ function Login() {
   return (
     <div>
       <GoogleLogin
-        clientId={clientId}
+        clientId="397188808547-flcrbi17jjm7gbec4tvq9ph7fnjhlume.apps.googleusercontent.com"
         buttonText="Sign in with Google"
         onSuccess={onSuccess}
         onFailure={onFailure}

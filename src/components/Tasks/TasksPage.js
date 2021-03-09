@@ -6,13 +6,13 @@ import TasksList from './TasksList';
 import './Tasks.css';
 import * as BsIcons from 'react-icons/bs';
 import {
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
+  // Drawer,
+  // DrawerBody,
+  // DrawerFooter,
+  // DrawerHeader,
+  // DrawerOverlay,
+  // DrawerContent,
+  // DrawerCloseButton,
   Button, 
   Select, 
   Input,
@@ -20,8 +20,7 @@ import {
   InputRightAddon,
   RadioGroup,
   Radio,
-  Stack,
-  useDisclosure
+  Stack
 } from "@chakra-ui/react"
 import { SearchIcon } from '@chakra-ui/icons';
 

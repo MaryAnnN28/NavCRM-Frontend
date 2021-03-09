@@ -5,8 +5,12 @@ div.customer-page-main {
 }
 
 tr.top-header {
-   border-style: none;
-   background: none;
+   /* border-style: none; */
+   /* background: none; */
+}
+
+.top-header {
+   font-size: 10pt;
 }
 
 table.customer-list-table {
@@ -31,12 +35,10 @@ table.customer-list-table {
    top: 100px;
    right: 0%;
    font-size: 30px;
+   color:rgb(51, 84, 110);
 }
 
 
-.top-header {
-   font-size: 10pt;
-}
 
 
 /* This makes every other row another color on table */
@@ -112,7 +114,7 @@ td.customer-data-row-email {
 }
 
 /* This blurs all other rows when hovering over selected row */
-/* 
+
 tr:last-of-type td {
    box-shadow: inset 0 -1px 0 #fff; 
  }
@@ -133,7 +135,7 @@ tr:last-of-type td {
  tbody:hover tr:hover td {
    color: #444;
    text-shadow: 0 2px 0 #fff;
- } */
+ }
 
 
 

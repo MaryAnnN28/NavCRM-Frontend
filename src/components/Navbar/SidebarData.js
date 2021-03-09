@@ -34,54 +34,30 @@ export const SidebarData = [
     path: '/newtaskform', 
     icon: <BiIcons.BiTask />, 
     className: 'nav-text'
-  },
+  }, 
+  {
+    title: 'Companies', 
+    path: '/companies', 
+    icon: <BiIcons.BiBuildings />, 
+    className: 'nav-text'
+  }, 
+  {
+    title: 'Leads', 
+    path: '/leads', 
+    icon: <BiIcons.BiFolderOpen />, 
+    className: 'nav-text'
+  }, 
+  // {
+    //   title: 'LOG OUT', 
+    //   path: '/welcome', 
+    //   icon: <BiIcons.BiLogOut />, 
+    //   className: 'nav-text'
+    // }, 
   {
     title: 'User Profile', 
     path: '/userprofile', 
     icon: <AiIcons.AiOutlineUser />, 
     className: 'nav-text'
-  }, 
-  {
-    title: '', 
-  }, 
-  {
-    title: '', 
-  }, 
-  {
-    title: '', 
-  }, 
-  {
-    title: '', 
-  }, 
-  {
-    title: '', 
-  }, 
-  {
-    title: '', 
-  }, 
-  {
-    title: '', 
-  }, 
-  {
-    title: '', 
-  }, 
-  // {
-  //   title: 'Companies', 
-  //   path: '/companies', 
-  //   icon: <BiIcons.BiBuildings />, 
-  //   className: 'nav-text'
-  // }, 
-  // {
-  //   title: 'Leads', 
-  //   path: '/leads', 
-  //   icon: <BiIcons.BiFolderOpen />, 
-  //   className: 'nav-text'
-  // }, 
-  {
-    title: 'LOG OUT', 
-    path: '/welcome', 
-    icon: <BiIcons.BiLogOut />, 
-    className: 'nav-text'
-  }, 
+  }
 ]
 

@@ -6,6 +6,7 @@
 }
 
 .user-details-card {
+   margin-top: 150px;
    display: flexbox;
    justify-content: center;
    text-align: left;

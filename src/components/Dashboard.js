@@ -1,10 +1,13 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './MainDash.css'; 
 import { Heading, Grid, GridItem, Button, Stack } from '@chakra-ui/react';
 import Chart from 'chart.js';
 import * as AiIcons from 'react-icons/ai';
 
-function MainDashboardDisplay({ users, customers, tasks }) {
+function Dashboard({ users, customers, tasks }) {
+
+  const history = useHistory();
 
   const [customer, setCustomer] = useState()
 
@@ -12,17 +15,25 @@ function MainDashboardDisplay({ users, customers, tasks }) {
     setCustomer(customer.first_name)
   }
 
+  const handleViewCustomers = () => {
+    history.push('/customers')
+  }
+
+  const handleViewTasks = () => {
+    history.push('/tasks')
+  }
+
   // const taskChart = new Chart;
 
   return (
-    // <div className="dashboard-page">
+    <div className="dashboard-page">
       <section className="dashboard-page-background">
-
-      <div className="dashboard-grid">
-      {/* <div className="dashboard-header">
+      <div className="dashboard-header">
         {users.map(user =>
           <Heading size="md" colorScheme="blackAlpha">😄  Hi  {user.first_name}! 🎉</Heading>)}
-      </div> */}
+      </div>
+
+      <div className="dashboard-grid">
         <Grid
           h="600px"
           w="5xl"
@@ -41,7 +52,9 @@ function MainDashboardDisplay({ users, customers, tasks }) {
             <h3>You have <strong>{customers.length}</strong> customers.</h3>
             <h3>You have <strong>6</strong> VIP customers.</h3> <br /><br />
             <button color="blue" bgcolor="blue">View VIPs</button><br />
-            <Button colorScheme="blackAlpha" color="white" size="sm" shadow={true}>View All Customers</Button>
+              <Button colorScheme="blackAlpha" color="white" size="sm" shadow={true}
+                onClick={handleViewCustomers}
+              >View All Customers</Button>
              
           </GridItem>
         
@@ -55,7 +68,9 @@ function MainDashboardDisplay({ users, customers, tasks }) {
             </Stack>
             - You have <strong>3</strong> tasks due today<br />
             <strong>5</strong> tasks due this week <br /> <br />
-            <Button colorScheme="blackAlpha" color="white" size="sm" shadow={true}>View All Tasks</Button>
+              <Button colorScheme="blackAlpha" color="white" size="sm" shadow={true}
+                onClick={handleViewTasks}
+              >View All Tasks</Button>
                 {/* *********** TASK INFO ***********  */}
               {/* {tasks.map(task => 
                 <p value={task.id}>
@@ -102,9 +117,10 @@ function MainDashboardDisplay({ users, customers, tasks }) {
       </div>
 
       </section>
+      </div>
     
   )
 
 }
 
-export default MainDashboardDisplay; 
+export default Dashboard; 

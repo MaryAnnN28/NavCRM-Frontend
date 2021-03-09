@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { GoogleLogout } from 'react-google-login';
 import './Navbar.css';
 
-import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as BiIcons from 'react-icons/bi';
 
 import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons';
-import { Image } from '@chakra-ui/react'
+import { Image, Button } from '@chakra-ui/react'
 
 // import Login from '../Login';
 // import Logout from '../Logout';
@@ -18,6 +20,14 @@ function Navbar({ users }) {
   const [sidebar, setSidebar] = useState(false)
 
   const showSidebar = () => setSidebar(!sidebar)
+
+  const history = useHistory();
+
+  const onSuccess = () => {
+    console.log('Logout successful');
+    alert('Logout successful ✌');
+    history.push('/welcome')
+  };
 
   return (
     <div>
@@ -33,28 +43,22 @@ function Navbar({ users }) {
             </div>
           </div>
 
-          <div>
-            
-          
-          {users.map(user =>
-          
-          <div className="user-photo-div">
-               <Image
-                key={user.id}
-                user={user}
-                borderRadius="full"
-                border="white"
-               boxSize="55px"
-               src="https://i.imgur.com/3txe6Vm.jpg?1"
-               alt={user.first_name}
-            />
-        </div>
-          )}
-          </div>
         
         
           <div className="login-logout-buttons">
             {/* <Logout /> */}
+            <GoogleLogout
+              clientId="397188808547-flcrbi17jjm7gbec4tvq9ph7fnjhlume.apps.googleusercontent.com"
+              buttonText="Logout"
+              onLogoutSuccess={onSuccess}
+              style={{ marginTop: '70px'}}
+              render={renderProps => (
+                <Button onClick={renderProps.onClick} disabled={renderProps.disabled} 
+                  variant="solid"
+                  colorScheme="gray" size="sm">Log Out</Button>
+              )}
+              />
+            
           </div>
             
 
@@ -62,6 +66,21 @@ function Navbar({ users }) {
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu' }>
         <ul className='nav-menu-items' onClick={showSidebar}>
           <li className="navbar-toggle">
+          <div>         
+          {users.map(user =>
+          <div className="user-photo">
+               <Image
+                key={user.id}
+                user={user}
+                borderRadius="full"
+                border="white"
+               boxSize="80px"
+               src="https://i.imgur.com/3txe6Vm.jpg?1"
+               alt={user.first_name}
+            />
+        </div>
+          )}
+          </div>
               <Link to="#" className='menu-bars'>
                 <div className="sidebar-close-icon">
               <BiIcons.BiArrowToLeft/>

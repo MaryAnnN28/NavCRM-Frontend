@@ -3,14 +3,11 @@ import './App.css';
 
 import LoginScreen from './components/LoginScreen';
 import Navbar from './components/Navbar/Navbar';
-
-import MainDashboardDisplay from './components/MainDashboardDisplay'; 
+import Dashboard from './components/Dashboard'; 
 
 import CustomersPage from './components/Customers/CustomersPage';
 import NewCustomerForm from './components/Customers/NewCustomerForm';
 import EditCustomerForm from './components/Customers/EditCustomerForm';
-
-
 
 import TasksPage from './components/Tasks/TasksPage';
 import NewTaskForm from './components/Tasks/NewTaskForm';
@@ -73,35 +70,7 @@ class App extends React.Component {
  // ********** CUSTOMER FUNCTIONS ********** //
  // **************************************** //   
 
-  // handleNewCustomer = (event) => {
-  //   event.preventDefault()
-  //   let newCustomer = {
-  //     first_name: event.target.first_name.value, 
-  //     last_name: event.target.last_name.value,  
-  //     company: event.target.company.value, 
-  //     job_title: event.target.job_title.value, 
-  //     industry: event.target.industry.value, 
-  //     email: event.target.email.value, 
-  //     phone: event.target.phone.value, 
-  //     notes: event.target.notes.value
-  //   }
-  //   event.target.reset()
-    
-  //   let reqPack = {
-  //     headers: { "Content-Type": "application/json" }, 
-  //     method: "POST", 
-  //     body: JSON.stringify(newCustomer)
-  //   }
-  //   fetch(CUSTOMERS_URL, reqPack)
-  //   .then(resp => resp.json())
-  //   .then(newCustomerData => {
-  //     console.log(newCustomerData)
-  //     this.setState({
-  //       customers: [...this.state.customers, newCustomerData]
-  //     })
-  //   })
-  // }
-
+ 
   addCustomer = (newCustomerData) => {
     this.setState({
       customers: [...this.state.customers, newCustomerData]
@@ -139,35 +108,6 @@ class App extends React.Component {
 // **************************************** //  
   
 
-  // handleNewTask = (event) => {
-  //   event.preventDefault()
-  //   let newTask = {
-  //     title: event.target.title.value,
-  //     task_type: event.target.task_type.value,
-  //     description: event.target.description.value,
-  //     due_date: event.target.due_date.value,
-  //     time_due: event.target.time_due.value,
-  //     notes: event.target.notes.value,
-  //     customer_id: event.target.chosenCustomer.value,
-  //     user_id: event.target.currentUser.value
-  //   }
-  //   event.target.reset()
-
-  //   let reqPack = {
-  //     headers: { "Content-Type": "application/json" },
-  //     method: "POST",
-  //     body: JSON.stringify(newTask)
-  //   }
-  //   fetch(TASKS_URL, reqPack)
-  //     .then(resp => resp.json())
-  //     .then(newTaskData => {
-  //       console.log(newTaskData)
-  //       this.setState({
-  //         tasks: [...this.state.tasks, newTaskData]
-  //       })
-  //     })
-  //   }
-
   addTask = (newTaskData) => {
     this.setState({
       tasks: [...this.state.tasks, newTaskData]
@@ -180,13 +120,11 @@ class App extends React.Component {
     })
   }
 
- 
-  updateTask = (updatedTask) => {
+   updateTask = (updatedTask) => {
     this.setState({
       tasks: this.state.tasks.map(task => task.id === updatedTask.id ? updatedTask : task)
     })
   }
-
 
   deleteTask = (deletedTask) => {
     this.setState({
@@ -198,12 +136,6 @@ class App extends React.Component {
 /* ********** FILTER/SORT/SEARCH FUNCTIONS ********* */
 /* ************************************************* */
   
-// searchCustomers = (input) => {
-//   let filterCustomers = this.state.customers.filter(customer => customer.first_name.toLowerCase().includes(input.toLowerCase()))
-//   this.setState({
-//     filteredCustomer: filterCustomers
-//   })
-// }
   handleSort = (sort) => {
     this.setState({sort})
   }
@@ -300,7 +232,9 @@ class App extends React.Component {
         <ChakraProvider>
           
       <div>
-            <Navbar users={this.state.users}/>
+      
+        <Navbar users={this.state.users} />
+            
         <Switch>
           <Route path='/' />
         </Switch>
@@ -309,12 +243,12 @@ class App extends React.Component {
         <Route path="/welcome" render={routerProps =>
           <LoginScreen {...routerProps} /> } />
         
-{/*           
-        <SearchContainer customers={this.state.customers} />  */}
+      
+        {/* <SearchContainer customers={this.state.customers} />  */}
         
             
         <Route path='/home' render={routerProps => 
-          <MainDashboardDisplay
+          <Dashboard
             {...routerProps}
             users={this.state.users} 
             customers={this.state.customers}
@@ -328,13 +262,11 @@ class App extends React.Component {
           
         <Route path='/customers' render={routerProps =>
           <CustomersPage
-            // customers={this.state.customers} 
             chooseCustomer={this.chooseCustomer}
             viewCustomer={this.viewCustomer}
             deleteCustomer={this.deleteCustomer}
             search={this.state.search}
             sort={this.state.sort}
-            // searchCustomers={this.searchCustomers}
             customers={this.displayCustomers()}
             updateCustomer={this.updateCustomer}
             handleFilter={this.handleFilter}
@@ -362,7 +294,6 @@ class App extends React.Component {
       
       <Route path='/tasks' render={(routerProps) =>
           <TasksPage
-            // tasks={this.state.tasks} 
             customers={this.state.customers}
             users={this.state.users}
             handleNewTask={this.handleNewTask}
@@ -384,10 +315,9 @@ class App extends React.Component {
         <Route path="/newtaskform" render={(routerProps) => 
             <NewTaskForm
               tasks={this.state.tasks}
-              addTask={this.addTask}
-              // handleNewTask={this.handleNewTask}
               customers={this.state.customers}
               users={this.state.users}
+              addTask={this.addTask}
               {...routerProps}
             />} />
             
@@ -404,8 +334,6 @@ class App extends React.Component {
             {...routerProps}
             />} />
             
-      
-          
       
         </div>
       </ChakraProvider>
