@@ -76,7 +76,7 @@ class EditTaskForm extends React.Component {
             <form className="task-form" onSubmit={(event) => {this.handleEditTask(event)}}>
             
 
-            <FormControl id="title">
+       
                 <Input
                   name="title"
                   type="text"
@@ -170,7 +170,7 @@ class EditTaskForm extends React.Component {
                   onChange={this.handleInputChange}
                 />
 
-                {/* <br /><br />
+                <br /><br />
 
                 <Input
                   name="due_date"
@@ -182,56 +182,11 @@ class EditTaskForm extends React.Component {
                   textColor="gray.400"
                   value={time_due}
                   onChange={this.handleInputChange}
-                /> */}
+                />
 
                 <br /><br />
 
-                <Select
-                  name="time_due"
-                  type="time"
-                  placeholder="Time Due"
-                  size="md"
-                  width="xs" 
-                  variant="flushed"
-                  colorScheme="blackAlpha"
-                  value={time_due} 
-                  onChange={this.handleInputChange}
-                >
-                  <option>7:00 am</option>
-                  <option>7:30 am</option>
-                  <option>8:00 am</option>
-                  <option>8:30 am</option>
-                  <option>9:00 am</option>
-                  <option>9:30 am</option>
-                  <option>10:00 am</option>
-                  <option>10:30 am</option>
-                  <option>11:00 am</option>
-                  <option>11:30 am</option>
-                  <option>12:00 pm</option>
-                  <option>12:30 pm</option>
-                  <option>1:00 pm</option>
-                  <option>1:30 pm</option>
-                  <option>2:00 pm</option>
-                  <option>2:30 pm</option>
-                  <option>3:00 pm</option>
-                  <option>3:30 pm</option>
-                  <option>4:00 pm</option>
-                  <option>4:30 pm</option>
-                  <option>5:00 pm</option>
-                  <option>5:30 pm</option>
-                  <option>6:00 pm</option>
-                  <option>6:30 pm</option>
-                  <option>7:00 pm</option>
-                  <option>7:30 pm</option>
-                  <option>8:00 pm</option>
-                  <option>8:30 pm</option>
-                  <option>9:00 pm</option>                 
-                </Select>
-                
-                
-                <br /><br /> 
-
-                <Textarea
+                 <Textarea
                   name="notes"
                   rows="4"
                   placeholder="Notes"
@@ -241,7 +196,7 @@ class EditTaskForm extends React.Component {
                   onChange={this.handleInputChange}
                 />
                 <br /> <br />
-              </FormControl>
+        
 
               <Button colorScheme="blackAlpha" size="sm" variant="solid" type="submit">
                 Update Task

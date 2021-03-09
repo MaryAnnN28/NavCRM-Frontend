@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as
-  Router,
-  // Switch,
-  // Route,
-  useHistory
-} from 'react-router-dom';
+import { BrowserRouter as Router, useHistory } from 'react-router-dom';
 
 import TasksList from './TasksList';
-// import NewTaskForm from './NewTaskForm';
+
 import './Tasks.css';
 import * as BsIcons from 'react-icons/bs';
 import {
@@ -24,17 +18,26 @@ import {
   Input,
   InputGroup, 
   InputRightAddon,
+  RadioGroup,
+  Radio,
+  Stack,
   useDisclosure
 } from "@chakra-ui/react"
 import { SearchIcon } from '@chakra-ui/icons';
 
 
-const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenTask, chosenCustomer, currentUser, deleteTask}) => {
+const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenTask, chosenCustomer, currentUser, deleteTask, search, sort, sortTask, searchTask, filterTask }) => {
 
   const history = useHistory();
-  const [ show ] = useState(false);
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [value, setValue] = useState("None");
+  
+  const [show] = useState(false);
+  
+
+
+  // this is for the drawer 
+  // const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
   const handleNewClick = () => {
@@ -43,7 +46,8 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
 
   return (
     <div className="tasks-page-main">
-      {/* <div className="new-task-btn">
+      {/* CODE FOR DRAWER BUTTON INSTEAD OF NEW FORM ON ANOTHER PAGE 
+      <div className="new-task-btn">
         <Button ref={btnRef} colorScheme="blackAlpha"
           onClick={onOpen}
           // onClick={() => setShow(true)}
@@ -51,14 +55,61 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
       </Button>
       </div> */}
      
+      <div className="new-task-btn">
+        <Button colorScheme="blackAlpha" variant="solid" size="sm"  type="button" onClick={handleNewClick}>
+            <h4>+ New Task</h4>&nbsp;
+        </Button>
+      </div>
+
       <div className="task-list-table-div">
         <table className="task-list-table">
-        <tr className="top-header">
-          <td className="filter-row" colSpan="3">
+          <tr className="top-header">
+            
+            <td className="filter-row" colSpan="3">
+              Sort by: 
+              <RadioGroup onChange={setValue} value={value}>
+                <Stack spacing={2} direction="row">
+                  <Radio
+                    colorScheme="blackAlpha"
+                    type="radio"
+                    value="None"
+                    checked={sort === "None"}
+                    onChange={(event) => sortTask(event.target.value)}>
+                  <p class="top-header">None</p>
+                  </Radio>
+                  <Radio
+                    colorScheme="blackAlpha"
+                    type="radio"
+                    value="Due_Date"
+                    checked={sort === "Due_Date"}
+                    onChange={(event) => sortTask(event.target.value)}>
+                  <p class="top-header">Due Date</p>
+                  </Radio>
+                  <Radio
+                    colorScheme="blackAlpha"
+                    type="radio"
+                    value="Newest"
+                    checked={sort === "Newest"}
+                    onChange={(event) => sortTask(event.target.value)}>
+                  <p class="top-header">Newest</p>
+                  </Radio>
+                  <Radio
+                    colorScheme="blackAlpha"
+                    type="radio"
+                    value="Oldest"
+                    checked={sort === "Oldest"}
+                    onChange={(event) => sortTask(event.target.value)}>
+                  <p class="top-header">Oldest</p>
+                  </Radio>
+                </Stack>
+              </RadioGroup>
+            </td>
+
+          <td className="filter-row" colSpan="2">
             <Select name="filter" placeholder="Filter By"></Select>
             </td>
             
-          <td className="filter-row" colSpan="4">
+          <td className="filter-row" colSpan="3">
               <InputGroup>
                 <Input name="search" placeholder="Search"></Input>
                 <InputRightAddon children={<SearchIcon/>}/>
@@ -67,9 +118,6 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
             
 
           <td className="filter-row" colSpan="2" align="right">
-            <Button colorScheme="blackAlpha" variant="solid" size="sm"  type="button" onClick={handleNewClick}>
-                <h4>+</h4>&nbsp; New Task
-            </Button>
           </td>
         </tr>
         <tbody>
@@ -97,11 +145,11 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
                 chosenTask={chosenTask}  
               />
             )}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
       </div>
 
-      <div className="drawer-div">
+      {/* <div className="drawer-div">
         <Drawer
         show={show}
         isOpen={isOpen}
@@ -114,7 +162,7 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
             <DrawerCloseButton />
             <DrawerHeader>Create New Task</DrawerHeader>
 
-              <DrawerBody>
+              <DrawerBody> */}
                 
                 {/* <Route path="/newtaskform" render={(routerProps) =>
                   <NewTaskForm
@@ -127,7 +175,7 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
                     {...routerProps}
                   />} /> */}
                   
-              </DrawerBody>
+              {/* </DrawerBody>
 
             <DrawerFooter>
               <Button variant="outline" mr={3} onClick={onClose}>
@@ -138,7 +186,7 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>
-        </div>
+        </div> */}
     
 
     </div>

@@ -3,13 +3,13 @@ import './App.css';
 
 import LoginScreen from './components/LoginScreen';
 import Navbar from './components/Navbar/Navbar';
-import SearchContainer from './components/Search/SearchContainer';
+
 import MainDashboardDisplay from './components/MainDashboardDisplay'; 
 
 import CustomersPage from './components/Customers/CustomersPage';
 import NewCustomerForm from './components/Customers/NewCustomerForm';
 import EditCustomerForm from './components/Customers/EditCustomerForm';
-import CustomerModal from './components/Customers/CustomerModal';
+
 
 
 import TasksPage from './components/Tasks/TasksPage';
@@ -127,12 +127,7 @@ class App extends React.Component {
     })
   }
 
-  // searchCustomers = (input) => {
-  //   let filterCustomers = this.state.customers.filter(customer => customer.first_name.toLowerCase().includes(input.toLowerCase()))
-  //   this.setState({
-  //     filteredCustomer: filterCustomers
-  //   })
-  // }
+
 
 // **************************************** //
 // ************ TASK FUNCTIONS ************ //
@@ -192,6 +187,12 @@ class App extends React.Component {
 /* ********** FILTER/SORT/SEARCH FUNCTIONS ********* */
 /* ************************************************* */
   
+// searchCustomers = (input) => {
+//   let filterCustomers = this.state.customers.filter(customer => customer.first_name.toLowerCase().includes(input.toLowerCase()))
+//   this.setState({
+//     filteredCustomer: filterCustomers
+//   })
+// }
   handleSort = (sort) => {
     this.setState({sort})
   }
@@ -200,8 +201,11 @@ class App extends React.Component {
     this.setState({filter})
   }
 
-  handleSearch = (search) => {
-    this.setState({search})
+
+  handleSearch = (event) => {
+    this.setState({
+      search: event.target.value
+    })
   }
   
   displayCustomers = () => {
@@ -210,16 +214,16 @@ class App extends React.Component {
     )
 
     if (this.state.filter !== "All") {
-      displayCustomers = displayCustomers.filter(customer => customer.first_name === this.state.industry)
+      displayCustomers = displayCustomers.filter(customer => customer.first_name === this.state.filter)
     }
 
     switch (this.state.sort) {
       case "Alphabetical_Last":
         return displayCustomers.sort((a, b) => a.last_name > b.last_name ? 1 : -1)
       case "Alphabetical_First":
-        return displayCustomers.sort((a, b) => a.first_name > b.first_name ? -1 : 1)
+        return displayCustomers.sort((a, b) => a.first_name > b.first_name ? 1 : -1)
       case "Company":
-        return displayCustomers.sort((a, b) => a.company > b.company ? -1 : 1)
+        return displayCustomers.sort((a, b) => a.company > b.company ? 1 : -1)
       case "Newest":
         return displayCustomers.sort((a, b) => a.created_at > b.created_at ? -1 : 1)
       case "Oldest":
@@ -231,6 +235,43 @@ class App extends React.Component {
   }
   
   
+
+  sortTask = (sort) => {
+    this.setState({sort})
+  }
+
+  filterTask = (filter) => {
+    this.setState({filter})
+  }
+
+  searchTask = (event) => {
+    this.setState({
+      search: event.target.value
+    })
+  }
+
+
+  displayTasks = () => {
+    let displayTasks = this.state.tasks.filter(task => 
+      task.title.toLowerCase().includes(this.state.search)
+    )
+
+    if (this.state.filter !== "All") {
+      displayTasks = displayTasks.filter(task => task.task_type === this.state.filter)
+    }
+
+    switch (this.state.sort) {
+      case "Due_Date":
+        return displayTasks.sort((a, b) => a.due_date > b.due_date ? 1 : -1)
+      case "Newest":
+        return displayTasks.sort((a, b) => a.created_at > b.created_at ? -1 : 1)
+      case "Oldest":
+        return displayTasks.sort((a, b) => a.created_at > b.created_at ? 1 : -1)
+      case "None":
+        return displayTasks
+    }
+    return displayTasks
+  }
 
 
 
@@ -248,7 +289,7 @@ class App extends React.Component {
         <ChakraProvider>
           
       <div>
-        <Navbar /> 
+            <Navbar users={this.state.users}/>
         <Switch>
           <Route path='/' />
         </Switch>
@@ -310,7 +351,7 @@ class App extends React.Component {
       
       <Route path='/tasks' render={(routerProps) =>
           <TasksPage
-            tasks={this.state.tasks} 
+            // tasks={this.state.tasks} 
             customers={this.state.customers}
             users={this.state.users}
             handleNewTask={this.handleNewTask}
@@ -319,6 +360,12 @@ class App extends React.Component {
             chosenCustomer={this.chosenCustomer}
             currentUser={this.currentUser}
             deleteTask={this.deleteTask}
+            tasks={this.displayTasks()}
+            search={this.state.search}
+            sort={this.state.sort}
+            sortTask={this.sortTask}
+            searchTask={this.searchTask}
+            filterTask={this.filterTask}
             {...routerProps}
     
           /> } /> 

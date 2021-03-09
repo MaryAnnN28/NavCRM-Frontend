@@ -1,6 +1,6 @@
 import React from 'react'; 
 import './Customer.css';
-import { Input, FormControl, Textarea, Heading, Button } from '@chakra-ui/react';
+import { Input, FormControl, FormLabel, HStack, Textarea, Heading, Button } from '@chakra-ui/react';
 
 
 class NewCustomerForm extends React.Component {
@@ -38,89 +38,110 @@ class NewCustomerForm extends React.Component {
             <Heading size="lg">Add New Customer</Heading><br />
             <form className="customer-form" onSubmit={(event) => this.props.handleNewCustomer(event) }>
             
-            <FormControl id="first_name">
+              <FormControl id="first_name" isRequired={true}>
+              <HStack space={2} direction="row">
+              <FormLabel colorScheme="gray">First Name</FormLabel>
               <Input type="text"
                 name="first_name"
                 id="inputFirstName"
                 width="xs"
-                variant="flushed"
-                placeholder="First Name"
+                variant="outline"
                 value={first_name}
                 onChange={this.handleInputChange} />
+              </HStack>
+            </FormControl>
             
-          <br/><br />
-       
+          <br/>
+              <FormControl id="last_name" isRequired={true}>
+                <HStack space={2} direction="row">
+                <FormLabel colorScheme="gray">Last Name</FormLabel>
               <Input type="text"
                 name="last_name"
                 id="inputLastName"
                 width="xs"
-                variant="flushed"
-                placeholder="Last Name"
+                variant="outline"
                 value={last_name}
                 onChange={this.handleInputChange} />
+              </HStack>
+              </FormControl>
             
-          <br/><br />
-      
+          <br/>
+              <HStack space={2} direction="row">
+              <FormLabel colorScheme="gray">Company</FormLabel>
               <Input type="text"
                 name="company"
                 id="inputCompany"
                 width="xs"
-                variant="flushed"
-                placeholder="Company"
+                variant="outline"
                 value={company}
-                onChange={this.handleInputChange} />
+                  onChange={this.handleInputChange} />
+              </HStack>
+              
             
-          <br/><br />
+              <br /><br />
+              <HStack space={2}>
+              <FormLabel colorScheme="gray">Job Title</FormLabel>
               <Input
                 type="text"
                 name="job_title"
                 id="inputJobTitle"
                 width="xs"
-                variant="flushed"
-                placeholder="Job Title"
+                variant="outline"
                 value={job_title}
                 onChange={this.handleInputChange} />
+              </HStack>
             
             <br /><br />
-      {/* MAKE A DROP DOWN SELECTION AFTER MVP */}
+              {/* MAKE A DROP DOWN SELECTION AFTER MVP */}
+              <HStack space={10}>
+              <FormLabel colorScheme="gray">Industry</FormLabel>
               <Input type="text"
-                name="industry"
+                  name="industry"
+                  colorScheme="pink"
                 id="inputIndustry"
                 width="xs"
-                variant="flushed"
-                placeholder="Industry"
+                variant="outline"
                 value={industry}
-                onChange={this.handleInputChange} />
+                  onChange={this.handleInputChange} />
+                </HStack>
             
-          <br/><br />
+              <br /><br />
+              <FormControl id="email" isRequired={true}>
+              <HStack space={2} direction="row">
+              <FormLabel colorScheme="gray">Email</FormLabel>
               <Input type="email"
                 name="email"
                 id="inputEmail"
                 width="xs"
-                variant="flushed"
-                placeholder="Email"
+                variant="outline"
                 value={email}
-                onChange={this.handleInputChange} />
+                    onChange={this.handleInputChange} />
+                </HStack></FormControl>
             
-          <br/><br />
+              <br /><br />
+              <FormControl id="phone" isRequired={true}>
+              <HStack space={2}>
+              <FormLabel colorScheme="gray">Phone</FormLabel>
               <Input type="tel"
                 name="phone"
                 id="inputPhone"
                 width="xs"
-                variant="flushed"
-                placeholder="Phone"
+                variant="outline"
                 value={phone}
-                onChange={this.handleInputChange} />
+                  onChange={this.handleInputChange} />
+                </HStack>
+                </FormControl>
             
-          <br/><br />
+              <br /><br />
+              <HStack space={2}>
+              <FormLabel colorScheme="gray">Notes</FormLabel>
               <Textarea name="notes"
                 id="customer-notes"
                 rows="4"
                 width="xs"
-                placeholder="Notes"
                 value={notes}
-                onChange={this.handleInputChange} />
-            </FormControl>
+                  onChange={this.handleInputChange} />
+                </HStack>
           <br/>
           <br/>
           <Button colorScheme="blackAlpha" size="sm" variant="solid" type="submit">

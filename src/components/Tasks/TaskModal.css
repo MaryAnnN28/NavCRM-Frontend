@@ -1,0 +1,114 @@
+.modal-main {
+  position: fixed;
+  display: flex;
+  /* background: rgb(74, 106, 129); */
+  /* background: rgba(232, 235, 237, 0.93); */
+  background: linear-gradient(to top, rgba(130,140,158,1) 1%, rgb(12, 53, 83) 43%, rgb(14, 20, 56) 98%), url('https://cdn.wallpapersafari.com/71/44/zNYtTw.jpg') center scroll;
+  width: 570px;
+  height: 550px;
+  max-height: 100%;
+  /* text-align: center; */
+  justify-content: center;
+  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  box-shadow: 0 2px 6px 0 rgba(138, 138, 138, 0.2), 0 5px 10px 0 rgba(209, 209, 210, 0.39);
+}
+
+.modal-background {
+  display: flex;
+  width: 95%;
+  height: 95%;
+  border-radius: 6px;
+  /* text-align: left; */
+  /* justify-content: center; */
+  top: 50%;
+  left: 50%;
+  background:rgb(252, 254, 255);
+  padding: 0px;
+  margin: 10px auto;
+}
+
+
+h2.task-modal-header {
+  font-size: 35px;
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  text-align: left;
+  color: rgb(51, 84, 110);
+}
+
+ul.task-modal-text {
+  font-size: 16px;
+  margin: 5px;
+  padding-left: 0px;
+  text-align: left;
+  /* justify-content: center; */
+}
+
+.task-modal-content {
+  text-align: left;
+  
+}
+
+
+.task-modal-text > li > .task-key {
+  width: 150px;
+  color: rgb(51, 84, 110);
+  text-align: left;
+  padding-right: 0px;
+  padding-left: 10px;
+}
+
+.task-modal-text > li > .task-value {
+  width: 337px;
+  text-align: left;
+  padding-right: 0px;
+  padding-left: 5px;
+}
+
+.task-modal-text > li {
+  list-style-type: none;
+  display: flex;
+  margin: 0px 0px;
+  padding-bottom: 10px;
+  padding-left: 1px;
+}
+
+div.modal-close-btn {
+  right: 1%;
+  position: absolute;
+  padding: 14px;
+  color:rgb(93, 108, 116)
+}
+
+div.modal-icons {
+  display: inline-flex;
+  right: 8%;
+  bottom: 10%;
+  position: absolute;
+  padding: 2px;
+  color:rgb(113, 135, 145)
+}
+
+
+/* Tab styling hr for tasks modal */
+.task-modal-content hr {
+  width: 100px;
+  height: 1px;
+  background: rgb(137, 154, 172);
+  margin-bottom: 10px;
+  border-radius: 5%;
+}
+
+div.task-value-notes {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+input.task-checkbox {
+  size: 50pt;
+}

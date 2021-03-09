@@ -14,11 +14,15 @@
    position: relative;
    top: 70px;
    padding: 2px;
-
+   border-collapse: separate;
+   border-spacing: 1px;
+   font-size: 12pt;
  }
 
  tr.task-header-row {
     height: 40px;
+    border-style: none;
+   background: none;
  }
 
   
@@ -29,10 +33,16 @@
 
  .new-task-btn {
    display: flex;
-   position: relative;
-   margin-right: 10px;
-   top: 50px;
-   left: 85%;
+   position: absolute;
+   justify-content: center;
+   margin-right: 0px;
+   top: 100px;
+   right: 0%;
+   font-size: 30px;
+ }
+
+ .new-task-btn h4 {
+    font-size: 18px;
  }
 
 tr, th {
@@ -59,4 +69,5 @@ th {
 td.task-data-row-bold {
    color: rgb(51, 84, 110);
    font-weight: 600;
+   padding-left: 2px;
 }

@@ -6,7 +6,7 @@ import * as BiIcons from 'react-icons/bi';
 
 export const SidebarData = [
   {
-    title: 'Home', 
+    title: 'Dashboard', 
     path: '/home', 
     icon: <BiIcons.BiHome />, 
     className: 'nav-text'
@@ -40,19 +40,6 @@ export const SidebarData = [
     path: '/userprofile', 
     icon: <AiIcons.AiOutlineUser />, 
     className: 'nav-text'
-  }, 
- 
-  {
-    title: '', 
-  }, 
-  {
-    title: '', 
-  }, 
-  {
-    title: '', 
-  }, 
-  {
-    title: '', 
   }, 
   {
     title: '', 

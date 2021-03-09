@@ -1,6 +1,6 @@
 .logo {
    display: flex;
-   /* justify-content: center; */
+   justify-content: center;
    position: relative;
    /* margin-top: 0px; */
    top: 9.2px;
@@ -19,42 +19,50 @@
    display: flex;
    justify-content: center;
    position: absolute;
-   top: 7.8px;
-   right: 1%; 
+   top: 75px;
+   right: 0%; 
    margin: 10px;
-  
+}
+
+.user-photo-div {
+   display: flex;
+   justify-content: center;
+   position: absolute;
+   right: 22px;
+   top: 8px;
 }
 
 .navbar {
-   /* background-color: #060b26; */
+   background-color: #0e1435;
    height: 80px;
    display: flex; 
    justify-content: start;
    align-items: center;
-   background: linear-gradient(to top, rgb(104, 128, 148) 2%, rgb(24, 61, 84) 39%, rgba(8,25,33,1) 98%);
+   position: relative;
+   /* background: linear-gradient(to top, rgb(104, 128, 148) 2%, rgb(24, 61, 84) 39%, rgba(8,25,33,1) 96%); */
 }
 
 .menu-bars {
    margin-left: 2rem;
    font-size: 2rem;
-   background: none;
+   /* background: none; */
 }
 
 .nav-menu {
    /* background-color: #060b26; */
-   width: 240px;
-   height: 100vh;
+   position: fixed;
+   width: 220px;
+   height: 120vh;
    display: flex;
    justify-content: center;
-   position: fixed;
-   top: 0;
+   top: 80;
    left: -100%; 
    transition: 950ms;
-   background: rgb(133, 149, 163);
+   /* background: rgb(133, 149, 163); */
    /* background: linear-gradient(180deg, rgba(130,140,158,1) 1%, rgba(12,86,126,1) 39%, rgba(8,25,33,1) 98%), url('https://cdn.wallpapersafari.com/71/44/zNYtTw.jpg'); */
    overflow: hidden;
    background-size: cover !important;
-   background: linear-gradient(to top, rgba(130,140,158,1) 1%, rgba(12,86,126,1) 43%, rgba(8,25,33,1) 95%), url('https://cdn.wallpapersafari.com/71/44/zNYtTw.jpg') center scroll;
+   background: linear-gradient(to top, rgba(130,140,158,1) 1%, rgb(12, 53, 83) 43%, rgb(14, 20, 56) 98%), url('https://cdn.wallpapersafari.com/71/44/zNYtTw.jpg') center scroll;
 }
 
 .nav-menu.active {
@@ -79,13 +87,14 @@
    height: 100%;
    display: flex;
    align-items: center;
-   padding: 0 16px; 
+   padding: 0 22px; 
    border-radius: 4px;
+   opacity: 90%;
 }
 
 .nav-text a:hover {
-   background-color: #294668de;
-   /* opacity: 80%; */
+   background-color: #273348c4;
+   opacity: 95%;
 
 }
 
@@ -94,12 +103,18 @@
 }
 
 .navbar-toggle {
-   background-color: #060b26;
+   /* background-color: #060b26; */
    width: 100%;
    height: 80px; 
    display: flex;
    justify-content: start;
    align-items: center;
+}
+
+.sidebar-close-icon {
+   margin-left: 150px;
+   top: 50px;
+   display: flex;
 }
 
 span {

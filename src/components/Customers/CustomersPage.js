@@ -16,7 +16,7 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
   
   const history = useHistory(); 
 
-  const [value, setValue] = useState("alphabetical");
+  const [value, setValue] = useState("None");
 
   const handleNewClick = () => {
     history.push('/newcustomerform')
@@ -27,29 +27,42 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
  
   return (
     <div className='customers-page-main'>
-      <Box>
-    <table className="customer-list-table" aria-rowindex='5' paginationSize="10">
+     
+            <div className="new-customer-btn">
+            <Button colorScheme="blackAlpha" variant="solid" size="sm" type="button" onClick={handleNewClick}>
+                <h4>+</h4>&nbsp; New Customer
+            </Button>
+            </div>
+      
+    <table className="customer-list-table">
 
         <tr className="top-header">
             <td className="sort-field" colSpan="5">
-              <RadioGroup
-                // onChange={setValue} value={value}
-              >
-                <Stack spacing={4} direction="row">
+              Sort by: 
+              <RadioGroup onChange={setValue} value={value}>
+                <Stack spacing={2} direction="row">
+                  <Radio
+                    colorScheme="blackAlpha"
+                    type="radio"
+                    value="None"
+                    checked={sort === "None"}
+                    onChange={(event) => handleSort(event.target.value)}>  
+                    <p class="top-header">None</p>
+                  </Radio>
                   <Radio
                     colorScheme="blackAlpha"
                     type="radio"
                     value="Alphabetical_First"
                     checked={sort === "Alphabetical_First"}
-                    onChange={handleSort}> 
-                    <p class="top-header">First Name</p>
+                    onChange={(event) => handleSort(event.target.value)}>  
+                    <p class="top-header">First</p>
                   </Radio>
                   <Radio 
                     colorScheme="blackAlpha"
                     value="Alphabetical_Last"
                     checked={sort === "Alphabetical_Last"}
                     onChange={(event) => handleSort(event.target.value)}> 
-                     <p class="top-header">Last Name</p>
+                     <p class="top-header">Last</p>
                   </Radio>
                   <Radio
                     colorScheme="blackAlpha"
@@ -73,36 +86,30 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
                     <p class="top-header">Oldest</p>
                   </Radio>
                 </Stack>
-
               </RadioGroup>
             </td>
             
-
-            <td className="filter-row" colSpan="2">
+            <td className="filter-row" colSpan="3">
               <InputGroup>
-                <Input name="search" placeholder="Search" onChange={(event) => handleSearch(event.target.value)} />
+                <Input name="search" placeholder="Search" value={search} onChange={handleSearch} />
                 <InputRightAddon children={<SearchIcon/>}/>
               </InputGroup>
             </td>
             
 
-          <td className="filter-row" colSpan="2" align="right">
-            <Button colorScheme="blackAlpha" variant="solid" size="sm" type="button" onClick={handleNewClick}>
-                <h4>+</h4>&nbsp; New Customer
-            </Button>
-          </td>
+       
           </tr>
           
           
       <tbody>
         <tr className="customer-header-row">
           <th className="customer-star" align="center" width="40px"><h4><AiIcons.AiFillStar/></h4></th>
-          <th className="customer-header" width="100px" padding-left="2px"><h4>First</h4></th>
-          <th className="customer-header" width="100px"><h4>Last</h4></th>
+          <th className="customer-header" width="110px" padding-left="2px"><h4>First</h4></th>
+          <th className="customer-header" width="110px"><h4>Last</h4></th>
           <th className="customer-header" width="180px"><h4>Company</h4></th>
           <th className="customer-header" width="160px"><h4>Job Title</h4></th>
           <th className="customer-header" width="200px"><h4>Email</h4></th>
-          <th className="customer-header" width="120px"><h4>Phone</h4></th>
+          <th className="customer-header" width="110px"><h4>Phone</h4></th>
           <th className="customer-header" width="140px"><h4>Actions</h4></th>
         </tr>
         {customers.map(customer =>
@@ -117,12 +124,7 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
           />
           )}
       </tbody>
-        </table>
-    </Box>
-
-  
-     
- 
+    </table>
   </div>
 
 )

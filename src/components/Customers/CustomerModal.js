@@ -144,7 +144,7 @@ const CustomerModal = ({ customer, show, handleClose, chooseCustomer, deleteCust
 
                
                 
-                  <div class="contact-info"><strong>Email: &nbsp; </strong><a href={"mailto:" + customer.email}><u>{customer.email}</u></a></div>      
+                  <div class="contact-info"><strong>Email: &nbsp; </strong><a href={"mailto:" + customer.email} target="_blank"><u>{customer.email}</u></a></div>      
           
                 <div class="contact-info"><strong>Phone: &nbsp; </strong>{customer.phone}</div>      
         
@@ -156,8 +156,8 @@ const CustomerModal = ({ customer, show, handleClose, chooseCustomer, deleteCust
               <h2>Tasks</h2>
                 <hr/>
                 <p class="modal-text">
-               
-                  {/* {customer.tasks.map(task => {
+{/*                
+                  {customer.tasks.map(task => {
 
                   return <div task={task.id}>
                     {task.task_type} &nbsp; &nbsp; &nbsp;
@@ -209,7 +209,7 @@ const CustomerModal = ({ customer, show, handleClose, chooseCustomer, deleteCust
             </AlertDialogHeader>
 
             <AlertDialogBody>
-              This will permanently delete customer. Are you sure you want to delete?
+              Are you sure you want to delete this customer?
             </AlertDialogBody>
 
             <AlertDialogFooter>

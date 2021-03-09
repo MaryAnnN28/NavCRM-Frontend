@@ -1,30 +1,21 @@
-import React from 'react'; 
+import React, { Fragment, useState, useRef } from 'react'; 
 import { useHistory } from 'react-router-dom';
-import { Box, IconButton } from '@chakra-ui/react'
+import TaskModal from './TaskModal';
+import { Box, IconButton, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogContent, AlertDialogOverlay, AlertDialogHeader, Button } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon, ViewIcon } from '@chakra-ui/icons';
 import './Tasks.css'
 
-// import NewTaskForm from './NewTaskForm';
-// import {
-//   Drawer,
-//   DrawerBody,
-//   DrawerFooter,
-//   DrawerHeader,
-//   DrawerOverlay,
-//   DrawerContent,
-//   DrawerCloseButton,
-//   Button, 
-//   useDisclosure
-// } from "@chakra-ui/react"
 
 
-const TASKS_URL = "http://localhost:3000/tasks/";
+const TASKS_URL = "http://localhost:3000/tasks/"
 
 const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTask, chosenCustomer, currentUser, deleteTask// chosenCustomer,
   // chosenTask
 }) => {
 
-  const history = useHistory(); 
+  const history = useHistory();
+  
+  const [show, setShow] = useState(false); 
   
   const handleEditClick = () => {
     chooseTask(task)
@@ -39,8 +30,13 @@ const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTa
     })
   }
 
+  const [isOpen, setIsOpen] = useState(false)
+  const onClose = () => setIsOpen(false)
+  const cancelRef = useRef()
+
   
   return (
+    <>
     
       <tr className="task-list-table">
       <td className="task-data-row" align="center" width="40px">
@@ -65,7 +61,7 @@ const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTa
             colorScheme="blackAlpha"
             aria-label="View Task"
             icon={<ViewIcon />}
-            // onClick={handleViewTask}
+            onClick={() => setShow(true)}
             mr="1" mt="1" mb="1" /> 
         
           <IconButton
@@ -81,7 +77,7 @@ const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTa
             colorScheme="blackAlpha"
             aria-label="Delete Task"
             icon={<DeleteIcon />}
-            onClick={handleDelete} 
+            onClick={() => setIsOpen(true)} 
             //<--- Directly deletes without alert
             // onClick={() => setIsOpen(true)}
             mt="1" mb="1"
@@ -89,6 +85,44 @@ const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTa
       </td>
     </tr>
 
+      <Fragment>
+        
+      <AlertDialog
+        colorScheme="blackAlpha"
+        isOpen={isOpen}
+        isCentered={true}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              <strong>Delete Task</strong>
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              Are you sure you want to delete this task?
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button colorScheme="blackAlpha" ref={cancelRef} onClick={onClose}>Cancel</Button>
+              <Button colorScheme="red" ml={3} onClick={handleDelete}>Delete</Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+        
+      </AlertDialog>
+
+
+        <TaskModal
+          task={task}
+          show={show}
+          chooseTask={chooseTask}
+          deleteTask={deleteTask}
+          handleClose={() => setShow(false)}
+      />
+    </Fragment>
+    </>
   
   )
 }

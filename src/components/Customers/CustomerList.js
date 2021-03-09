@@ -1,9 +1,9 @@
-import React, { Fragment, useState } from 'react';
-import CustomerModal from './CustomerModal';
+import React, { Fragment, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import CustomerModal from './CustomerModal';
 
 import './Customer.css';
-import { IconButton } from '@chakra-ui/react'
+import { IconButton, AlertDialog, AlertDialogBody, AlertDialogFooter, AlertDialogContent, AlertDialogOverlay, AlertDialogHeader, Button } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon, ViewIcon } from '@chakra-ui/icons';
 import * as BsIcons from 'react-icons/bs';
 
@@ -23,10 +23,6 @@ function CustomerList ({ customer, chooseCustomer, deleteCustomer })  {
     history.push('/editcustomerform')
   };
 
-//   const handleViewClick = () => {
-//     viewCustomer(customer)
-//     history.push('/customers')
-//   };
 
   const handleDelete = () => {
     fetch(CUSTOMERS_URL + customer.id, { method: "DELETE" })
@@ -36,16 +32,19 @@ function CustomerList ({ customer, chooseCustomer, deleteCustomer })  {
     })
   }
 
+  const [isOpen, setIsOpen] = useState(false)
+  const onClose = () => setIsOpen(false)
+  const cancelRef = useRef()
  
    return (  
       <>
       <tr className="customer-list-table">
             <td className="customer-row-star" align="center" width="=80px"><BsIcons.BsStar/></td>
-            <td className="customer-data-row" width="100px">{customer.first_name}</td>
-            <td className="customer-data-row">{customer.last_name}</td>
-            <td className="customer-data-row"><strong>{customer.company}</strong></td>
+            <td className="customer-data-row-bold" width="100px">{customer.first_name}</td>
+            <td className="customer-data-row-bold">{customer.last_name}</td>
+            <td className="customer-data-row-company">{customer.company}</td>
             <td className="customer-data-row">{customer.job_title}</td>
-            <td className="customer-data-row">{customer.email}</td>
+            <td className="customer-data-row-email"><a href={"mailto:" + customer.email} target="_blank"><u>{customer.email}</u></a></td>
             <td className="customer-data-row">{customer.phone}</td>
          <td className="customer-row-actions" align="center">
             <IconButton
@@ -68,7 +67,7 @@ function CustomerList ({ customer, chooseCustomer, deleteCustomer })  {
                colorScheme="blackAlpha"
                aria-label="Delete Customer"
                icon={<DeleteIcon />}
-               onClick={handleDelete} 
+               onClick={() => setIsOpen(true)} 
                //<--- Directly deletes without alert
                // onClick={() => setIsOpen(true)}
                mt="1" mb="1"
@@ -77,6 +76,34 @@ function CustomerList ({ customer, chooseCustomer, deleteCustomer })  {
   
          </tr>
          <Fragment>
+            
+            <AlertDialog
+               colorScheme="blackAlpha"
+               isOpen={isOpen}
+               isCentered={true}
+               leastDestructiveRef={cancelRef}
+               onClose={onClose}
+               >
+            <AlertDialogOverlay>
+            <AlertDialogContent>
+               <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                  <strong>Delete Customer</strong>
+               </AlertDialogHeader>
+
+               <AlertDialogBody>
+                  Are you sure you want to delete this customer?
+               </AlertDialogBody>
+
+               <AlertDialogFooter>
+                  <Button colorScheme="blackAlpha" ref={cancelRef} onClick={onClose}>Cancel</Button>
+                  <Button colorScheme="red" ml={3} onClick={handleDelete}>Delete</Button>
+               </AlertDialogFooter>
+            </AlertDialogContent>
+            </AlertDialogOverlay>
+         
+            </AlertDialog>
+
+
             <CustomerModal 
                customer={customer}
                show={show}
@@ -84,11 +111,9 @@ function CustomerList ({ customer, chooseCustomer, deleteCustomer })  {
                deleteCustomer={deleteCustomer}
                handleClose={() => setShow(false)}
             />
-
          </Fragment>
       </>
-
-      
+ 
    )
 }
  

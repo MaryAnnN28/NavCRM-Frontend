@@ -13,7 +13,7 @@
   position: fixed;
   display: flex;
   /* background: rgb(74, 106, 129); */
-  background: rgba(232, 235, 237, 0.93);
+  /* background: rgba(232, 235, 237, 0.93); */
   width: 570px;
   height: 550px;
   max-height: 100%;
@@ -24,7 +24,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   overflow: auto;
-  box-shadow: 0 2px 6px 0 rgba(138, 138, 138, 0.2), 0 5px 10px 0 rgba(209, 209, 210, 0.39);
+  /* box-shadow: 0 2px 6px 0 rgba(138, 138, 138, 0.2), 0 5px 10px 0 rgba(209, 209, 210, 0.39); */
 }
 
 .modal-background {
@@ -36,9 +36,10 @@
   justify-content: center;
   top: 50%;
   left: 50%;
-  background:rgb(252, 254, 255);
+  /* background:rgb(252, 254, 255); */
   padding: 0px;
   margin: 15px auto;
+  background: linear-gradient(to top, rgba(130,140,158,1) 1%, rgb(12, 53, 83) 43%, rgb(14, 20, 56) 98%), url('https://cdn.wallpapersafari.com/71/44/zNYtTw.jpg') center scroll;
 }
 
 h2.customer-modal-header {
@@ -76,18 +77,18 @@ ul.modal-text {
 }
 
 .modal-text > li > .key {
-  width: 70px;
+  width: 80px;
   color: rgb(51, 84, 110);
   text-align: left;
   padding-right: 0px;
-  padding-left: 0px;
+  padding-left: 10px;
 }
 
 .modal-text > li > .value {
-  width: 140px;
+  width: 157px;
   text-align: left;
   padding-right: 0px;
-  padding-left: 0px;
+  padding-left: 5px;
 }
 
 .modal-text > li {

@@ -34,9 +34,9 @@ function Login() {
         cookiePolicy={'single_host_origin'}
         style={{ marginTop: '70px' }}
         isSignedIn={true}
-        render={renderProps => (
-          <Button onClick={renderProps.onClick} disabled={renderProps.disabled} variant="solid" colorScheme="gray" size="sm">Log In</Button>
-        )}
+        // render={renderProps => (
+        //   <Button onClick={renderProps.onClick} disabled={renderProps.disabled} variant="solid" colorScheme="gray" size="sm">Log In</Button>
+        // )}
       />
     </div>
   );

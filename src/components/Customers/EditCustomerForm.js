@@ -56,14 +56,15 @@ class EditCustomerForm extends React.Component {
             <Heading size="lg">Edit Customer</Heading><br />
             <form className="customer-form" onSubmit={this.handleEditCustomer}>
             
-            <FormControl id="first_name">
+       
               <Input type="text"
                 name="first_name"
                 id="inputFirstName"
                 width="xs"
                 placeholder="First Name"
                 value={first_name}
-                onChange={this.handleInputChange} />
+                  onChange={this.handleInputChange} />
+         
             
           <br/><br />
                
@@ -131,14 +132,14 @@ class EditCustomerForm extends React.Component {
               placeholder="Notes"
               value={notes}
               onChange={this.handleInputChange} />
-            </FormControl>
+          
           <br/>
           <br/>
-              <Button colorScheme="blackAlpha" size="sm" variant="solid" onClick={this.renderCustomers}>
-                Cancel
-              </Button>
-              <Button colorScheme="blackAlpha" size="sm" ml={3} variant="solid" type="submit">
+              <Button colorScheme="blackAlpha" size="sm" variant="solid" type="submit">
                 Save
+              </Button>
+              <Button colorScheme="blackAlpha" size="sm" ml={3} variant="solid" onClick={this.renderCustomers}>
+                Cancel
               </Button>
             </form>
             </div>
