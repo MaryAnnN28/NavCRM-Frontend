@@ -17,6 +17,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^5.0.0-beta2",
+    "chart.js": "^2.9.4",
     "date-fns": "^2.17.0",
     "framer-motion": "^3.7.0",
     "material-table": "^1.69.2",

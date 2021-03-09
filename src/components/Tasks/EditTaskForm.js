@@ -173,7 +173,7 @@ class EditTaskForm extends React.Component {
                 <br /><br />
 
                 <Input
-                  name="due_date"
+                  name="time_due"
                   placeholder="MM/DD/YYY"
                   type="time"
                   size="md"

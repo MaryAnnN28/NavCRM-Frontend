@@ -1,6 +1,8 @@
 import React, { useState } from 'react'; 
 import './MainDash.css'; 
-import { Heading, Grid, GridItem, Button } from '@chakra-ui/react'; 
+import { Heading, Grid, GridItem, Button, Stack } from '@chakra-ui/react';
+import Chart from 'chart.js';
+import * as AiIcons from 'react-icons/ai';
 
 function MainDashboardDisplay({ users, customers, tasks }) {
 
@@ -10,6 +12,7 @@ function MainDashboardDisplay({ users, customers, tasks }) {
     setCustomer(customer.first_name)
   }
 
+  // const taskChart = new Chart;
 
   return (
     // <div className="dashboard-page">
@@ -46,7 +49,10 @@ function MainDashboardDisplay({ users, customers, tasks }) {
           <GridItem rowSpan={2} colSpan={2} className="grid-2">
             <Heading size="sm" textAlign="center">TASKS</Heading> <br />
             <h3>You have <strong>{tasks.length}</strong> tasks.</h3> 
-            - You have <strong>2</strong> tasks past due <br />
+            <Stack direction="row">
+
+            <font color="red"><AiIcons.AiFillWarning /> You have <strong>2</strong> tasks <b>past due</b>.<br /></font>
+            </Stack>
             - You have <strong>3</strong> tasks due today<br />
             <strong>5</strong> tasks due this week <br /> <br />
             <Button colorScheme="blackAlpha" color="white" size="sm" shadow={true}>View All Tasks</Button>
@@ -78,7 +84,8 @@ function MainDashboardDisplay({ users, customers, tasks }) {
 
           <GridItem rowSpan={3} colSpan={3} className="grid-3">
             <Heading size="sm" textAlign="center">TASKS CHART/GRAPH</Heading> <br />
-            INSERT TASK CHART/GRAPH
+            
+            ** GITHUB STYLE ACTIVITY CHART ***
              
              
           </GridItem>

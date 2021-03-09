@@ -10,8 +10,8 @@ import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons';
 import { Image } from '@chakra-ui/react'
 
-import Login from '../Login';
-import Logout from '../Logout';
+// import Login from '../Login';
+// import Logout from '../Logout';
 
  
 function Navbar({ users }) {
@@ -42,7 +42,8 @@ function Navbar({ users }) {
                <Image
                 key={user.id}
                 user={user}
-               borderRadius="full"
+                borderRadius="full"
+                border="white"
                boxSize="55px"
                src="https://i.imgur.com/3txe6Vm.jpg?1"
                alt={user.first_name}

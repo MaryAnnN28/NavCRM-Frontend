@@ -52,10 +52,10 @@
    /* background-color: #060b26; */
    position: fixed;
    width: 220px;
-   height: 120vh;
+   height: 110vh;
    display: flex;
    justify-content: center;
-   top: 80;
+   top: 70;
    left: -100%; 
    transition: 950ms;
    /* background: rgb(133, 149, 163); */

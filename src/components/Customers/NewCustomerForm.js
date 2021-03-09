@@ -2,11 +2,11 @@ import React from 'react';
 import './Customer.css';
 import { Input, FormControl, FormLabel, HStack, Textarea, Heading, Button } from '@chakra-ui/react';
 
+const CUSTOMERS_URL = "http://localhost:3000/customers/"; 
 
 class NewCustomerForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
+
+  state = {
       first_name: "", 
       last_name: "", 
       company: "", 
@@ -16,11 +16,39 @@ class NewCustomerForm extends React.Component {
       phone: "",
       notes: ""
     }
-  }
+  
 
   handleInputChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
+    })
+  }
+
+  handleNewCustomer = (event) => {
+    event.preventDefault()
+    let newCustomer = {
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      company: this.state.company,
+      job_title: this.state.job_title,
+      industry: this.state.industry,
+      email: this.state.email,
+      phone: this.state.phone,
+      notes: this.state.notes 
+    }
+    
+    let reqPack = {
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify(newCustomer)
+    }
+
+    fetch(CUSTOMERS_URL, reqPack)
+      .then(resp => resp.json())
+      .then((newCustomerData) => {
+        this.props.addCustomer(newCustomerData)
+        this.renderCustomers()
+        event.target.reset()
     })
   }
 
@@ -29,14 +57,14 @@ class NewCustomerForm extends React.Component {
   }
 
   render() {
-    const {first_name, last_name, company, job_title, industry, email, phone, notes } = this.state
+    const { first_name, last_name, company, job_title, industry, email, phone, notes } = this.state
 
     return (
       <div>
         <center>
         <div className="customer-form-container"><br />
             <Heading size="lg">Add New Customer</Heading><br />
-            <form className="customer-form" onSubmit={(event) => this.props.handleNewCustomer(event) }>
+            <form className="customer-form" onSubmit={(event) => this.handleNewCustomer(event) }>
             
               <FormControl id="first_name" isRequired={true}>
               <HStack space={2} direction="row">

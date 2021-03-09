@@ -73,35 +73,40 @@ class App extends React.Component {
  // ********** CUSTOMER FUNCTIONS ********** //
  // **************************************** //   
 
-  handleNewCustomer = (event) => {
-    event.preventDefault()
-    let newCustomer = {
-      first_name: event.target.first_name.value, 
-      last_name: event.target.last_name.value,  
-      company: event.target.company.value, 
-      job_title: event.target.job_title.value, 
-      industry: event.target.industry.value, 
-      email: event.target.email.value, 
-      phone: event.target.phone.value, 
-      notes: event.target.notes.value
-    }
-    event.target.reset()
+  // handleNewCustomer = (event) => {
+  //   event.preventDefault()
+  //   let newCustomer = {
+  //     first_name: event.target.first_name.value, 
+  //     last_name: event.target.last_name.value,  
+  //     company: event.target.company.value, 
+  //     job_title: event.target.job_title.value, 
+  //     industry: event.target.industry.value, 
+  //     email: event.target.email.value, 
+  //     phone: event.target.phone.value, 
+  //     notes: event.target.notes.value
+  //   }
+  //   event.target.reset()
     
-    let reqPack = {
-      headers: { "Content-Type": "application/json" }, 
-      method: "POST", 
-      body: JSON.stringify(newCustomer)
-    }
-    fetch(CUSTOMERS_URL, reqPack)
-    .then(resp => resp.json())
-    .then(newCustomerData => {
-      console.log(newCustomerData)
-      this.setState({
-        customers: [...this.state.customers, newCustomerData]
-      })
+  //   let reqPack = {
+  //     headers: { "Content-Type": "application/json" }, 
+  //     method: "POST", 
+  //     body: JSON.stringify(newCustomer)
+  //   }
+  //   fetch(CUSTOMERS_URL, reqPack)
+  //   .then(resp => resp.json())
+  //   .then(newCustomerData => {
+  //     console.log(newCustomerData)
+  //     this.setState({
+  //       customers: [...this.state.customers, newCustomerData]
+  //     })
+  //   })
+  // }
+
+  addCustomer = (newCustomerData) => {
+    this.setState({
+      customers: [...this.state.customers, newCustomerData]
     })
   }
-
 
   chooseCustomer = (customer) => {
     this.setState({
@@ -134,34 +139,40 @@ class App extends React.Component {
 // **************************************** //  
   
 
-  handleNewTask = (event) => {
-    event.preventDefault()
-    let newTask = {
-      title: event.target.title.value,
-      task_type: event.target.task_type.value,
-      description: event.target.description.value,
-      due_date: event.target.due_date.value,
-      time_due: event.target.time_due.value,
-      notes: event.target.notes.value,
-      customer_id: event.target.chosenCustomer.value,
-      user_id: event.target.currentUser.value
-    }
-    event.target.reset()
+  // handleNewTask = (event) => {
+  //   event.preventDefault()
+  //   let newTask = {
+  //     title: event.target.title.value,
+  //     task_type: event.target.task_type.value,
+  //     description: event.target.description.value,
+  //     due_date: event.target.due_date.value,
+  //     time_due: event.target.time_due.value,
+  //     notes: event.target.notes.value,
+  //     customer_id: event.target.chosenCustomer.value,
+  //     user_id: event.target.currentUser.value
+  //   }
+  //   event.target.reset()
 
-    let reqPack = {
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      body: JSON.stringify(newTask)
-    }
-    fetch(TASKS_URL, reqPack)
-      .then(resp => resp.json())
-      .then(newTaskData => {
-        console.log(newTaskData)
-        this.setState({
-          tasks: [...this.state.tasks, newTaskData]
-        })
-      })
-    }
+  //   let reqPack = {
+  //     headers: { "Content-Type": "application/json" },
+  //     method: "POST",
+  //     body: JSON.stringify(newTask)
+  //   }
+  //   fetch(TASKS_URL, reqPack)
+  //     .then(resp => resp.json())
+  //     .then(newTaskData => {
+  //       console.log(newTaskData)
+  //       this.setState({
+  //         tasks: [...this.state.tasks, newTaskData]
+  //       })
+  //     })
+  //   }
+
+  addTask = (newTaskData) => {
+    this.setState({
+      tasks: [...this.state.tasks, newTaskData]
+    })
+  }
   
   chooseTask = (task) => {
     this.setState({
@@ -335,7 +346,7 @@ class App extends React.Component {
 
         <Route path="/newcustomerform" render={(routerProps) => 
           <NewCustomerForm
-              handleNewCustomer={this.handleNewCustomer} 
+            addCustomer={this.addCustomer} 
             {...routerProps}
             />} />
             
@@ -367,14 +378,14 @@ class App extends React.Component {
             searchTask={this.searchTask}
             filterTask={this.filterTask}
             {...routerProps}
-    
           /> } /> 
 
           
         <Route path="/newtaskform" render={(routerProps) => 
             <NewTaskForm
               tasks={this.state.tasks}
-              handleNewTask={this.handleNewTask}
+              addTask={this.addTask}
+              // handleNewTask={this.handleNewTask}
               customers={this.state.customers}
               users={this.state.users}
               {...routerProps}

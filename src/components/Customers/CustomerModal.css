@@ -14,7 +14,7 @@
   display: flex;
   /* background: rgb(74, 106, 129); */
   /* background: rgba(232, 235, 237, 0.93); */
-  width: 570px;
+  width: 560px;
   height: 550px;
   max-height: 100%;
   text-align: center;
@@ -123,7 +123,7 @@ div.modal-icons {
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 650px;
+  width: 620px;
   height: 420px;
   background: #f1f1f1;
   margin: 100px auto 0; 
@@ -193,7 +193,7 @@ button {
 }
 
 .content hr {
-  width: 100px;
+  width: 90px;
   height: 1px;
   background: rgb(137, 154, 172);
   margin-bottom: 40px;
