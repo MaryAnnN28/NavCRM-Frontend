@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './MainDash.css'; 
 import { Heading, Grid, GridItem, Button, HStack } from '@chakra-ui/react';
-
+import { Doughnut } from 'react-chartjs-2';
+import DoughnutChart from './Charts/DoughnutChart';
+import BarChart from './Charts/BarChart';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 import * as AiIcons from 'react-icons/ai';
@@ -29,6 +31,9 @@ function Dashboard({ users, customers, tasks }) {
 
   // FOR CALENDAR 
   const [value, onChange] = useState(new Date());
+  
+  // FOR CHARTS
+  // const [value, onChange] = useState(new Date());
 
  
 
@@ -81,17 +86,18 @@ function Dashboard({ users, customers, tasks }) {
               
             </GridItem>
           <GridItem rowSpan={2} colSpan={2} className="grid-2">
-            <Heading size="sm" textAlign="left">TASKS</Heading> <br />
-            <h3>You have <strong>{tasks.length}</strong> tasks.</h3>               
+            {/* <Heading size="sm" textAlign="center">TASKS CHART/GRAPH</Heading> */}
+                <DoughnutChart />       
           </GridItem>
 
           <GridItem rowSpan={3} colSpan={2} className="grid-3">
               <Calendar onChange={onChange} value={value} calendarType="US"/>
           </GridItem>
 
-          <GridItem rowSpan={3} colSpan={2} className="grid-4">
-            <Heading size="sm" textAlign="center">TASKS CHART/GRAPH</Heading> <br />
-            ** GITHUB STYLE ACTIVITY CHART ***
+              
+              
+          <GridItem rowSpan={4} colSpan={4} className="grid-4" >
+            <BarChart />      
           </GridItem>
             
 
@@ -109,10 +115,10 @@ function Dashboard({ users, customers, tasks }) {
         
 
 
-          <GridItem rowSpan={2} colSpan={2} className="grid-6">
+          {/* <GridItem rowSpan={2} colSpan={2} className="grid-6">
             <Heading size="sm" textAlign="center">CUSTOMER INFOGRAPHS</Heading> <br />
             CUSTOMERS BY INDUSTRY
-            </GridItem>
+            </GridItem> */}
             
             
         

@@ -45,6 +45,7 @@ table.customer-list-table {
    display: flex;
    position: fixed;
    justify-content: center;
+   z-index: 1;
    margin-right: 0px;
    top: 100px;
    right: 0%;

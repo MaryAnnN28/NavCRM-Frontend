@@ -52,6 +52,7 @@ div.past-due-task {
   padding-left: 20px;
   justify-content: left;
   text-align: left;
+  border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
 }
@@ -60,6 +61,7 @@ div.past-due-task {
   padding: 15px;
   justify-content: left;
   text-align: left;
+  border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
 }
@@ -68,6 +70,7 @@ div.past-due-task {
 .grid-3 {
   padding-top: 20px;
   justify-content: center;
+  border-radius: 10px;
   background-color: #1a1f39;
   color:  rgb(51, 84, 110);
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
@@ -75,6 +78,7 @@ div.past-due-task {
 
 .grid-4 {
   padding: 10px;
+  border-radius: 10px;
   justify-content: center;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
@@ -83,6 +87,7 @@ div.past-due-task {
 .grid-5 {
   padding: 10px;
   justify-content: center;
+  border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
 }
@@ -90,6 +95,7 @@ div.past-due-task {
 .grid-6 {
   padding: 10px;
   justify-content: center;
+  border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
 }

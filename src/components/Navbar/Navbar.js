@@ -47,7 +47,7 @@ function Navbar({ users }) {
 
         
           <div className="notification-icons">
-            <IoMdIcons.IoMdNotifications size={34} /> 
+            <IoMdIcons.IoMdNotifications size={30} /> 
 
           </div>
         
