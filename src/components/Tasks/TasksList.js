@@ -37,7 +37,7 @@ const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTa
   
   return (
     <>
-    
+      <tbody></tbody>
       <tr className="task-list-table">
       <td className="task-data-row" align="center" width="40px">
         <input type="checkbox" class="hidden" /></td>

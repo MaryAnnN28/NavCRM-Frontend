@@ -34,13 +34,11 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
             </Button>
             </div>
       
-    <table className="customer-list-table">
-
+    <table className="customer-filter">
         <tr className="top-header">
             <td className="sort-field" colSpan="5">
-              Sort by: 
               <RadioGroup onChange={setValue} value={value}>
-                <Stack spacing={2} direction="row">
+                <Stack spacing={3} direction="row">
                   <Radio
                     colorScheme="blackAlpha"
                     type="radio"
@@ -89,19 +87,19 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
               </RadioGroup>
             </td>
             
-            <td className="filter-row" colSpan="3">
-              <InputGroup>
-                <Input name="search" placeholder="Search" value={search} onChange={handleSearch} />
+            <td className="filter-row" colSpan="4">
+              <InputGroup ml={7} >
+                <Input name="search" placeholder="Search" width='sm' variant="outline" value={search} onChange={handleSearch} />
                 <InputRightAddon children={<SearchIcon/>}/>
               </InputGroup>
             </td>
-            
-
-       
           </tr>
+          </table>
           
           
-      <tbody>
+      <table className="customer-list-table">
+         
+        <tbody>
         <tr className="customer-header-row">
           <th className="customer-star" align="center" width="40px"><h4><AiIcons.AiFillStar/></h4></th>
           <th className="customer-header" width="110px" padding-left="2px"><h4>First</h4></th>

@@ -20,8 +20,19 @@
    justify-content: center;
    position: absolute;
    top: 12px;
-   right: 0%; 
+   right: 18px; 
    margin: 10px;
+   padding-left: 30px;
+}
+
+.notification-icons {
+   display: flex;
+   justify-content: center;
+   position: absolute;
+   top: 12px;
+   right: 120px; 
+   margin: 10px;
+   padding-left: 30px;
 }
 
 .user-photo {
@@ -30,6 +41,10 @@
    position: absolute;
    left: 70px;
    top: 8px;
+   border-style: solid;
+   border-radius: 50px;
+   border-color: white;
+   border-width: 2px;
    margin-bottom: 30px;
 }
 

@@ -25,13 +25,17 @@ import {
 import { SearchIcon } from '@chakra-ui/icons';
 
 
-const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenTask, chosenCustomer, currentUser, deleteTask, search, sort, sortTask, searchTask, filterTask }) => {
+const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenTask, chosenCustomer, currentUser, deleteTask, search, sort, sortTask, searchTask, filterTask, handleFilterType }) => {
 
   const history = useHistory();
 
   const [value, setValue] = useState("None");
   
   const [show] = useState(false);
+
+  const [taskTypes, setTaskTypes] = useState([]);
+
+  tasks.map(task => taskTypes.includes(task.task_type) ? null : setTaskTypes([...taskTypes, task.task_type]))
   
 
 
@@ -61,13 +65,14 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
       </div>
 
       <div className="task-list-table-div">
-        <table className="task-list-table">
+        
+        <table className="task-filter">
           <tr className="top-header">
             
             <td className="filter-row" colSpan="3">
-              Sort by: 
+              {/* Sort by:  */}
               <RadioGroup onChange={setValue} value={value}>
-                <Stack spacing={2} direction="row">
+                <Stack spacing={3} direction="row">
                   <Radio
                     colorScheme="blackAlpha"
                     type="radio"
@@ -105,12 +110,14 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
             </td>
 
           <td className="filter-row" colSpan="2">
-            <Select name="filter" placeholder="Filter By"></Select>
+              <Select name="filter" placeholder="Filter By Task Type" ml={6}  onChange={handleFilterType}>{taskTypes.map(type =>
+                <option value={type}>{type}</option>)}
+            </Select>
             </td>
             
           <td className="filter-row" colSpan="3">
               <InputGroup>
-                <Input name="search" placeholder="Search"></Input>
+                <Input name="search" placeholder="Search" value={search} width='xs' ml={8} onChange={searchTask}></Input>
                 <InputRightAddon children={<SearchIcon/>}/>
               </InputGroup>
             </td>
@@ -118,7 +125,11 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
 
           <td className="filter-row" colSpan="2" align="right">
           </td>
-        </tr>
+          </tr>
+          </table>
+          
+          <table className="task-list-table">
+
         <tbody>
           <tr className="task-header-row">  
             <th className="task-header" width="50px" align="center"><BsIcons.BsCheckBox/></th>

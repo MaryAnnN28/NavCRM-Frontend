@@ -7,10 +7,11 @@ import './Navbar.css';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as BiIcons from 'react-icons/bi';
+import * as IoMdIcons from 'react-icons/io';
 
 import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons';
-import { Image, Button } from '@chakra-ui/react'
+import { Image, Button, HStack } from '@chakra-ui/react'
 
 // import Login from '../Login';
 // import Logout from '../Logout';
@@ -40,13 +41,20 @@ function Navbar({ users }) {
           <div className="headerLogoWrapper">
             <div className="logo">
               <img src='https://i.imgur.com/XHeHSWu.png' alt="NavCRM logo" />
+         
             </div>
           </div>
 
         
+          <div className="notification-icons">
+            <IoMdIcons.IoMdNotifications size={34} /> 
+
+          </div>
         
           <div className="login-logout-buttons">
-            {/* <Logout /> */}
+            
+
+           
             <GoogleLogout
               clientId="397188808547-flcrbi17jjm7gbec4tvq9ph7fnjhlume.apps.googleusercontent.com"
               buttonText="Logout"
@@ -58,6 +66,7 @@ function Navbar({ users }) {
                   colorScheme="gray" size="sm">Log Out</Button>
               )}
               />
+        
             
           </div>
             

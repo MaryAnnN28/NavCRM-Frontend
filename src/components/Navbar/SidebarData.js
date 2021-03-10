@@ -6,6 +6,9 @@ import * as BiIcons from 'react-icons/bi';
 
 export const SidebarData = [
   {
+
+  },
+  {
     title: 'Dashboard', 
     path: '/home', 
     icon: <BiIcons.BiHome />, 

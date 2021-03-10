@@ -1,6 +1,6 @@
 import React from 'react';
 import './Tasks.css';
-import { Input, FormControl, Select, Textarea, Heading, Button } from '@chakra-ui/react';
+import { Input, FormControl, FormLabel, HStack, Select, Textarea, Heading, Button } from '@chakra-ui/react';
 
 const TASKS_URL = "http://localhost:3000/tasks/";
 
@@ -79,57 +79,68 @@ class NewTaskForm extends React.Component {
             
           <form className="task-form" id="new-task-form" onSubmit={(event) => this.handleNewTask(event)}>
 
-            
+              <FormControl id="title" isRequired={true}>
+                <HStack space={2} direction="row">
+                <FormLabel colorScheme="gray">Title</FormLabel>
                 <Input
                   name="title"
                   type="text"
-                  placeholder="Title"
                   size="md"
                   width="xs" 
-                  variant="flushed"
+                  variant="outline"
                   textColor="blackAlpha.900"
                   value={title}
-                  onChange={this.handleInputChange}
-                />
+                  onChange={this.handleInputChange}/>
+                </HStack>
+              </FormControl>
               
-                <br /><br />
+              <br />
+              <FormControl id="task_type" isRequired={true}>
+                <HStack space={2} direction="row">
+                <FormLabel colorScheme="gray">Type</FormLabel>
                 <Select
                   name="task_type"
-                  placeholder="Type"
                   size="md"
                   width="xs" 
-                  variant="flushed"
+                  variant="outline"
+                  textColor="gray"
                   value={task_type} 
-                  onChange={this.handleInputChange}
-                >
-                  <option value="To-do">To-Do</option>
+                  onChange={this.handleInputChange} >
+                  <option value="To-do">Select a task type</option>
                   <option value="Email">Email</option>
                   <option value="Call">Call</option>
                   <option value="Proposal">Proposal</option>
                   <option value="Appointment">Appointment</option>
-                </Select>
+                  </Select>
+                  </HStack>
+              </FormControl>
 
 
-                <br /><br />
-
+                <br />
+                <FormControl id="description">
+                <HStack space={2} direction="row">
+                <FormLabel colorScheme="gray">Description</FormLabel>
                 <Input
                   name="description"
-                  placeholder="Description"
                   type="text"
                   size="md" width="xs" 
                   textColor="blackAlpha.900"
-                  variant="flushed"
+                  variant="outline"
                   value={description}
                   onChange={this.handleInputChange}
-                />
+                  />
+                </HStack>
+                </FormControl>
       
-                <br /><br />
-
+                <br />
+                <FormControl id="chosenCustomer" isRequired={true}>
+                <HStack space={2} direction="row">
+                <FormLabel colorScheme="gray">Customer</FormLabel>
                 <Select
                   name="chosenCustomer"
                   placeholder="Select customer"
                   size="md" width="xs"
-                  variant="flushed"
+                  variant="outline"
                   value={customer_id}
                   onChange={(e) => this.handleCustomerSelect(e.target.value)}>
                     {this.props.customers.map(customer => 
@@ -137,15 +148,20 @@ class NewTaskForm extends React.Component {
                       {customer.first_name} {customer.last_name}
                         </option>
                       )}
-                </Select>
+                  </Select>
+                  </HStack>
+                </FormControl>
 
-                <br /><br /> 
+                <br />
 
+                <FormControl id="currentUser" isRequired={true}>
+                <HStack space={2} direction="row">
+                <FormLabel colorScheme="gray">User</FormLabel>
                 <Select
                   name="currentUser"
                   placeholder="Select user"
                   size="md" width="xs"
-                  variant="flushed"
+                  variant="outline"
                   value={user_id}
                   onChange={(e) => this.handleUserSelect(e.target.value)}>
                     {this.props.users.map(user => 
@@ -154,42 +170,56 @@ class NewTaskForm extends React.Component {
                         </option>
                       )}
                 </Select>
-                <br /> <br />
+                </HStack>
+                </FormControl>
+                <br /> 
 
+                <FormControl id="due_date" isRequired={false}>
+                <HStack space={2} direction="row">
+                <FormLabel colorScheme="gray">Due Date</FormLabel>
                 <Input
                   name="due_date"
                   placeholder="MM/DD/YYY"
-                type="date"
+                  type="date"
                   size="md" width="xs" 
-                  variant="flushed"
+                  variant="outline"
                   value={due_date}
-                  onChange={this.handleInputChange}
-                />
+                  onChange={this.handleInputChange}/>
+                  </HStack>
+                </FormControl>
 
-                <br /><br />
+                <br />
 
+                <FormControl id="time_due" isRequired={false}>
+                <HStack space={5} direction="row">
+                <FormLabel colorScheme="gray">Time Due</FormLabel>
                 <Input
                   name="time_due"
                   placeholder="Time Due"
-                type="time"
+                  type="time"
                   size="md" width="xs" 
                   textColor="blackAlpha.900"
-                  variant="flushed"
+                  variant="outline"
                   value={time_due}
-                  onChange={this.handleInputChange}
-                />
+                    onChange={this.handleInputChange} />
+                  </HStack>
+                </FormControl>
+                  
 
-                <br /><br /> 
-
+                <br />
+                <FormControl id="notes" isRequired={false}>
+                <HStack space={2} direction="row">
+                <FormLabel colorScheme="gray">Notes</FormLabel>
                 <Textarea
                   name="notes"
                   rows="4"
                   placeholder="Notes"
-                  size="sm"  width="xs"
+                  size="md"  width="sm"
                   colorScheme="blackAlpha"
                   value={notes}
-                  onChange={this.handleInputChange}
-                />
+                  onChange={this.handleInputChange}/>
+              </HStack>
+                </FormControl>
                 <br /> <br />
           
 

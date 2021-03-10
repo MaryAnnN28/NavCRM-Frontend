@@ -97,7 +97,7 @@ function LoginScreen() {
                   onSuccess={onSuccess}
                   onFailure={onFailure}
                   cookiePolicy={'single_host_origin'}
-                  style={{ marginTop: '70px' }}
+                  style={{ marginTop: '70px', borderRadius: '20px', color: 'honeydew', colorScheme: 'blackAlpha' }}
                   type="submit"
                   isSignedIn={true}
                 />
