@@ -52,8 +52,8 @@ class EditCustomerForm extends React.Component {
     return (
       <div>
         <center>
-          <div className="task-form-container"><br />
-            <Heading size="lg">Edit Customer</Heading><br />
+          <div className="customer-form-container"><br />
+            <Heading size="md" mb={5} >Update Customer Details</Heading><br />
             <form className="customer-form" onSubmit={this.handleEditCustomer}>
             
        

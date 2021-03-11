@@ -4,7 +4,6 @@
    position: relative;
    /* margin-top: 0px; */
    top: 9.2px;
-   margin-left: 30px;
 }
 
 .headerLogoWrapper {
@@ -55,7 +54,8 @@
    justify-content: start;
    align-items: center;
    width: 100%;
-   /* position: fixed; */
+   position: fixed;
+   top: 0;
    z-index: 1;
    /* background: linear-gradient(to top, rgb(104, 128, 148) 2%, rgb(24, 61, 84) 39%, rgba(8,25,33,1) 96%); */
 }
@@ -73,7 +73,8 @@
    height: 110vh;
    display: flex;
    justify-content: center;
-   top: 80;
+   margin-top: 5%;
+   top: 200;
    left: -100%; 
    transition: 2550ms;
    z-index: 1;

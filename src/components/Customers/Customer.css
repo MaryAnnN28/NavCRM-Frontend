@@ -7,6 +7,10 @@ div.customer-page-main {
 tr.top-header {
    border-style: none;
    background: none;
+   justify-content: center;
+   margin-top: 10%;
+   padding-top: 1%;
+   display: flex;
 }
 
 .top-header {
@@ -21,7 +25,7 @@ table.customer-filter {
    margin-left: 250px;
    position: relative;
    top: 70px;
-   padding: 2px;
+   padding: 10px;
    border-collapse: separate;
    border-spacing: 1px;
    font-size: 11pt;
@@ -157,6 +161,7 @@ tr:last-of-type td {
 /* ********* NEW CUSTOMER FORM ********** */
 
 .customer-form-container {
+   margin-top: 10%;
    margin-bottom: 10%;
    display: inline-block;
 }

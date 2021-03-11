@@ -156,8 +156,8 @@ const CustomerModal = ({ customer, show, handleClose, chooseCustomer, deleteCust
               <h2>Tasks</h2>
                 <hr/>
                 <p class="modal-text">
-{/*                
-                  {customer.tasks.map(task => {
+               
+                  {/* {customer.tasks.map(task => {
 
                   return <div task={task.id}>
                     {task.task_type} &nbsp; &nbsp; &nbsp;
@@ -165,8 +165,8 @@ const CustomerModal = ({ customer, show, handleClose, chooseCustomer, deleteCust
                     {task.due_date} &nbsp; &nbsp; &nbsp;
                     {task.time_due} &nbsp; &nbsp;
                   </div>
-                  }
-                  )} */}
+                  } */}
+                  {/* )} */}
                     </p>
               </div>
               

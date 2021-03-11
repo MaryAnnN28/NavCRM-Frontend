@@ -13,7 +13,7 @@
    margin-left: 250px;
    position: relative;
    top: 70px;
-   padding: 2px;
+   padding: 10px;
    border-collapse: separate;
    border-spacing: 1px;
    font-size: 11pt;
@@ -47,7 +47,8 @@
 
  .new-task-btn {
    display: flex;
-   position: absolute;
+   position: fixed;
+   z-index: 1;
    justify-content: center;
    margin-right: 0px;
    top: 100px;
@@ -85,4 +86,11 @@ td.task-data-row-bold {
    color: rgb(51, 84, 110);
    font-weight: 600;
    padding-left: 2px;
+}
+
+
+.task-form-container {
+   margin-top: 10%;
+   margin-bottom: 10%;
+   display: inline-block;
 }

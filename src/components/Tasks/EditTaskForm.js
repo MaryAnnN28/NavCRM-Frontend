@@ -71,7 +71,7 @@ class EditTaskForm extends React.Component {
       <div>
         <center>
         <div className="task-form-container"><br />
-            <Heading size="lg">Update Task</Heading><br />
+            <Heading size="md" mb={5}>Update Task</Heading><br/>
             
             <form className="task-form" onSubmit={(event) => {this.handleEditTask(event)}}>
             

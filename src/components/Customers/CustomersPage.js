@@ -38,7 +38,7 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
         <tr className="top-header">
             <td className="sort-field" colSpan="5">
               <RadioGroup onChange={setValue} value={value}>
-                <Stack spacing={3} direction="row">
+                <Stack spacing={3} direction="row" mt={4}>
                   <Radio
                     colorScheme="blackAlpha"
                     type="radio"

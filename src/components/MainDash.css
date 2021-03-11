@@ -23,8 +23,9 @@
   text-align: center;
   display: inline;
   position: absolute;
-  right: 50px;
-  top: 12%;
+  right: 120px;
+  top: 98px;
+  z-index: 2;
 } 
  
 
@@ -32,8 +33,8 @@
   display: inline-flex;
   justify-content: center;
   position: absolute;
-  right: 2%;
-  top: 17%;
+  right: 4%;
+  top: 18%;
   z-index: 1;
 }
 
@@ -49,53 +50,103 @@ div.past-due-task {
 
 .grid-1 {
   padding: 15px;
-  padding-left: 20px;
-  justify-content: left;
-  text-align: left;
-  border-radius: 10px;
+  /* padding-left: 20px; */
+  justify-content: center;
+  text-align: center;
+  border-radius: 4px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
+}
+
+.grid-1-numbers {
+  font-size: 30pt;
+  font-weight: 800;
+  color: rgb(51, 84, 110);
+  /* display: inline-flex; */
+  line-height: -10px;
+}
+
+.grid-1-text {
+  font-size: 16pt;
+  letter-spacing: 10px;
 }
 
 .grid-2 {
   padding: 15px;
   justify-content: left;
   text-align: left;
-  border-radius: 10px;
+  border-radius: 4px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
 }
 
 /* Calendar Grid */
 .grid-3 {
-  padding-top: 20px;
+  padding-top: 13px;
   justify-content: center;
-  border-radius: 10px;
-  background-color: #1a1f39;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #758398;
   color:  rgb(51, 84, 110);
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
 }
 
 .grid-4 {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 4px;
   justify-content: center;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
 }
 
 .grid-5 {
-  padding: 10px;
+  /* padding: 15px;
+  padding-left: 20px; */
   justify-content: center;
-  border-radius: 10px;
+  text-align: center;
+  border-radius: 4px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
 }
 
-.grid-6 {
+
+.grid-5-numbers {
+  font-size: 30pt;
+  font-weight: 800;
+  color: rgb(51, 84, 110);
+  display: inline-flex;
+  line-height: 94%;
+  margin-right: 3px;
+
+}
+
+.grid-5-text {
+  font-size: 14pt;
+  letter-spacing: 6px;
+  display: inline-flex;
+  margin-left: 5px;
+  margin-bottom: -20px;
+  margin-top: -20px;
+  color: rgb(159, 173, 184);
+}
+
+.grid-5-header {
+  font-size: 18pt;
+  letter-spacing: 10px;
+  font-weight: 600;
+  top: 2;
+  color: rgb(55, 84, 106);
+  padding-left: 6px;
+  padding-bottom: 20px;
+  text-align: left;
+}
+
+
+/* .grid-6 {
   padding: 10px;
-  justify-content: center;
-  border-radius: 10px;
+  justify-content: left;
+  text-align: left;
+  border-radius: 4px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 rgba(138, 138, 138, 0.3), 0 5px 10px 0 rgba(209, 209, 210, 0.49);
-}
+} */

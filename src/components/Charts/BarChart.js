@@ -5,13 +5,10 @@ const data = {
   labels: ['Software', 'Financial', 'Government', 'Consulting', 'Health', 'Hospitality', 'Real Estate'],
   datasets: [
     {
-      label: 'Customer Industries',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
-      borderWidth: 1,
+      label: 'Top Industries',
+      backgroundColor: ['#758398', '#4B5A66', '#849DB3', '#687B8C', '#4B5A66', '#7B929A', '#A5C4CF'],
       hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
-      data: [65, 49, 60, 81, 56, 55, 40, 10]
+      data: [70, 40, 65, 81, 56, 55, 30, 5]
     }
   ]
 };

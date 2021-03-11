@@ -69,7 +69,7 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
         <table className="task-filter">
           <tr className="top-header">
             
-            <td className="filter-row" colSpan="3">
+            <td className="sort-field" colSpan="3">
               {/* Sort by:  */}
               <RadioGroup onChange={setValue} value={value}>
                 <Stack spacing={3} direction="row">

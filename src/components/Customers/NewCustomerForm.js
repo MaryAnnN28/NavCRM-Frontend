@@ -63,7 +63,7 @@ class NewCustomerForm extends React.Component {
       <div>
         <center>
         <div className="customer-form-container"><br />
-            <Heading size="lg">Add New Customer</Heading><br />
+            <Heading size="md" mb={5}>Add New Customer</Heading><br />
             <form className="customer-form" onSubmit={(event) => this.handleNewCustomer(event) }>
             
               <FormControl id="first_name" isRequired={true}>

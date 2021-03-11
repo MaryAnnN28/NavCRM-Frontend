@@ -44,7 +44,7 @@ function Dashboard({ users, customers, tasks }) {
       <section className="dashboard-page-background">
       <div className="dashboard-header">
         {users.map(user =>
-          <Heading size="md" colorScheme="blackAlpha"> Welcome back,  {user.first_name}! 🎉</Heading>)}
+          <Heading size="sm" color="#687B8C"> Welcome,  {user.first_name}! 🎉</Heading>)}
       </div>
 
       <div className="dashboard-grid">
@@ -57,18 +57,15 @@ function Dashboard({ users, customers, tasks }) {
         >
          
             
-          <GridItem rowSpan={2} colSpan={2} className="grid-1">
-            <Heading size="sm" textAlign="left">TASKS</Heading> <br />
-            <h3>You have <strong>{tasks.length}</strong> total tasks.</h3> 
+              <GridItem rowSpan={2} colSpan={2} className="grid-1">
                 
-            <div className="past-due-task">
-               
-                    {/* <AiIcons.AiFillWarning /> */}
-                  You have &nbsp;<font color="red"><strong>2</strong></font>&nbsp; tasks &nbsp;<font color="red"> <b>past due</b><br /></font>
-           </div>
-   
-            You have <strong>4</strong> tasks <strong>due today</strong><br />
-              <strong>5</strong> tasks due this week <br /> <br />
+              <p className='grid-1-text'>Total of <p className='grid-1-numbers'>{customers.length}</p> customers </p><br />
+           
+           <Button colorScheme="blackAlpha" color="white" size="xs" shadow={true}
+             onClick={handleViewCustomers}
+                >View All Customers</Button>
+                
+            
               
                 {/* *********** TASK INFO ***********  */}
               {/* {tasks.map(task => 
@@ -102,14 +99,20 @@ function Dashboard({ users, customers, tasks }) {
             
 
 
-          <GridItem rowSpan={3} colSpan={2} className="grid-5">
-            <Heading size="sm" textAlign="center">CUSTOMERS</Heading> <br />
-            <h3>You have <strong>{customers.length}</strong> customers.</h3>
-            <h3>You have <strong>6</strong> VIP customers.</h3> <br />
-            <button color="blue" bgcolor="blue">View VIPs</button><br />
-              <Button colorScheme="blackAlpha" color="white" size="xs" shadow={true}
-                onClick={handleViewCustomers}
-              >View All Customers</Button>
+              <GridItem rowSpan={3} colSpan={2} className="grid-5">
+                
+                <p className='grid-5-header'>Tasks</p>
+                
+                      
+                {/* <p className="grid-5-text">You have</p> */}
+                <p className='grid-5-numbers'>{tasks.length}</p> <p className="grid-5-text"> total</p> <br/>
+            
+                    {/* <AiIcons.AiFillWarning /> */}
+                  <p className="grid-5-text"> past due</p> <p className="grid-5-numbers">7</p> <br/>
+              
+           <p className='grid-5-numbers'>2</p> <p className="grid-5-text"> due today</p> <br />
+           {/* <p className="grid-5-text"> this week</p> <p className='grid-5-numbers'>4</p> <br /> */}
+
              
           </GridItem>
         

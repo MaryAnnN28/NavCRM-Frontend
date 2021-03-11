@@ -75,7 +75,7 @@ class NewTaskForm extends React.Component {
       <>
         <center>
         <div className="task-form-container"><br />
-            <Heading size="lg">Add New Task</Heading><br />
+            <Heading size="md" mb={5}>Create New Task</Heading><br />
             
           <form className="task-form" id="new-task-form" onSubmit={(event) => this.handleNewTask(event)}>
 

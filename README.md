@@ -8,8 +8,8 @@
 - NavCRM logo created on: [Canva](https://www.canva.com)
 - Uploaded logo on [Imgur](www.imgur.com) to capture URL for image 
 - Styling for sidebar icons [React Icons](https://react-icons.github.io/react-icons/search?q=user)
-- Forms and buttons from [Chakra-Ui](https://chakra-ui.com)
-
+- Form and buttons from [Chakra-Ui](https://chakra-ui.com)
+- Charts from [ChartJS](https://www.chartjs.org/)
 - Calendar on Dashboard from [React-Calendar](https://www.npmjs.com/package/react-calendar)
 
 
