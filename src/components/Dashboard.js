@@ -107,6 +107,7 @@ function Dashboard({ users, customers, tasks }) {
                 {/* <p className="grid-5-text">You have</p> */}
                 <p className='grid-5-numbers'>{tasks.length}</p> <p className="grid-5-text"> total</p> <br/>
             
+                {/* Add function for filtering by task type and due tate  */}
                     {/* <AiIcons.AiFillWarning /> */}
                   <p className="grid-5-text"> past due</p> <p className="grid-5-numbers">7</p> <br/>
               
