@@ -43,6 +43,7 @@ div.login-card {
   justify-content: center;
   z-index: 0;
   margin-top: 7%;
+  padding-bottom: 200px;
 }
 
 div.login-form {

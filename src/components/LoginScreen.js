@@ -6,7 +6,9 @@ import { refreshTokenSetup } from '../utilities/refreshToken';
 
 import './LoginScreen.css';
 // import Login from './Login';
-import { Input, Button, FormControl, FormLabel, HStack } from '@chakra-ui/react';
+import { Input, Button, FormControl, FormLabel, HStack, propNames } from '@chakra-ui/react';
+import { Fragment } from 'react';
+import Navbar from './Navbar/Navbar'
 
 function LoginScreen() {
 
@@ -30,7 +32,6 @@ function LoginScreen() {
   
   return (
     <div>
-   
 
     <section class="login-background" role="img" aria-label="sky-sunset-gradient">
         

@@ -111,6 +111,10 @@ const CustomerModal = ({ customer, show, handleClose, chooseCustomer, deleteCust
                 </li>
                 
                 <li>
+                <div class="key"><strong>Phone</strong></div>
+                <div class="value">{customer.last_name}</div>      
+                </li>
+                <li>
                 <div class="key"><strong>Created</strong></div>
                     <div class="value">{customer.created_at.toString().slice(0, -14)}</div>      
                 </li>
@@ -143,11 +147,19 @@ const CustomerModal = ({ customer, show, handleClose, chooseCustomer, deleteCust
                 </div>
 
                
-                
-                  <div class="contact-info"><strong>Email: &nbsp; </strong><a href={"mailto:" + customer.email} target="_blank"><u>{customer.email}</u></a></div>      
-          
-                <div class="contact-info"><strong>Phone: &nbsp; </strong>{customer.phone}</div>      
-        
+                <ul class="modal-text-email">
+                  <li>
+                  <div class="key"><strong>Email: </strong></div>
+                    <div class="value">
+                      <a href={"mailto:" + customer.email} target="_blank"><u>{customer.email}</u></a>
+                    </div>
+                  </li>
+
+                  <li>
+                  <div class="key"><strong>Phone: </strong></div>
+                    <div class="value">{customer.phone}</div>
+                  </li>
+              </ul>
               
              
           </div>
@@ -155,9 +167,15 @@ const CustomerModal = ({ customer, show, handleClose, chooseCustomer, deleteCust
               <div className={toggleState === 2 ? "content active-content" : "content"}>
               <h2>Tasks</h2>
                 <hr/>
-                <p class="modal-text">
-               
-                  {/* {customer.tasks.map(task => {
+                <p class="modal-text-task"><u>
+
+                  Task Type  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Title &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Due Date &nbsp;&nbsp;&nbsp;&nbsp;
+                Time Due &nbsp;&nbsp;&nbsp;&nbsp;
+                </u>
+                   
+                 {/* {customer.tasks.map(task => {
 
                   return <div task={task.id}>
                     {task.task_type} &nbsp; &nbsp; &nbsp;
@@ -165,8 +183,8 @@ const CustomerModal = ({ customer, show, handleClose, chooseCustomer, deleteCust
                     {task.due_date} &nbsp; &nbsp; &nbsp;
                     {task.time_due} &nbsp; &nbsp;
                   </div>
-                  } */}
-                  {/* )} */}
+                  } 
+                  )}  */}
                     </p>
               </div>
               

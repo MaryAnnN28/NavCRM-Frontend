@@ -38,9 +38,6 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
   tasks.map(task => taskTypes.includes(task.task_type) ? null : setTaskTypes([...taskTypes, task.task_type]))
   
 
-
-  // this is for the drawer 
-  // const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
   const handleNewClick = () => {
@@ -49,14 +46,7 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
 
   return (
     <div className="tasks-page-main">
-      {/* CODE FOR DRAWER BUTTON INSTEAD OF NEW FORM ON ANOTHER PAGE 
-      <div className="new-task-btn">
-        <Button ref={btnRef} colorScheme="blackAlpha"
-          onClick={onOpen}
-          // onClick={() => setShow(true)}
-        > + Create Task
-      </Button>
-      </div> */}
+   
      
       <div className="new-task-btn">
         <Button colorScheme="blackAlpha" variant="solid" size="sm"  type="button" onClick={handleNewClick}>

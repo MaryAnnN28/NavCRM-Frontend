@@ -99,6 +99,28 @@ ul.modal-text {
   padding-left: 1px;
 }
 
+.modal-text-email > li > .key {
+  width: 90px;
+  color: rgb(51, 84, 110);
+  text-align: left;
+  padding-right: 0px;
+  padding-left: 10px;
+}
+
+.modal-text-email > li > .value {
+  width: 200px;
+  text-align: left;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.modal-text-email > li {
+  list-style-type: none;
+  display: flex;
+  margin: 0px 0px;
+  padding-bottom: 10px;
+}
+
 div.modal-close-btn {
   right: 0%;
   position: absolute;

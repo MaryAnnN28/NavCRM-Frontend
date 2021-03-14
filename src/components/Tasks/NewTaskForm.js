@@ -13,8 +13,8 @@ class NewTaskForm extends React.Component {
       due_date: "", 
       time_due: "", 
       notes: "", 
-      customer_id: {}, 
-      user_id: {}
+      customer_id: "", 
+      user_id: ""
     }
 
   
@@ -106,7 +106,8 @@ class NewTaskForm extends React.Component {
                   textColor="gray"
                   value={task_type} 
                   onChange={this.handleInputChange} >
-                  <option value="To-do">Select a task type</option>
+                  <option value="">Select a task type</option>
+                  <option value="To-do">To-Do</option>
                   <option value="Email">Email</option>
                   <option value="Call">Call</option>
                   <option value="Proposal">Proposal</option>

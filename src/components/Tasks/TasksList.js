@@ -9,8 +9,7 @@ import './Tasks.css'
 
 const TASKS_URL = "http://localhost:3000/tasks/"
 
-const TasksList = ({ task, customers, users, handleNewTask, chooseTask, chosenTask, chosenCustomer, currentUser, deleteTask// chosenCustomer,
-  // chosenTask
+const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, chosenTask
 }) => {
 
   const history = useHistory();

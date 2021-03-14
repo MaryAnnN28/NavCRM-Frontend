@@ -81,11 +81,16 @@ const TaskModal = ({ task, show, chooseTask, deleteTask, handleClose }) => {
               </li>
               <li>
                 <div class="task-key"><strong>Customer:</strong></div>
-                <div class="task-value">{task.customer.first_name} {task.customer.last_name}</div>
+                    {task.customer ?
+                      <div class="task-value">{task.customer.first_name} {task.customer.last_name}
+                      </div> : null}
+               
+               
               </li>
               <li>
-                <div class="task-key"><strong>Company:</strong></div>
-                <div class="task-value">{task.customer.company}</div>
+                    <div class="task-key"><strong>Company:</strong></div>
+                    {task.customer ? 
+                <div class="task-value">{task.customer.company}</div> : null }
               </li>
               <li>
                 <div class="task-key"><strong>Created on:</strong></div>

@@ -151,6 +151,11 @@ class App extends React.Component {
     })
   }
 
+  handleFilterType = (event) => {
+    this.setState({
+      filterTaskType: event.target.value 
+    })
+  }
   
   displayCustomers = () => {
     let displayCustomers = this.state.customers.filter(customer =>
@@ -158,7 +163,8 @@ class App extends React.Component {
 
     if (this.state.filter !== "All") {
       displayCustomers = displayCustomers.filter(customer => customer.first_name === this.state.filter)
-    }
+    };
+
 
     switch (this.state.sort) {
       case "Alphabetical_Last":
@@ -193,12 +199,6 @@ class App extends React.Component {
     })
   }
 
-  handleFilterType = (event) => {
-    this.setState({
-      filterTaskType: event.target.value 
-    })
-  }
-
 
   displayTasks = () => {
     let displayTasks = this.state.tasks.filter(task =>
@@ -206,11 +206,7 @@ class App extends React.Component {
 
     if (this.state.filter !== "All") {
       displayTasks = displayTasks.filter(task => task.task_type === this.state.filter)
-    };
-
-    if (this.state.filterTaskType !== "") {
-      displayTasks = displayTasks.filter(task => task.task_type === this.state.filterTaskType)
-    };
+    }
 
     switch (this.state.sort) {
       case "Due_Date":
@@ -317,7 +313,6 @@ class App extends React.Component {
             sortTask={this.sortTask}
             searchTask={this.searchTask}
             filterTask={this.filterTask}
-            handleFilterType={this.handleFilterType}
             {...routerProps}
           /> } /> 
 
