@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './MainDash.css'; 
 import { Heading, Grid, GridItem, Button, HStack } from '@chakra-ui/react';
-import { Doughnut } from 'react-chartjs-2';
 import DoughnutChart from './Charts/DoughnutChart';
 import BarChart from './Charts/BarChart';
 import Calendar from 'react-calendar';
@@ -65,25 +64,10 @@ function Dashboard({ users, customers, tasks }) {
              onClick={handleViewCustomers}
                 >View All Customers</Button>
                 
-            
-              
-                {/* *********** TASK INFO ***********  */}
-              {/* {tasks.map(task => 
-                <p value={task.id}>
-                  <strong>{task.task_type}</strong> for <strong>{task.customer.first_name} </strong> 
-                  is due on <strong>{task.due_date}</strong> at <strong>{task.time_due}</strong>
-                </p>
-              )} */}
-
-              {/* Button for all tasks */}
-              {/* <Button colorScheme="blackAlpha" color="white" size="sm" shadow={true}
-                onClick={handleViewTasks}
-              >View All Tasks</Button> */}
-
+  
               
             </GridItem>
           <GridItem rowSpan={2} colSpan={2} className="grid-2">
-            {/* <Heading size="sm" textAlign="center">TASKS CHART/GRAPH</Heading> */}
                 <DoughnutChart />       
           </GridItem>
 
@@ -116,25 +100,12 @@ function Dashboard({ users, customers, tasks }) {
 
              
           </GridItem>
-        
 
-
-          {/* <GridItem rowSpan={2} colSpan={2} className="grid-6">
-            <Heading size="sm" textAlign="center">CUSTOMER INFOGRAPHS</Heading> <br />
-            CUSTOMERS BY INDUSTRY
-            </GridItem> */}
             
             
         
         </Grid>
         
-
-          
-          
-        
-          {/* <GridItem rowSpan={3} colSpan={3} bg="gray.100" /> */}
-
-          {/* <GridItem rowSpan={2} colSpan={2} bg="#294668de" /> */}
       </div>
 
       </section>

@@ -3,7 +3,8 @@ import './App.css';
 
 import LoginScreen from './components/LoginScreen';
 import Navbar from './components/Navbar/Navbar';
-import Dashboard from './components/Dashboard'; 
+import Dashboard from './components/Dashboard';
+import CustomerMethods from './components/CustomerMethods';
 
 import CustomersPage from './components/Customers/CustomersPage';
 import NewCustomerForm from './components/Customers/NewCustomerForm';
@@ -258,8 +259,13 @@ class App extends React.Component {
             users={this.state.users} 
             customers={this.state.customers}
             tasks={this.state.tasks}
-          />} /> 
-          
+              />} />
+            
+            <Route path='/customermethods' render={routerProps => 
+              <CustomerMethods
+                {...routerProps}
+              customers={this.state.customers}
+            /> } />
 
         <Route path='/userprofile' render={routerProps =>
           <UserComponent {...routerProps} users={this.state.users} />} />
