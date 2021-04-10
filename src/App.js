@@ -346,7 +346,10 @@ class App extends React.Component {
               />} />
             
             <Route path='/leads' render={(routerProps) =>
-              <Leads />
+              <Leads
+                customers={this.state.customers}
+                {...routerProps}
+              />
             } />
             
       
