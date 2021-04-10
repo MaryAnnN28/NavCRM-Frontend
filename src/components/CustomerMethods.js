@@ -15,7 +15,7 @@ function CustomerMethods({ customers }) {
 
   return (
     <div>
-      <h1>console.log(industryCount)</h1>
+  
     </div>
   )
 }

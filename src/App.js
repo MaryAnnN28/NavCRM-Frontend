@@ -5,15 +5,15 @@ import LoginScreen from './components/LoginScreen';
 import Navbar from './components/Navbar/Navbar';
 import Dashboard from './components/Dashboard';
 import CustomerMethods from './components/CustomerMethods';
-
 import CustomersPage from './components/Customers/CustomersPage';
 import NewCustomerForm from './components/Customers/NewCustomerForm';
 import EditCustomerForm from './components/Customers/EditCustomerForm';
-
 import TasksPage from './components/Tasks/TasksPage';
 import NewTaskForm from './components/Tasks/NewTaskForm';
 import EditTaskForm from './components/Tasks/EditTaskForm';
 import UserComponent from './components/Users/UserComponent';
+import Leads from './components/Leads/Leads'
+
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 import { ChakraProvider } from "@chakra-ui/react";
@@ -343,7 +343,11 @@ class App extends React.Component {
               currentUser={this.state.currentUser}
               handlePageChange={this.handlePageChange}
             {...routerProps}
-            />} />
+              />} />
+            
+            <Route path='/leads' render={(routerProps) =>
+              <Leads />
+            } />
             
       
         </div>
