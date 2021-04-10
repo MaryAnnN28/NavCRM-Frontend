@@ -3,7 +3,7 @@
 NavCRM is an online dashboard that allows users to keep track of their customers and tasks in a centralized hub. Users are able to add new customers and tasks, along with being able to view, update and delete each one. The dashboard provides an insightful look at the data, providing an overview of the top customer industries, task types, total tasks and many more. 
 
 
-## Overview
+## Technology
 - Built with Rails as a backend API and React, Javascript, Html, CSS for frontend. 
 - Integrated Chakra UI for styling the forms & ChartJS for the graphs on dashboard. 
 
