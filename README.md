@@ -8,7 +8,7 @@ NavCRM is an online dashboard that allows users to keep track of their customers
 - Integrated Chakra UI for styling the forms & ChartJS for the graphs on dashboard. 
 
 ## Demo 
-
+- 5 min demo video: [NavCRM Demo - 5min](https://youtu.be/PVKZMBIYkvA)
 - 2 min demo video: [NavCRM Demo Video](https://www.youtube.com/watch?v=WXA3CnwTGfc)
 
 
