@@ -120,13 +120,9 @@ const TaskModal = ({ task, show, chooseTask, deleteTask, handleClose }) => {
                   </li>
                 </ul>
               </div>
-        
-                
 
         </div>
-            
-
-        
+               
         </div>
         </section>
       </section>

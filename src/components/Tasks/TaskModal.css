@@ -1,13 +1,10 @@
 .modal-main {
   position: fixed;
   display: flex;
-  /* background: rgb(74, 106, 129); */
-  /* background: rgba(232, 235, 237, 0.93); */
   background: linear-gradient(to top, rgba(130,140,158,1) 1%, rgb(12, 53, 83) 43%, rgb(14, 20, 56) 98%), url('https://cdn.wallpapersafari.com/71/44/zNYtTw.jpg') center scroll;
   width: 570px;
   height: 550px;
   max-height: 100%;
-  /* text-align: center; */
   justify-content: center;
   border-radius: 5px;
   top: 50%;
@@ -22,8 +19,6 @@
   width: 95%;
   height: 95%;
   border-radius: 6px;
-  /* text-align: left; */
-  /* justify-content: center; */
   top: 50%;
   left: 50%;
   background:rgb(252, 254, 255);
@@ -46,12 +41,10 @@ ul.task-modal-text {
   margin: 5px;
   padding-left: 0px;
   text-align: left;
-  /* justify-content: center; */
 }
 
 .task-modal-content {
   text-align: left;
-  
 }
 
 

@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { Button } from '@chakra-ui/react';
 
 import { GoogleLogin } from 'react-google-login';
-// refresh token
 import { refreshTokenSetup } from '../utilities/refreshToken';
 
 

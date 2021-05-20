@@ -56,7 +56,6 @@ class EditTaskForm extends React.Component {
     fetch(TASKS_URL + this.props.id, reqPack)
       .then(resp => resp.json())
       .then(updatedTask => {
-        // console.log(updatedTask)
         this.props.updateTask(updatedTask)
         this.renderTasks()
         event.target.reset()
@@ -130,7 +129,6 @@ class EditTaskForm extends React.Component {
                   variant="flushed"
                   value={chosenCustomer}
                   onChange={(e) => this.handleCustomerSelect(e.target.value)}>
-                  {/* onChange={this.handleInputChange}> */}
                     {this.props.customers.map(customer => 
                       <option value={customer.id}>
                       {customer.first_name} {customer.last_name}

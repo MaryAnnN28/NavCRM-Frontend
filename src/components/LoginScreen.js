@@ -5,10 +5,8 @@ import { GoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from '../utilities/refreshToken';
 
 import './LoginScreen.css';
-// import Login from './Login';
 import { Input, Button, FormControl, FormLabel, HStack, propNames } from '@chakra-ui/react';
-import { Fragment } from 'react';
-import Navbar from './Navbar/Navbar'
+
 
 function LoginScreen() {
 
@@ -44,7 +42,7 @@ function LoginScreen() {
 
           <div className="login-content">
             <br /> <br /><br />
-            {/* <h2 className="login-screen-text">Welcome</h2> */}
+          
           
             <form
               // onSubmit={handleSubmit}
@@ -77,9 +75,7 @@ function LoginScreen() {
                            
               <br />
                 
-              <Button colorScheme="gray" size="md" variant="solid" type="submit"
-                // disabled={!validateForm()}
-              >Log In</Button>
+              <Button colorScheme="gray" size="md" variant="solid" type="submit">Log In</Button>
               
               <div class="v1">
                 
@@ -90,9 +86,7 @@ function LoginScreen() {
 
               <div className="google-login-button">
                 
-                {/* <Login type="submit" /> */}
-                
-                <GoogleLogin
+                  <GoogleLogin
                   clientId="397188808547-flcrbi17jjm7gbec4tvq9ph7fnjhlume.apps.googleusercontent.com"
                   buttonText="Sign in with Google"
                   onSuccess={onSuccess}
