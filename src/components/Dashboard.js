@@ -6,7 +6,6 @@ import DoughnutChart from './Charts/DoughnutChart';
 import BarChart from './Charts/BarChart';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
-import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons/lib';
 
 function Dashboard({ users, customers, tasks }) {
@@ -54,63 +53,40 @@ function Dashboard({ users, customers, tasks }) {
           templateColumns="repeat(6, 1fr)"
           gap={8}
         >
-         
-            
-              <GridItem rowSpan={2} colSpan={2} className="grid-1">
-                
-              <p className='grid-1-text'>Total of <p className='grid-1-numbers'>{customers.length}</p> customers </p><br />
-           
-           <Button colorScheme="blackAlpha" color="white" size="xs" shadow={true}
+                    
+          <GridItem rowSpan={2} colSpan={2} className="grid-1">
+            <p className='grid-1-text'>Total of <p className='grid-1-numbers'>{customers.length}</p> customers </p><br />
+            <Button colorScheme="blackAlpha" color="white" size="xs" shadow={true}
              onClick={handleViewCustomers}
-                >View All Customers</Button>
-                
-  
+              >View All Customers</Button>
+          </GridItem>
               
-            </GridItem>
           <GridItem rowSpan={2} colSpan={2} className="grid-2">
-                <DoughnutChart />       
+            <DoughnutChart />       
           </GridItem>
 
           <GridItem rowSpan={3} colSpan={2} className="grid-3">
-              <Calendar onChange={onChange} value={value} calendarType="US"/>
+            <Calendar onChange={onChange} value={value} calendarType="US"/>
           </GridItem>
-
-              
-              
+             
           <GridItem rowSpan={4} colSpan={4} className="grid-4" >
             <BarChart />      
           </GridItem>
             
-
-
-              <GridItem rowSpan={3} colSpan={2} className="grid-5">
-                
-                <p className='grid-5-header'>Tasks</p>
-                
-                      
-                {/* <p className="grid-5-text">You have</p> */}
-                <p className='grid-5-numbers'>{tasks.length}</p> <p className="grid-5-text"> total</p> <br/>
-            
-                {/* Add function for filtering by task type and due tate  */}
-                    {/* <AiIcons.AiFillWarning /> */}
-                  <p className="grid-5-text"> past due</p> <p className="grid-5-numbers">7</p> <br/>
-              
-           <p className='grid-5-numbers'>2</p> <p className="grid-5-text"> due today</p> <br />
-           {/* <p className="grid-5-text"> this week</p> <p className='grid-5-numbers'>4</p> <br /> */}
-
-             
+          <GridItem rowSpan={3} colSpan={2} className="grid-5">
+            <p className='grid-5-header'>Tasks</p>
+            <p className='grid-5-numbers'>{tasks.length}</p> <p className="grid-5-text"> total</p> <br/>
+            <p className="grid-5-text"> past due</p> <p className="grid-5-numbers">7</p> <br/>
+            <p className='grid-5-numbers'>2</p> <p className="grid-5-text"> due today</p> <br />
           </GridItem>
 
-            
-            
-        
         </Grid>
         
       </div>
 
       </section>
       </IconContext.Provider>
-      </div>
+    </div>
     
   )
 

@@ -51,9 +51,6 @@ const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, chosenTask
 
       <td className="task-data-row" align="center">{task.time_due}</td>
 
-     {/* { task.customer === chosenTask.customer ? <td>{chosenTask.customer.company}</td> : null} */}
-
-
       <td className="task-data-row" align="center">
           <IconButton
             variant="unstyled"
@@ -77,8 +74,6 @@ const TasksList = ({ task, chooseTask, deleteTask, chosenCustomer, chosenTask
             aria-label="Delete Task"
             icon={<DeleteIcon />}
             onClick={() => setIsOpen(true)} 
-            //<--- Directly deletes without alert
-            // onClick={() => setIsOpen(true)}
             mt="1" mb="1"
           />
       </td>

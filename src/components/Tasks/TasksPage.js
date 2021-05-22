@@ -6,13 +6,6 @@ import TasksList from './TasksList';
 import './Tasks.css';
 import * as BsIcons from 'react-icons/bs';
 import {
-  // Drawer,
-  // DrawerBody,
-  // DrawerFooter,
-  // DrawerHeader,
-  // DrawerOverlay,
-  // DrawerContent,
-  // DrawerCloseButton,
   Button, 
   Select, 
   Input,
@@ -46,8 +39,7 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
 
   return (
     <div className="tasks-page-main">
-   
-     
+      
       <div className="new-task-btn">
         <Button colorScheme="blackAlpha" variant="solid" size="sm"  type="button" onClick={handleNewClick}>
             <h4>+ New Task</h4>&nbsp;
@@ -60,9 +52,9 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
           <tr className="top-header">
             
             <td className="sort-field" colSpan="3">
-              {/* Sort by:  */}
               <RadioGroup onChange={setValue} value={value}>
                 <Stack spacing={3} direction="row">
+                  
                   <Radio
                     colorScheme="blackAlpha"
                     type="radio"
@@ -71,6 +63,7 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
                     onChange={(event) => sortTask(event.target.value)}>
                   <p class="top-header">None</p>
                   </Radio>
+
                   <Radio
                     colorScheme="blackAlpha"
                     type="radio"
@@ -87,6 +80,7 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
                     onChange={(event) => sortTask(event.target.value)}>
                   <p class="top-header">Newest</p>
                   </Radio>
+
                   <Radio
                     colorScheme="blackAlpha"
                     type="radio"
@@ -95,13 +89,13 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
                     onChange={(event) => sortTask(event.target.value)}>
                   <p class="top-header">Oldest</p>
                   </Radio>
+
                 </Stack>
               </RadioGroup>
             </td>
 
           <td className="filter-row" colSpan="2">
-              <Select name="filter" placeholder="Filter By Task Type" ml={6}  onChange={handleFilterType}>{taskTypes.map(type =>
-                <option value={type}>{type}</option>)}
+              <Select name="filter" placeholder="Filter By Task Type" ml={6}  onChange={handleFilterType}>{taskTypes.map(type => <option value={type}>{type}</option>)}
             </Select>
             </td>
             
@@ -149,45 +143,6 @@ const TasksPage = ({ tasks, customers, users, handleNewTask, chooseTask, chosenT
         </table>
       </div>
 
-      {/* <div className="drawer-div">
-        <Drawer
-        show={show}
-        isOpen={isOpen}
-        placement="right"
-        onClose={onClose}
-        finalFocusRef={btnRef}
-        >
-          <DrawerOverlay colorScheme="blackAlpha">
-          <DrawerContent colorScheme="blackAlpha">
-            <DrawerCloseButton />
-            <DrawerHeader>Create New Task</DrawerHeader>
-
-              <DrawerBody> */}
-                
-                {/* <Route path="/newtaskform" render={(routerProps) =>
-                  <NewTaskForm
-                    task={task}
-                    customers={customers}
-                    users={users}
-                    handleNewTask={handleNewTask}
-                    currentUser={currentUser}
-                    chosenCustomer={chosenCustomer}
-                    {...routerProps}
-                  />} /> */}
-                  
-              {/* </DrawerBody>
-
-            <DrawerFooter>
-              <Button variant="outline" mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button color="blue">Save</Button>
-            </DrawerFooter>
-          </DrawerContent>
-        </DrawerOverlay>
-      </Drawer>
-        </div> */}
-    
 
     </div>
   )

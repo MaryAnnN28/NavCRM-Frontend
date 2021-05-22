@@ -17,7 +17,6 @@ class NewTaskForm extends React.Component {
       user_id: ""
     }
 
-  
 
   handleInputChange = (event) => {
     this.setState({

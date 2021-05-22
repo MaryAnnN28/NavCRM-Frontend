@@ -13,9 +13,6 @@ import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons';
 import { Image, Button, HStack } from '@chakra-ui/react'
 
-// import Login from '../Login';
-// import Logout from '../Logout';
-
  
 function Navbar({ users }) {
   const [sidebar, setSidebar] = useState(false)
@@ -95,8 +92,6 @@ function Navbar({ users }) {
               <BiIcons.BiArrowToLeft/>
                 </div>
 
-{/*                 
-              <AiIcons.AiOutlineClose /> */}
             </Link>
           </li>
           {SidebarData.map((item, index) => {

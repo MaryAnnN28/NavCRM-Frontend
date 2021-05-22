@@ -249,8 +249,7 @@ class App extends React.Component {
         <Route path="/welcome" render={routerProps =>
           <LoginScreen {...routerProps} /> } />
         
-      
-        {/* <SearchContainer customers={this.state.customers} />  */}
+    
         
             
         <Route path='/home' render={routerProps => 

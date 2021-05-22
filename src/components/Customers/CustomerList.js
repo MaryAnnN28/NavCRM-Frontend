@@ -11,7 +11,7 @@ import * as BsIcons from 'react-icons/bs';
 
 
 
-const CUSTOMERS_URL = "http://localhost:3000/customers/"; 
+const CUSTOMERS_URL = "https://crm-app-api.herokuapp.com"; 
 
 function CustomerList ({ customer, chooseCustomer, deleteCustomer })  {    
 
@@ -35,8 +35,8 @@ function CustomerList ({ customer, chooseCustomer, deleteCustomer })  {
 
   const [isOpen, setIsOpen] = useState(false)
   const onClose = () => setIsOpen(false)
-  const cancelRef = useRef()
-   
+   const cancelRef = useRef()
+    
    return (  
       <>
          <tbody></tbody>
@@ -73,8 +73,6 @@ function CustomerList ({ customer, chooseCustomer, deleteCustomer })  {
                aria-label="Delete Customer"
                icon={<DeleteIcon />}
                onClick={() => setIsOpen(true)} 
-               //<--- Directly deletes without alert
-               // onClick={() => setIsOpen(true)}
                mt="1" mb="1"
             />
          </td>
