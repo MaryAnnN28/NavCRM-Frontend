@@ -2,6 +2,7 @@ import React from 'react';
 import './Customer.css';
 import { Input, FormControl, FormLabel, HStack, Textarea, Heading, Button } from '@chakra-ui/react';
 
+
 const CUSTOMERS_URL = "http://localhost:3000/customers/"; 
 
 class NewCustomerForm extends React.Component {
@@ -17,7 +18,6 @@ class NewCustomerForm extends React.Component {
       notes: ""
     }
   
-
   handleInputChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -156,7 +156,7 @@ class NewCustomerForm extends React.Component {
                 width="xs"
                 variant="outline"
                 value={phone}
-                  onChange={this.handleInputChange} />
+                onChange={this.handleInputChange} />
                 </HStack>
                 </FormControl>
             

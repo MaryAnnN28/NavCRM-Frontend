@@ -35,37 +35,15 @@ function CustomerList ({ customer, chooseCustomer, deleteCustomer })  {
 
   const [isOpen, setIsOpen] = useState(false)
   const onClose = () => setIsOpen(false)
-   const cancelRef = useRef()
+  const cancelRef = useRef()
    
-   // const addFave = (props: any) => {
-   //    let array = favorites;
-   //    let addArray = true;
-   //    array.map((item: any, key: number) => {
-   //       if (item === props.i) {
-   //          array.splice(key, 1);
-   //          addArray = false;
-   //       }
-   //    });
-   //    if (addArray) {
-   //       array.push(props.i);
-   //    }
-   //    setFavorites([...array])
-   // }
- 
    return (  
       <>
          <tbody></tbody>
       <tr className="customer-list-table">
             <td className="customer-row-star" align="center" width="=80px">
-               {/* {favorites.includes(i) ? ( */}
-                  <AiIcons.AiOutlineStar size={18}
-                     // onClick={() => addFave({ items, i })}
-                     style={{ color: 'rgb(65, 102, 133)' }}/>
-               {/* ) : ( */}
-                  {/* <AiIcons.AiFillStar size={18}
-                     // onClick={() => addFave({ items, i })}
-                     // style={{ color: 'rgb(65, 102, 133)' }} /> */}
-               {/* )} */}
+               <AiIcons.AiOutlineStar size={18} style={{ color: 'rgb(65, 102, 133)' }}/>
+           
             </td>
             <td className="customer-data-row-bold" width="100px">{customer.first_name}</td>
             <td className="customer-data-row-bold">{customer.last_name}</td>
