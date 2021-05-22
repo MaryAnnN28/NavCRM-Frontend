@@ -5,13 +5,12 @@ import { GoogleLogout } from 'react-google-login';
 import './Navbar.css';
 
 import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
 import * as BiIcons from 'react-icons/bi';
 import * as IoMdIcons from 'react-icons/io';
 
 import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons';
-import { Image, Button, HStack } from '@chakra-ui/react'
+import { Image, Button } from '@chakra-ui/react'
 
  
 function Navbar({ users }) {
@@ -24,7 +23,7 @@ function Navbar({ users }) {
   const onSuccess = () => {
     console.log('Logout successful');
     alert('Logout successful ✌');
-    history.push('/welcome')
+    history.push('/')
   };
 
   return (
@@ -49,9 +48,7 @@ function Navbar({ users }) {
           </div>
         
           <div className="login-logout-buttons">
-            
-
-           
+                       
             <GoogleLogout
               clientId="397188808547-flcrbi17jjm7gbec4tvq9ph7fnjhlume.apps.googleusercontent.com"
               buttonText="Logout"

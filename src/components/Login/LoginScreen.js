@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { GoogleLogin } from 'react-google-login';
-import { refreshTokenSetup } from '../utilities/refreshToken';
+import { refreshTokenSetup } from '../../utilities/refreshToken';
 
 import './LoginScreen.css';
 import { Input, Button, FormControl, FormLabel, HStack, propNames } from '@chakra-ui/react';

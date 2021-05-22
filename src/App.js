@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css'; 
 
-import LoginScreen from './components/LoginScreen';
+import LoginScreen from './components/Login/LoginScreen';
 import Navbar from './components/Navbar/Navbar';
 import Dashboard from './components/Dashboard';
 import CustomerMethods from './components/CustomerMethods';
@@ -239,18 +239,16 @@ class App extends React.Component {
           
       <div>
       
-        <Navbar users={this.state.users} />
             
         <Switch>
-          <Route path='/' />
+          <Route exact path='/' render={routerProps =>
+            <LoginScreen {...routerProps} />
+            
+          }/>
         </Switch>
  
-         
-        <Route path="/welcome" render={routerProps =>
-          <LoginScreen {...routerProps} /> } />
-        
-    
-        
+        <Navbar users={this.state.users} />
+
             
         <Route path='/home' render={routerProps => 
           <Dashboard
@@ -259,12 +257,7 @@ class App extends React.Component {
             customers={this.state.customers}
             tasks={this.state.tasks}
               />} />
-            
-            <Route path='/customermethods' render={routerProps => 
-              <CustomerMethods
-                {...routerProps}
-              customers={this.state.customers}
-            /> } />
+    
 
         <Route path='/userprofile' render={routerProps =>
           <UserComponent {...routerProps} users={this.state.users} />} />
