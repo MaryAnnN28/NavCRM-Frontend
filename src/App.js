@@ -11,12 +11,15 @@ import EditCustomerForm from './components/Customers/EditCustomerForm';
 import TasksPage from './components/Tasks/TasksPage';
 import NewTaskForm from './components/Tasks/NewTaskForm';
 import EditTaskForm from './components/Tasks/EditTaskForm';
+import BarChart from './components/Charts/BarChart';
 import UserComponent from './components/Users/UserComponent';
 import Leads from './components/Leads/Leads'
 
 
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 import { ChakraProvider } from "@chakra-ui/react";
+import { Bar } from 'react-chartjs-2';
 
 
 const USERS_URL = "http://localhost:3000/users/";
@@ -343,6 +346,8 @@ class App extends React.Component {
                 {...routerProps}
               />
             } />
+
+            {/* <BarChart customers={this.state.customers} /> */}
             
       
         </div>

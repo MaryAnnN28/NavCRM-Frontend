@@ -12,7 +12,8 @@ const data = {
     }
   ]
 };
-function Dashboard () {
+
+function BarChart () {
   return (
     <div>
         <h2>Customer Industry</h2>
@@ -27,4 +28,4 @@ function Dashboard () {
     </div>
   );
 }
-export default Dashboard;
+export default BarChart;

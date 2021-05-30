@@ -8,10 +8,6 @@ import { SearchIcon } from '@chakra-ui/icons';
 import * as AiIcons from 'react-icons/ai';
 
 
-
-// import { BrowserRouter as Route} from "react-router-dom";
-
-
 const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer, search, sort, handleSearch, handleSort, handleFilter }) => {
   
   const history = useHistory(); 
@@ -22,8 +18,6 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
     history.push('/newcustomerform')
   };
 
-
-  
  
   return (
     <div className='customers-page-main'>
@@ -117,8 +111,6 @@ const CustomersPage = ({ customers, chooseCustomer, viewCustomer, deleteCustomer
             viewCustomer={viewCustomer}
             chooseCustomer={chooseCustomer}
             deleteCustomer={deleteCustomer}
-            // showModal={showModal}
-            // setShowModal={setShowModal}
           />
           )}
       </tbody>

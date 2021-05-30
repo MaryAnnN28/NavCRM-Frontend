@@ -120,8 +120,6 @@ div.past-due-task {
   letter-spacing: 6px;
   display: inline-flex;
   margin-left: 5px;
-  margin-bottom: -20px;
-  margin-top: -20px;
   color: rgb(159, 173, 184);
 }
 

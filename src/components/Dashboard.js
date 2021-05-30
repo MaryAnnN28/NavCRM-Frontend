@@ -8,17 +8,11 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 import { IconContext } from 'react-icons/lib';
 
-function Dashboard({ users, customers, tasks }) {
+// function Dashboard({ users, customers, tasks }) {
+const Dashboard = ({ users, customers, tasks }) => {
 
-  const history = useHistory();
-
-  const [customer, setCustomer] = useState()
-  
-  
-  function getFirstName() {
-    setCustomer(customer.first_name)
-  }
-  
+  const history = useHistory();  
+    
   const handleViewCustomers = () => {
     history.push('/customers')
   }
@@ -28,10 +22,13 @@ function Dashboard({ users, customers, tasks }) {
   }
 
   // FOR CALENDAR 
-  const [value, onChange] = useState(new Date());
+  const [value, onChange] = useState( new Date() );
   
-  // FOR CHARTS
-  // const [value, onChange] = useState(new Date());
+  // FOR TASKS
+  const pastDue = () => {
+
+  }
+  
 
  
 
@@ -75,9 +72,18 @@ function Dashboard({ users, customers, tasks }) {
             
           <GridItem rowSpan={3} colSpan={2} className="grid-5">
             <p className='grid-5-header'>Tasks</p>
-            <p className='grid-5-numbers'>{tasks.length}</p> <p className="grid-5-text"> total</p> <br/>
-            <p className="grid-5-text"> past due</p> <p className="grid-5-numbers">7</p> <br/>
-            <p className='grid-5-numbers'>2</p> <p className="grid-5-text"> due today</p> <br />
+                <p className='grid-5-numbers'>{tasks.length}</p>
+                <p className="grid-5-text"> total</p> <br />
+
+                <p className="grid-5-text">past due</p>
+                <p className="grid-5-numbers">{tasks.due_date}</p> <br />
+
+                <p className='grid-5-numbers'>2</p>
+                <p className="grid-5-text"> due today</p> <br /><br />
+
+                <Button colorScheme="blackAlpha" color="white" size="xs" shadow={true}
+                  onClick={handleViewTasks}
+                    >View All Tasks</Button>
           </GridItem>
 
         </Grid>
